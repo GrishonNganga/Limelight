@@ -1,6 +1,6 @@
 # Limelight
-#### This platform is a community driven platform that seeks to recognize the works of other designers and web artisans. 
-#### Contributors 
+#### This platform is a community driven platform that seeks to recognize the works of other designers and web artisans.
+#### Contributors
 * **Karen Ngala**
 * **Josphat Mwangi**
 * **Sospetre Kung'u**
@@ -24,7 +24,7 @@ There are no known bugs. Please reach out if you find any.
 ## Support and contact details
 Grab a cup of coffee? Email 'grishon.nganga01@gmail.com'
 ### MIT License
-Copyright (c) [2020] [Grishon Gikima Ng'ang'a]
+Copyright (c) [2020] [Limelight Group - Grishon Ng'ang'a, Maryann Makena, Karen Ngala, Sospeter Kung'u, Josphat Mwangi.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-Copyright (c) {2020} 
+Copyright (c) {2020}
 **Karen Ngala**
 **Josphat Mwangi**
 **Sospetre Kung'u**
