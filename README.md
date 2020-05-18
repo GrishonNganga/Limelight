@@ -1,6 +1,6 @@
 # Limelight
 #### This platform is a community driven platform that seeks to recognize the works of other designers and web artisans. 
-#### Contributors 
+# Contributors 
 * **Karen Ngala**
 * **Josphat Mwangi**
 * **Sospetre Kung'u**
