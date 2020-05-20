@@ -9,7 +9,6 @@
 - **Sospetre Kung'u**
 - **Maryann Makena**
 - **Grishon Ng'ang'a**
-- **Henry Shifu and you know it**
 
 ## Description
 
