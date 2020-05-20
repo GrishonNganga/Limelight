@@ -1,11 +1,102 @@
-/* The rest of the divs should be 100% width. I think this should work*/
 
-.latest-posts {
-    margin-right: 200px;
-    padding-right: 20px;
-    background-color: aqua;
+* {
+  box-sizing: border-box;
 }
 
+.post1 {
+  border: 2px solid rgb(128, 128, 128);
+}
+
+.owner {
+  color: #808080;
+  font-size: 13px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+}
+
+.views {
+  font-size: 15px;
+  padding-top: 60px;
+}
+
+.card-header {
+  background: url("../images/cute-lime.jpg") rgba(0, 0, 0, 0.2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #24252a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: #edf8f1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.wrapper {
+    background: #24252a;
+}
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+}
+
+::-webkit-input-placeholder,
+ ::-moz-placeholder,
+ ::-ms-input-placeholder {
+    color: #fff;
+}
+
+.fa-search {
+    position: absolute;
+    top: 32px;
+    right: 41%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+}
+
+.logo {
+    width: 8%;
+    cursor: pointer;
+}
+
+.fa-chevron-circle-down {
+    color: white;
+}
 .sidebar {
     background-color: blueviolet;
     height: 50%;
@@ -17,3 +108,46 @@
     overflow-x: hidden;
     text-align: center;
 }
+/* START of css style for CAROUSEL of trendingProjects */
+.multi-item-carousel .carousel-inner > .item {
+  transition: 500ms ease-in-out left;
+}
+.multi-item-carousel .carousel-inner .active.left {
+  left: -33%;
+}
+.multi-item-carousel .carousel-inner .active.right {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .next {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .prev {
+  left: -33%;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .multi-item-carousel .carousel-inner > .item {
+    transition: 500ms ease-in-out left;
+    transition: 500ms ease-in-out all;
+    -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+    -webkit-transform: none!important;
+            transform: none!important;
+  }
+}
+.multi-item-carousel .carouse-control.left,
+.multi-item-carousel .carouse-control.right {
+  background-image: none;
+}
+body {
+  background: #333;
+  color: #ddd;
+}
+h1 {
+  color: white;
+  font-size: 2.25em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  text-shadow: 0px 2px 0px #000000;
+}
+/* END of css style for CAROUSEL of trendingProjects */
