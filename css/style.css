@@ -1,6 +1,8 @@
 .card-header {
-  background-image: url("../images/cute-lime.jpg");
+  background: url("../images/cute-lime.jpg") rgba(0, 0, 0, 0.2);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
 }
