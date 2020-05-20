@@ -1,19 +1,1 @@
-/* The rest of the divs should be 100% width. I think this should work*/
 
-.latest-posts {
-    margin-right: 200px;
-    padding-right: 20px;
-    background-color: aqua;
-}
-
-.sidebar {
-    background-color: blueviolet;
-    height: 50%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    overflow-x: hidden;
-    text-align: center;
-}
