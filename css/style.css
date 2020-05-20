@@ -1,3 +1,42 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.post1 {
+  border: 2px solid rgb(128, 128, 128);
+}
+
+.owner {
+  color: #808080;
+  font-size: 13px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+}
+
+.views {
+  font-size: 15px;
+  padding-top: 60px;
+}
+
+.card-header {
+  background: url("../images/cute-lime.jpg") rgba(0, 0, 0, 0.2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 * {
     box-sizing: border-box;
