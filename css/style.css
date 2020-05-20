@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .post1 {
   border: 2px solid rgb(128, 128, 128);
 }
