@@ -1,1 +1,6 @@
-
+.card-header {
+  background-image: url("../images/cute-lime.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
