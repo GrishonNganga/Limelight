@@ -39,16 +39,30 @@ ul li {
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box;
     margin: 0;
-    padding: 0;
-    background-color: #24252a;
+    padding: 0; */
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
-    color: #edf8f1;
 }
+
+html,
+body {
+    height: 100%
+}
+
+.fa-bars {
+    color: limegreen;
+}
+
+main {
+    min-height: 100%;
+}
+
+
+/* HEADER */
 
 header {
     display: flex;
@@ -57,44 +71,177 @@ header {
     padding: 15px 5%;
 }
 
-.wrapper {
-    background: #24252a;
-}
-
 .search-box input[type="text"] {
     width: 100%;
     padding: 10px;
     padding-right: 30px;
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #fff;
     border-radius: 10px;
     font-size: 12px;
-    color: #fff;
+    color: limegreen;
     outline: none;
-}
-
-::-webkit-input-placeholder,
- ::-moz-placeholder,
- ::-ms-input-placeholder {
-    color: #fff;
 }
 
 .fa-search {
     position: absolute;
     top: 32px;
-    right: 41%;
+    right: 40%;
     transform: translateY(-50%);
     font-size: 16px;
-    color: #fff;
 }
 
-.logo {
-    width: 8%;
+.dropdown {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown ul::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.dropdown ul li {
+    padding: 10px;
+}
+
+.dropdown ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown ul li a:hover {
+    color: lime;
+}
+
+.dropdown-content {
+    position: absolute;
+    min-width: 50px;
+    max-width: 100px;
+    display: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
     cursor: pointer;
 }
 
-.fa-chevron-circle-down {
+.logo {
+    width: 10%;
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+
+footer {
+    background-color: limegreen;
+    color: #fff;
+    height: 62vh;
+}
+
+.foot-content {
+    width: 100%;
+    display: flex;
+}
+
+.foot-content,
+.footer-section {
+    flex: 1;
+}
+
+.fa-facebook,
+.fa-twitter,
+.fa-instagram,
+.fa-youtube {
+    color: #fff;
+}
+
+.about .contact-info span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.about .socials a {
+    border: 1px solid limegreen;
+    width: 45px;
+    height: 41px;
+    padding-top: 5px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.3em;
+    border-radius: 5px;
+    transition: all .3s;
+}
+
+.about .socials a:hover {
+    border: 1px solid white;
+    transition: all .3s;
+    color: #fff;
+}
+
+.terms {
+    color: white;
+}
+
+.terms:hover {
+    margin-left: 15px;
+    color: #2b2d2f;
+    transition: all .3s;
+}
+
+.foot-content .footer-section {
+    padding-left: 3%;
+    padding-right: 20%;
+    padding-bottom: 2%;
+}
+
+.foot-content .footer-section img {
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.foot-content .contact h2 {
+    color: #fff;
+    text-align: center;
+    padding-top: 7%;
+}
+
+.foot-content .contact form {
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 20%;
+    width: 100%;
+}
+
+.foot-content .contact .text-input {
+    align-self: center;
+    width: 100%;
+    line-height: 1.5rem;
+    padding: .9rem 1.2rem;
+    margin: 5px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.foot-content .contact .text-input:hover {
+    border: 1px solid #2b2d2f;
+}
+
+.btn {
+    background-color: #2b2d2f;
     color: white;
 }
 .sidebar {
@@ -151,3 +298,12 @@ h1 {
   text-shadow: 0px 2px 0px #000000;
 }
 /* END of css style for CAROUSEL of trendingProjects */
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* MEDIA QUERIES */
