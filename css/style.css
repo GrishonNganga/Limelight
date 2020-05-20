@@ -62,8 +62,8 @@ header {
     color: black;
 }
 
-.dropdown ul li:hover {
-    color: limegreen;
+.dropdown ul li a:hover {
+    color: lime;
 }
 
 .dropdown-content {
