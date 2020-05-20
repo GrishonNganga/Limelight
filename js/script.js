@@ -11,4 +11,5 @@ console.log(newCommunity.communityName);
 console.log(newCommunity.user);
 console.log(newCommunity.post);
 console.log(newCommunity.links);
+console.log(newCommunity.comments);
 
