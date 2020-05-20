@@ -14,6 +14,10 @@ body {
     height: 100%
 }
 
+.fa-bars {
+    color: limegreen;
+}
+
 main {
     min-height: 100%;
 }
@@ -36,6 +40,7 @@ header {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     font-size: 12px;
+    color: limegreen;
     outline: none;
 }
 
@@ -91,7 +96,7 @@ header {
 }
 
 .logo {
-    width: 8%;
+    width: 10%;
     cursor: pointer;
 }
 
@@ -101,16 +106,110 @@ header {
 footer {
     background-color: limegreen;
     color: #fff;
-    height: 30vh;
+    height: 62vh;
 }
 
 .foot-content {
+    width: 100%;
+    display: flex;
+}
+
+.foot-content,
+.footer-section {
+    flex: 1;
+}
+
+.fa-facebook,
+.fa-twitter,
+.fa-instagram,
+.fa-youtube {
     color: #fff;
-    height: 50px;
+}
+
+.about .contact-info span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.about .socials a {
+    border: 1px solid limegreen;
+    width: 45px;
+    height: 41px;
+    padding-top: 5px;
+    margin-right: 5px;
     text-align: center;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    padding-top: 10px;
+    display: inline-block;
+    font-size: 1.3em;
+    border-radius: 5px;
+    transition: all .3s;
+}
+
+.about .socials a:hover {
+    border: 1px solid white;
+    transition: all .3s;
+    color: #fff;
+}
+
+.terms {
+    color: white;
+}
+
+.terms:hover {
+    margin-left: 15px;
+    color: #2b2d2f;
+    transition: all .3s;
+}
+
+.foot-content .footer-section {
+    padding-left: 3%;
+    padding-right: 20%;
+    padding-bottom: 2%;
+}
+
+.foot-content .footer-section img {
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.foot-content .contact h2 {
+    color: #fff;
+    text-align: center;
+    padding-top: 7%;
+}
+
+.foot-content .contact form {
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 20%;
     width: 100%;
 }
+
+.foot-content .contact .text-input {
+    align-self: center;
+    width: 100%;
+    line-height: 1.5rem;
+    padding: .9rem 1.2rem;
+    margin: 5px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.foot-content .contact .text-input:hover {
+    border: 1px solid #2b2d2f;
+}
+
+.btn {
+    background-color: #2b2d2f;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* MEDIA QUERIES */
