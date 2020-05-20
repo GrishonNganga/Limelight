@@ -35,6 +35,49 @@ header {
     font-size: 16px;
 }
 
+.dropdown {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown ul::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.dropdown ul li {
+    padding: 10px;
+}
+
+.dropdown ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown ul li:hover {
+    color: limegreen;
+}
+
+.dropdown-content {
+    position: absolute;
+    min-width: 50px;
+    max-width: 100px;
+    display: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+}
+
 .logo {
     width: 8%;
     cursor: pointer;
