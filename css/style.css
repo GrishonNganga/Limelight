@@ -3,12 +3,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #24252a;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
-    color: #edf8f1;
 }
 
 header {
@@ -18,36 +16,23 @@ header {
     padding: 15px 5%;
 }
 
-.wrapper {
-    background: #24252a;
-}
-
 .search-box input[type="text"] {
     width: 100%;
     padding: 10px;
     padding-right: 30px;
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #fff;
     border-radius: 10px;
     font-size: 12px;
-    color: #fff;
     outline: none;
-}
-
-::-webkit-input-placeholder,
- ::-moz-placeholder,
- ::-ms-input-placeholder {
-    color: #fff;
 }
 
 .fa-search {
     position: absolute;
     top: 32px;
-    right: 41%;
+    right: 40%;
     transform: translateY(-50%);
     font-size: 16px;
-    color: #fff;
 }
 
 .logo {
@@ -56,5 +41,5 @@ header {
 }
 
 .fa-chevron-circle-down {
-    color: white;
+    font-size: 18px;
 }
