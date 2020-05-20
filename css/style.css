@@ -1,19 +1,60 @@
-/* The rest of the divs should be 100% width. I think this should work*/
-
-.latest-posts {
-    margin-right: 200px;
-    padding-right: 20px;
-    background-color: aqua;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #24252a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: #edf8f1;
 }
 
-.sidebar {
-    background-color: blueviolet;
-    height: 50%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    overflow-x: hidden;
-    text-align: center;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.wrapper {
+    background: #24252a;
+}
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+}
+
+::-webkit-input-placeholder,
+ ::-moz-placeholder,
+ ::-ms-input-placeholder {
+    color: #fff;
+}
+
+.fa-search {
+    position: absolute;
+    top: 32px;
+    right: 41%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+}
+
+.logo {
+    width: 8%;
+    cursor: pointer;
+}
+
+.fa-chevron-circle-down {
+    color: white;
 }
