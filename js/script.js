@@ -9,4 +9,5 @@ var newCommunity = new Community("techCommunity", "Bruno", "Check out my new pro
 console.log(newCommunity);
 console.log(newCommunity.communityName);
 console.log(newCommunity.user);
+console.log(newCommunity.post);
 
