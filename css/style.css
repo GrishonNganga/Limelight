@@ -6,3 +6,8 @@
   background-blend-mode: multiply;
   color: white;
 }
+
+.post1 {
+  border: 2px solid grey;
+  padding: 20px;
+}
