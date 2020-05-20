@@ -1,3 +1,19 @@
+
+function Community(name, user, post, links, comments) {
+  this.communityName = name;
+  this.user = user;
+  this.post = post;
+  this.links = links;
+  this. comments = comments;
+}
+var newCommunity = new Community("techCommunity", "Bruno", "Check out my new project", "https://btg001.github.io/pizzeria/", "This is really nice!");
+console.log(newCommunity);
+console.log(newCommunity.communityName);
+console.log(newCommunity.user);
+console.log(newCommunity.post);
+console.log(newCommunity.links);
+console.log(newCommunity.comments);
+
 //First name, Second name, Email address
 
 function User(f_name, s_name, email, password) {
@@ -20,3 +36,4 @@ function Community(users, posts, images) {
   this.posts = post;
   this.images = images;
 }
+
