@@ -1,14 +1,10 @@
-.card-header {
-  background: url("../images/cute-lime.jpg") rgba(0, 0, 0, 0.2);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: multiply;
-  color: white;
-}
-
 .post1 {
   border: 2px solid rgb(128, 128, 128);
+}
+
+.owner {
+  color: #808080;
+  font-size: 13px;
 }
 
 ul {
@@ -19,12 +15,20 @@ ul li {
   display: inline-block;
 }
 
-.owner {
-  color: #808080;
-  font-size: 13px;
+.views {
+  font-size: 15px;
+  padding-top: 60px;
 }
 
-.views {
-  padding-top: 60px;
-  font-size: 15px;
+.card-header {
+  background: url("../images/cute-lime.jpg") rgba(0, 0, 0, 0.2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+}
+
+.hidden {
+  display: none;
 }
