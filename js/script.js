@@ -38,5 +38,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $()
+  $("h6").click(function(event) {
+    event.preventDefault();
+  })
 })
