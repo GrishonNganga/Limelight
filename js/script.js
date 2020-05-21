@@ -1,4 +1,5 @@
 
+
 //First name, Second name, Email address
 
 function User(f_name, s_name, email, password, community) {
@@ -126,4 +127,20 @@ $(document).ready(function() {
       $("h6").click(function(event) {
       event.preventDefault();
       });
+  
+$(document).ready(function () {
+  $(".btn").click(function () {
+    $(".hidden").show();
+  });
+
+  $("#url-upload").click(function () {
+    $(".upload-form").show();
+    $(".upload-button").hide();
+  });
+});
+
+$(document).ready(function () {
+  $("h6").click(function (event) {
+    event.preventDefault();
+  });
 });

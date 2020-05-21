@@ -18,34 +18,60 @@
 
 <body>
     <header>
-        <div class="row">
-            <div class="col logo">
-                <img src="images/limelight-logo-black.png" alt="logo" class="logo">
-            </div>
-
-            <div class="search-box col">
-                <i class="fa fa-search"></i>
+        <img src="images/limelight-logo-black.png" alt="logo" class="logo">
+        <div class="wrapper">
+            <div class="search-box">
                 <input type="text" name="search" id="search" placeholder="Search">
+                <i class="fa fa-search"></i>
             </div>
-
-            <div class="menu col offset-3">
-                <i class="fa fa-bars fa-2x dropdown">
-                    <ul class="dropdown-content">
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="#">ABOUT US</a></li>
-                        <li><a href="#">COMMUNITIES</a></li>
-                    </ul>
-                </i>
-            </div>
+        </div>
+        <div class="menu">
+            <i class="fa fa-bars fa-2x dropdown">
+                <ul class="dropdown-content">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">COMMUNITIES</a></li>
+                </ul>
+            </i>
         </div>
     </header>
     <main>
         <!-- SOSPETER -->
 
+
+
+
         <!-- MARYANN -->
         <div class="container">
             <div class="row">
                 <div class="col posts">
+                    
+                    <div class="container upload">
+                        <div class="upload-button">
+                            <h6>Upload your website URL to get reviews:</h6>
+                            <button type="submit" class="btn btn-primary" id="url-upload">UPLOAD URL</button>
+                        </div>
+                        <div class="upload-form">
+                            <form id="info">
+                                <div class="form-row">
+                                  <div class="form-group col-md-5">
+                                  <label for="full-name">Full Name</label>
+                                  <input type="text" value="" class="form-control" id="full-name">
+                                  </div>
+                                </div>
+                                  <div class="form-row">
+                                  <div class="form-group col-md-5">
+                                  <label for="live-link">Live Link</label>
+                                  <input type="text" value="" class="form-control" id="live-link">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">UPLOAD</button>
+                              </form>
+                        </div> 
+                    </div>
+                    
+                    <p class="font-weight-bold">Latest Posts</p>
+                    
                     <div class="container card card-post">
                         <a href="https://makena-maryann.github.io/DelishPizzaHut/" target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">
                             <div class="row">
@@ -125,7 +151,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 communities">
+                <div class="col-md-4 communities pt-4">
                     <div class="card">
                         <h5 class="card-header p-4 font-weight-bold">Communities</h5>
                         <div class="card-body">
