@@ -325,13 +325,36 @@ footer {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 750px) {
-    .fa-search {
-        position: absolute;
-        margin-top: 4%;
-        margin-left: 50%;
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-left: 8%;
+        padding-bottom: 10%;
+        padding-right: 8%;
+        align-items: center;
     }
-    .logo img {
-        width: 40%;
+    .fa-bars {
+        color: limegreen;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-left: 8%;
+        padding-right: 8%;
+        align-items: center;
+    }
+    header ul li {
+        width: 100%;
+    }
+    .fa-bars {
+        color: limegreen;
+        display: block;
     }
 }
 
