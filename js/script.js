@@ -155,8 +155,10 @@ $(document).ready(()=>{
 
       users.forEach((user)=>{
         if(user.username == username && user.password == password){
-          window.location.href('file:///C:/Moringa/Limelight/index.html?#');
           alert('Done');
+          location.href = "index.html";
+          setTimeout(() => {  console.log("World!"); }, 2000);
+          
         }else{
             
           return;
