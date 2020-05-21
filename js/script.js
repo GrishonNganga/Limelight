@@ -3,9 +3,15 @@ function Community(name, user, post, links, comments) {
   this.user = user;
   this.post = post;
   this.links = links;
-  this. comments = comments;
+  this.comments = comments;
 }
-var newCommunity = new Community("techCommunity", "Bruno", "Check out my new project", "https://btg001.github.io/pizzeria/", "This is really nice!");
+var newCommunity = new Community(
+  "techCommunity",
+  "Bruno",
+  "Check out my new project",
+  "https://btg001.github.io/pizzeria/",
+  "This is really nice!"
+);
 console.log(newCommunity);
 console.log(newCommunity.communityName);
 console.log(newCommunity.user);
@@ -30,15 +36,19 @@ function Post(user, message, comments, stars, community) {
   this.community = community;
 }
 
-
-$(document).ready(function() {
-  $(".btn").click(function() {
+$(document).ready(function () {
+  $(".btn").click(function () {
     $(".hidden").show();
+  });
+
+  $("#url-upload").click(function () {
+    $(".upload-form").show();
+    $(".upload-button").hide();
   });
 });
 
-$(document).ready(function() {
-  $("h6").click(function(event) {
+$(document).ready(function () {
+  $("h6").click(function (event) {
     event.preventDefault();
-  })
-})
+  });
+});
