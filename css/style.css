@@ -169,6 +169,30 @@ footer {
     flex: 1;
 }
 
+footer {
+    background-color: limegreen;
+    color: #fff;
+    height: 62vh;
+}
+
+.foot-content {
+    width: 100%;
+    display: flex;
+}
+
+.foot-content,
+.footer-section {
+    flex: 1;
+}
+
+.footer-section img,
+.footer-section p,
+.footer-section a,
+.contact-info span,
+.socials a {
+    padding-left: 8%;
+}
+
 .fa-facebook,
 .fa-twitter,
 .fa-instagram,
@@ -196,7 +220,7 @@ footer {
 }
 
 .about .socials a:hover {
-    border: 1px solid white;
+    margin-left: 10px;
     transition: all .3s;
     color: #fff;
 }
@@ -264,7 +288,7 @@ footer {
 
 /* MEDIA QUERIES */
 
-@media only screen and (min-width: 500px) {
+@media only screen and (max-width: 750px) {
     .fa-search {
         position: absolute;
         margin-top: 4%;
@@ -272,6 +296,16 @@ footer {
     }
     .logo img {
         width: 40%;
+    }
+}
+
+@media only screen and (max-width: 934px) {
+    footer {
+        height: auto;
+    }
+    footer .foot-content {
+        height: auto;
+        flex-direction: column;
     }
 }
 
