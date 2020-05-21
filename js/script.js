@@ -72,3 +72,22 @@ document.getElementById("btnSubmitComment").addEventListener("click", function (
       when: firebase.database.ServerValue.TIMESTAMP
   });
 });
+
+function showpastcomments() {
+  var showat = document.getElementById('pastcomments');
+  //Get comments whose from page equals this page's pathname.
+  var commentsRef = firebase.database().ref('comments/').orderByChild('frompage').equalTo(location.pathname);
+  commentsRef.once('value', function (snapshot) {
+      snapshot.forEach(function (itemSnapshot) {
+          //Get the object for one snapshot
+          var itemData = itemSnapshot.val();
+          var comment = itemData.comment;
+          var name = itemData.name;
+          var when = new Date(itemData.when).toLocaleDateString("en-us");
+          showat.innerHTML += "<li>" + comment + "<span> -- " + name + " (" + when +
+              ")</span></li>";
+      })
+  })
+}
+//Called when page first opens and also after Submit button click to show all comments for this page.
+showpastcomments()
