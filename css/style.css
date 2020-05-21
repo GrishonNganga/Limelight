@@ -49,7 +49,19 @@ header {
     color: limegreen;
 }
 
+/* .feedback-section{
+    margin-top: 100%;
+} */
 
+.card{
+    margin-bottom: 4%;
+}
+.votesNumber, .feedback-section{
+    font-size: 13px;
+}
+.feedback-section{
+    margin-top: 2.5%;
+}
 /* START of css style for CAROUSEL of trendingProjects */
 
 .multi-item-carousel .carousel-inner>.item {
@@ -133,7 +145,9 @@ ul li {
     background-blend-mode: multiply;
     color: white;
 }
-
+.communities{
+    display: none;
+}
 .hidden {
     display: none;
 }
@@ -272,6 +286,11 @@ footer {
     }
     .logo img {
         width: 40%;
+    }
+}
+@media only screen and (min-width: 1000px){
+    .communities{
+        display: inline;
     }
 }
 
