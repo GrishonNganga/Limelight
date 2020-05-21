@@ -126,4 +126,13 @@ $(document).ready(function() {
       $("h6").click(function(event) {
       event.preventDefault();
       });
+
+
+
+      //Handle Upload...
+      $("#url-upload").click(function () {
+        $(".upload-form").show();
+        $(".upload-button").hide();
+      });
+    
 });

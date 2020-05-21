@@ -36,7 +36,7 @@ header {
 }
 
 .logo img {
-  width: 70%;
+  width: 100%;
 }
 
 .fa-search {
@@ -66,6 +66,74 @@ header {
 .feedback-section {
   font-size: 13px;
 }
+
+/* Add header code here. Incase anything breaks. We are coming for your head Karen!!!!! */
+
+
+
+
+
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: 20vh; */
+}
+
+
+
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header ul li {
+    float: left;
+}
+
+header ul li a {
+    display: inline;
+    padding: 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: #000000;
+}
+
+header ul li a:hover {
+    background-color: limegreen;
+    color: #fff;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.menu-toggle{
+    display: inline;
+}
+.dropdown-content{
+    display: none;
+}
+
+
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 15px;
+    color: limegreen;
+    outline: none;
+}
+
 
 .fa-caret-up,
 .fa-caret-down,
@@ -311,12 +379,18 @@ footer {
     margin-left: 50%;
   }
   .logo img {
-    width: 40%;
+    width: 60%;
   }
 }
 @media only screen and (min-width: 1000px) {
   .communities {
     display: inline;
+  }
+  .menu-toggle{
+      display: none;
+  }
+  .dropdown-content{
+      display: block;
   }
 }
 
