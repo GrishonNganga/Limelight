@@ -9,7 +9,9 @@
 
 html,
 body {
-    height: 100%
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 main {
@@ -21,10 +23,12 @@ main {
 
 header {
     padding: 15px 5%;
+    height: 10vh;
+    background-color: aqua;
 }
 
 .search-box input[type="text"] {
-    width: 100%;
+    width: 20%;
     padding: 10px;
     padding-right: 30px;
     box-sizing: border-box;
@@ -36,13 +40,7 @@ header {
 }
 
 .logo img {
-    width: 70%;
-}
-
-.fa-search {
-    position: absolute;
-    margin-top: 10%;
-    margin-left: 80%;
+    width: 12%;
 }
 
 .fa-bars {
