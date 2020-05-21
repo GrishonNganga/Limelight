@@ -56,9 +56,33 @@ header {
 .card{
     margin-bottom: 4%;
 }
+.card-post:hover{
+    border: 1.3px solid grey;
+}
+.card a:hover{
+    text-decoration: none;
+}
 .votesNumber, .feedback-section{
     font-size: 13px;
 }
+
+.fa-caret-up, .fa-caret-down, .fa-comment, .fa-star{
+    color: #DDDDDD;
+}
+.fa-caret-up:hover{
+    color: limegreen;
+}
+.fa-caret-down:hover{
+    color: red;
+}
+.fa-comment:hover, .fa-star:hover{
+    color: white;
+    background-color: #DDDDDD;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+
 .feedback-section{
     margin-top: 2.5%;
 }
