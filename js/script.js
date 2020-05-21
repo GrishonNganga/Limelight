@@ -30,9 +30,15 @@ function Post(user, message, comments, stars, community) {
   this.community = community;
 }
 
-function Community(users, posts, images) {
-  this.users = users;
-  this.posts = post;
-  this.images = images;
-}
 
+$(document).ready(function() {
+  $(".btn").click(function() {
+    $(".hidden").show();
+  });
+});
+
+$(document).ready(function() {
+  $("h6").click(function(event) {
+    event.preventDefault();
+  })
+})
