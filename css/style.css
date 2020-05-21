@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
@@ -16,6 +16,7 @@ body {
 
 main {
     min-height: 100%;
+    background-color: rgb(221, 221, 221);
 }
 
 
@@ -83,6 +84,33 @@ header ul li a:hover {
     color: #fff;
     text-decoration: none;
     transition: .5s;
+}
+
+.fa-caret-up,
+.fa-caret-down,
+.fa-comment,
+.fa-star {
+    color: #dddddd;
+}
+
+.fa-caret-up:hover {
+    color: limegreen;
+}
+
+.fa-caret-down:hover {
+    color: red;
+}
+
+.fa-comment:hover,
+.fa-star:hover {
+    color: white;
+    background-color: #dddddd;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.feedback-section {
+    margin-top: 2.5%;
 }
 
 
@@ -170,6 +198,10 @@ ul li {
     color: white;
 }
 
+.communities {
+    display: none;
+}
+
 .hidden {
     display: none;
 }
@@ -252,7 +284,7 @@ footer {
     display: inline-block;
     font-size: 1.3em;
     border-radius: 5px;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 .about .socials a:hover {
@@ -268,7 +300,7 @@ footer {
 .terms:hover {
     margin-left: 15px;
     color: #2b2d2f;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 .foot-content .footer-section {
@@ -299,7 +331,7 @@ footer {
     align-self: center;
     width: 100%;
     line-height: 1.5rem;
-    padding: .9rem 1.2rem;
+    padding: 0.9rem 1.2rem;
     margin: 5px 0;
     display: inline-block;
     border: none;
@@ -319,6 +351,10 @@ footer {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.upload-form {
+    display: none;
 }
 
 
@@ -375,7 +411,7 @@ footer {
         transition: 500ms ease-in-out all;
         -webkit-backface-visibility: visible;
         backface-visibility: visible;
-        -webkit-transform: none!important;
-        transform: none!important;
+        -webkit-transform: none !important;
+        transform: none !important;
     }
 }
