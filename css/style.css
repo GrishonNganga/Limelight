@@ -21,14 +21,6 @@ main {
 
 /* HEADER */
 
-header,
-.logo,
-.search-box,
-.dropdown-content {
-    padding: 0;
-    /* border: 1px solid red; */
-}
-
 header {
     display: flex;
     justify-content: space-between;
