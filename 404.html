@@ -39,13 +39,19 @@
         <div class="text">
             <h3>Oh no, you've found our junior developer's homepage!</h3>
             <p>Despite sleeping on the couch most of the day, our junior web developer still finds time to do some coding... of sorts</p>
-            <button type="submit" class="btn">
+            <button type="submit" class="btn" id="button">
                 <i class="fa fa-arrow-circle-left"></i>
                 BACK TO HOMEPAGE
             </button>
         </div>
     </main>
 
+    <!-- script -->
+    <script type="text/javascript">
+        document.getElementById("button").onclick = function() {
+            location.href = "index.html";
+        };
+    </script>
 </body>
 
 </html>
