@@ -299,10 +299,6 @@ footer {
   cursor: pointer;
 }
 
-.btn:hover {
-  color: #fff;
-}
-
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 500px) {
