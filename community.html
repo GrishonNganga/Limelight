@@ -83,6 +83,24 @@
                             </div> 
                         </a>        
                     </div>
+
+                    <div id="allcomments">
+                      <h3>Comments</h3>
+                      <!-- We will show past comments in the list below-->
+                      <ul id="pastcomments"></ul>
+                      <!-- This is the form for entering a new comment -->
+                      <form id="newcomment">
+                          <label for="tbName">First Name or Initials</label>
+                          <br>
+                          <input id="tbName" type="text" maxlength="20" required>
+                          <br>
+                          <label for="txComment">Your Comment / Question</label>
+                          <br>
+                          <textarea id="txComment" maxlength="4096" required style="width:96%"></textarea>
+                          <br>
+                          <input type="submit" id="btnSubmitComment" value="Submit Comment">
+                      </form>
+                  </div>
                 
     </div>
   </section>
