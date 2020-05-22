@@ -139,8 +139,32 @@ $(document).ready(function() {
             }
         ]
     });
+
+    $(".btn").click(function() {
+        $(".hidden").show();
+
+    });
+
+    $("h6").click(function(event) {
+        event.preventDefault();
+    });
+
+    $(document).ready(function() {
+        $(".btn").click(function() {
+            $(".hidden").show();
+        });
+
+        $("#url-upload").click(function() {
+            $(".upload-form").show();
+            $(".upload-button").hide();
+        });
+    });
+
+
     //Post Comments...
+    var postsCount = 0;
     posts.forEach((post) => {
+        postsCount++;
         var user = post.user.f_name;
         var message = post.message;
         var link = post.link;
@@ -148,67 +172,28 @@ $(document).ready(function() {
         var commentStars = post.stars;
         var community = post.community;
 
-        //Initialize a variable. If it is false. User has not logged in. If true...
-        var logIn = false;
-        //Post Comments...
-        var postsCount = 0;
-        posts.forEach((post) => {
-            postsCount++;
-            var user = post.user.f_name;
-            var message = post.message;
-            var link = post.link;
-            var comments = post.comments;
-            var commentStars = post.stars;
-            var community = post.community;
-
-            var commentsCounter = 0;
-            comments.forEach((comment) => {
-                counter++;
-            });
-
-            $('.posts').html($('.posts').html() + "<div class=\"container card card-post\"><a href=" + link + " target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-dark font-weight-bold\"><div class=\"row\"><div class=\"col-2\"><div class=\"upVote\"><i class=\"fa fa-caret-up fa-2x\" ></i></div><div class=\"votesNumber\">200</div><div class=\"downVote\"><i class=\"fa fa-caret-down fa-2x\" ></i></div></div><div class=\"col\"><div class=\"row\"><div class=\"col\"><p class=\"owner\">Posted by" + user + " 2 hours ago</p></div></div><div class=\"row\"><div class=\"col\">" + message + "</div></div><div class=\"row feedback-section\"><div class=\"col\"><i class=\"fa fa-comment\">" + commentsCounter + "comments</i></div><div class=\"col\"><li class=\"fa fa-star\">" + commentStars + "stars</li></div></div></div></div> </a></div>");
-            $('.posts').html($('.posts').html() + "<div class=\"container " + postsCount + " card card-post\"><a href=" + link + " target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-dark font-weight-bold\"><div class=\"row\"><div class=\" col-2 col-sm-1\"><div class=\"upVote\"><i class=\"fa fa-caret-up fa-2x\" ></i></div><div class=\"votesNumber\">200</div><div class=\"downVote\"><i class=\"fa fa-caret-down fa-2x\" ></i></div></div><div class=\"col\"><div class=\"row\"><div class=\"col\"><p class=\"owner\">Posted by " + user + " 2 hours ago</p></div></div><div class=\"row\"><div class=\"col\">" + message + "</div></div><div class=\"row feedback-section\"><div class=\"col\"><i class=\"fa fa-comment\">" + commentsCounter + "comments</i></div><div class=\"col\"><li class=\"fa fa-star\">" + commentStars + "stars</li></div></div></div></div> </a></div>");
-
+        var commentsCounter = 0;
+        comments.forEach((comment) => {
+            counter++;
         });
 
-        var communitiesCount = 0;
-        communities.forEach((community) => {
-            communitiesCount++;
+        $('.posts').html($('.posts').html() + "<div class=\"container " + postsCount + " card card-post\"><a href=" + link + " target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-dark font-weight-bold\"><div class=\"row\"><div class=\" col-2 col-sm-1\"><div class=\"upVote\"><i class=\"fa fa-caret-up fa-2x\" ></i></div><div class=\"votesNumber\">200</div><div class=\"downVote\"><i class=\"fa fa-caret-down fa-2x\" ></i></div></div><div class=\"col\"><div class=\"row\"><div class=\"col\"><p class=\"owner\">Posted by " + user + " 2 hours ago</p></div></div><div class=\"row\"><div class=\"col\">" + message + "</div></div><div class=\"row feedback-section\"><div class=\"col\"><i class=\"fa fa-comment\">" + commentsCounter + "comments</i></div><div class=\"col\"><li class=\"fa fa-star\">" + commentStars + "stars</li></div></div></div></div> </a></div>");
 
-            var name = community.communityName;
-            $('.card-text').html($('.card-text').html() + "<p class=\"card-text\"><h6 class=\"font-weight-bold\">" + communitiesCount + "      " + name + "</h6>");
-        });
+    });
 
+    var communitiesCount = 0;
+    communities.forEach((community) => {
+    communitiesCount++;
+    var name = community.communityName;
+        
+    $('.card-text').html($('.card-text').html() + "<p class=\"card-text\"><h6 class=\"font-weight-bold\">" + communitiesCount + "      " + name + "</h6>");
 
-
-
-
-        $(".btn").click(function() {
-            $(".hidden").show();
-
-        });
-
+   
+    $(document).ready(function() {
         $("h6").click(function(event) {
             event.preventDefault();
         });
-
-        $(document).ready(function() {
-            $(".btn").click(function() {
-                $(".hidden").show();
-            });
-
-            $("#url-upload").click(function() {
-                $(".upload-form").show();
-                $(".upload-button").hide();
-            });
-        });
-
-        $(document).ready(function() {
-            $("h6").click(function(event) {
-                event.preventDefault();
-            });
-        });
-    })
+    });
 
     $("h6").click(function(event) {
         event.preventDefault();
@@ -275,3 +260,4 @@ function validateField(field) {
         return;
     }
 }
+});
