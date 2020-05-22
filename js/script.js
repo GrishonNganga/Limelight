@@ -1,65 +1,63 @@
-
-
 //First name, Second name, Email address
 
 function User(f_name, s_name, email, password, community) {
-  this.f_name = f_name;
-  this.s_name = s_name;
-  this.email = email;
-  this.password = password;
-  this.communities = [community];
-  this.posts = [];
+    this.f_name = f_name;
+    this.s_name = s_name;
+    this.email = email;
+    this.password = password;
+    this.communities = [community];
+    this.posts = [];
 }
 
-User.prototype.post = function(post){
-  this.posts.push(post);
+User.prototype.post = function(post) {
+    this.posts.push(post);
 }
 
-User.prototype.join = function(community){
-  this.communities.push(community)
+User.prototype.join = function(community) {
+    this.communities.push(community)
 }
 
 function Community(name, image) {
-  this.communityName = name;
-  this.coverImage = image;
-  this.users = [];
+    this.communityName = name;
+    this.coverImage = image;
+    this.users = [];
 }
-Community.prototype.addUser = function(user){
-  this.users.push(user);
-}
-
-Community.prototype.changeImage = function(image){
-
-  this.coverImage = image;
+Community.prototype.addUser = function(user) {
+    this.users.push(user);
 }
 
-function Comment(user, message, post){
-  this.post = post;
-  this.message = message;
-  this.user = user;
-  this.stars = 0;
-  this.comments = [];
+Community.prototype.changeImage = function(image) {
+
+    this.coverImage = image;
 }
 
-Comment.prototype.comment = function(comment){
-  this.comments.push(comment);
+function Comment(user, message, post) {
+    this.post = post;
+    this.message = message;
+    this.user = user;
+    this.stars = 0;
+    this.comments = [];
+}
+
+Comment.prototype.comment = function(comment) {
+    this.comments.push(comment);
 }
 
 function Post(user, message, community, link) {
-  this.user = user;
-  this.message = message;
-  this.link = link;
-  this.stars = 0;
-  this.community = community;
-  this.comments = [];
+    this.user = user;
+    this.message = message;
+    this.link = link;
+    this.stars = 0;
+    this.community = community;
+    this.comments = [];
 }
 
-Post.prototype.comment = function(comment){
-  this.comments.push(comment);
+Post.prototype.comment = function(comment) {
+    this.comments.push(comment);
 }
 
-Post.prototype.star = function(){
-  this.stars++;
+Post.prototype.star = function() {
+    this.stars++;
 }
 
 
@@ -86,14 +84,14 @@ var users = [grishon, karen, arnold, josphat, bruno, maryann];
 
 console.log(users);
 
-var grishonPost = new Post(grishon, "Check out my account! I am cool",communityAll, "https://github.com/grishonnganga/");
-var karenPost = new Post(karen, "https://github.com/grishonnganga",communityAll);
-var arnoldPost = new Post(arnold, "https://github.com/grishonnganga",communityAll);
-var josphatPost = new Post(josphat, "https://github.com/grishonnganga",communityAll);
-var brunoPost = new Post(bruno, "https://github.com/grishonnganga",communityAll);
-var maryannPost = new Post(maryann, "https://github.com/grishonnganga",communityAll);
+var grishonPost = new Post(grishon, "Check out my account! I am cool", communityAll, "https://github.com/grishonnganga/");
+var karenPost = new Post(karen, "https://github.com/grishonnganga", communityAll);
+var arnoldPost = new Post(arnold, "https://github.com/grishonnganga", communityAll);
+var josphatPost = new Post(josphat, "https://github.com/grishonnganga", communityAll);
+var brunoPost = new Post(bruno, "https://github.com/grishonnganga", communityAll);
+var maryannPost = new Post(maryann, "https://github.com/grishonnganga", communityAll);
 
-var posts = [grishonPost,karenPost, arnoldPost, josphatPost, brunoPost, maryannPost];
+var posts = [grishonPost, karenPost, arnoldPost, josphatPost, brunoPost, maryannPost];
 
 console.log(posts);
 
@@ -101,46 +99,80 @@ console.log(posts);
 
 
 $(document).ready(function() {
+    //carousel
+    $('.all-posts').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        nextArrow: $(".next"),
+        prevArrow: $(".prev"),
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
     //Post Comments...
-    posts.forEach((post)=>{
-      var user = post.user.f_name;
-      var message = post.message;
-      var link = post.link;
-      var comments = post.comments;
-      var commentStars = post.stars;
-      var community = post.community;
+    posts.forEach((post) => {
+        var user = post.user.f_name;
+        var message = post.message;
+        var link = post.link;
+        var comments = post.comments;
+        var commentStars = post.stars;
+        var community = post.community;
 
-      var commentsCounter = 0;
-      comments.forEach((comment)=>{
-        counter++;
-      });
+        var commentsCounter = 0;
+        comments.forEach((comment) => {
+            counter++;
+        });
 
-      $('.posts').html($('.posts').html() + "<div class=\"container card card-post\"><a href="+link+" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-dark font-weight-bold\"><div class=\"row\"><div class=\"col-2\"><div class=\"upVote\"><i class=\"fa fa-caret-up fa-2x\" ></i></div><div class=\"votesNumber\">200</div><div class=\"downVote\"><i class=\"fa fa-caret-down fa-2x\" ></i></div></div><div class=\"col\"><div class=\"row\"><div class=\"col\"><p class=\"owner\">Posted by" +user+ " 2 hours ago</p></div></div><div class=\"row\"><div class=\"col\">"+message+"</div></div><div class=\"row feedback-section\"><div class=\"col\"><i class=\"fa fa-comment\">"+commentsCounter+ "comments</i></div><div class=\"col\"><li class=\"fa fa-star\">"+commentStars+ "stars</li></div></div></div></div> </a></div>");
+        $('.posts').html($('.posts').html() + "<div class=\"container card card-post\"><a href=" + link + " target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-dark font-weight-bold\"><div class=\"row\"><div class=\"col-2\"><div class=\"upVote\"><i class=\"fa fa-caret-up fa-2x\" ></i></div><div class=\"votesNumber\">200</div><div class=\"downVote\"><i class=\"fa fa-caret-down fa-2x\" ></i></div></div><div class=\"col\"><div class=\"row\"><div class=\"col\"><p class=\"owner\">Posted by" + user + " 2 hours ago</p></div></div><div class=\"row\"><div class=\"col\">" + message + "</div></div><div class=\"row feedback-section\"><div class=\"col\"><i class=\"fa fa-comment\">" + commentsCounter + "comments</i></div><div class=\"col\"><li class=\"fa fa-star\">" + commentStars + "stars</li></div></div></div></div> </a></div>");
 
     });
 
     $(".btn").click(function() {
-      $(".hidden").show();
-        
+        $(".hidden").show();
+
     });
-      
-      $("h6").click(function(event) {
-      event.preventDefault();
-      });
-  
-$(document).ready(function () {
-  $(".btn").click(function () {
-    $(".hidden").show();
-  });
 
-  $("#url-upload").click(function () {
-    $(".upload-form").show();
-    $(".upload-button").hide();
-  });
-});
+    $("h6").click(function(event) {
+        event.preventDefault();
+    });
 
-$(document).ready(function () {
-  $("h6").click(function (event) {
-    event.preventDefault();
-  });
-});
+    $(document).ready(function() {
+        $(".btn").click(function() {
+            $(".hidden").show();
+        });
+
+        $("#url-upload").click(function() {
+            $(".upload-form").show();
+            $(".upload-button").hide();
+        });
+    });
+
+    $(document).ready(function() {
+        $("h6").click(function(event) {
+            event.preventDefault();
+        });
+    });
+})
