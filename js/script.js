@@ -89,7 +89,7 @@ var users = [grishon, karen, arnold, josphat, bruno, maryann];
 
 console.log(users);
 
-var limelightPost = new Post(grishon, "We built this for us. So ofcourse the first post will be ours!!", moiUniDevs, "https://grishonnganga.github.io/Portfolio/");
+var limelightPost = new Post(grishon, "We built this for us. So ofcourse the first post will be ours!!", moiUniDevs, "https://grishonnganga.github.io/Limelight/");
 var grishonPost = new Post(grishon, "In an effort to put myself out there I made my portfolio site. Please tell me what you think of it.", communityAll, "https://grishonnganga.github.io/Portfolio/");
 var karenPost = new Post(karen, "I think it's very important to get more women into computing. My slogan is: Computing is too important to be left to men. Check my work.", strathGeeks, "https://karenngala.github.io/Portfolio/");
 var arnoldPost = new Post(arnold, "My tech journey is none to be played with. So watch this space. Look at this work in 15 weeks.", communityAll, "https://lifereze.github.io/portfolio-IP/");
