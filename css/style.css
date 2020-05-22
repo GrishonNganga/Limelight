@@ -67,13 +67,10 @@ header {
   font-size: 13px;
 }
 
+.votes-div:hover{
+  background-color: lightgrey;
+}
 /* Add header code here. Incase anything breaks. We are coming for your head Karen!!!!! */
-
-
-
-
-
-
 
 
 header {
@@ -159,7 +156,6 @@ header ul li a:hover {
 .feedback-section {
   margin-top: 2.5%;
 }
-
 
 /* START of css style for CAROUSEL of trendingProjects */
 
