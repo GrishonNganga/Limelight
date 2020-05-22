@@ -1,5 +1,6 @@
 //Backend Logic
 
+
 function User(f_name, s_name, username,  email, password, community) {
   this.f_name = f_name;
   this.s_name = s_name;
@@ -130,7 +131,6 @@ $(document).ready(function() {
       $("h6").click(function(event) {
       event.preventDefault();
       });
-
       //Form validation for login
 
       $('#url-upload').click(()=>{

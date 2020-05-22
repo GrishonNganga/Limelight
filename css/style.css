@@ -98,6 +98,7 @@ header ul li {
     float: left;
 }
 
+
 header ul li a {
     display: inline;
     padding: 12px;
@@ -158,6 +159,8 @@ header ul li a:hover {
 .feedback-section {
   margin-top: 2.5%;
 }
+
+
 /* START of css style for CAROUSEL of trendingProjects */
 
 .multi-item-carousel .carousel-inner > .item {
@@ -242,6 +245,7 @@ ul li {
 .communities {
   display: none;
 }
+
 .hidden {
   display: none;
 }
@@ -274,6 +278,30 @@ footer {
 .foot-content,
 .footer-section {
   flex: 1;
+}
+
+footer {
+    background-color: limegreen;
+    color: #fff;
+    height: 62vh;
+}
+
+.foot-content {
+    width: 100%;
+    display: flex;
+}
+
+.foot-content,
+.footer-section {
+    flex: 1;
+}
+
+.footer-section img,
+.footer-section p,
+.footer-section a,
+.contact-info span,
+.socials a {
+    padding-left: 8%;
 }
 
 .fa-facebook,
@@ -404,3 +432,4 @@ footer {
     transform: none !important;
   }
 }
+
