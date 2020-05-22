@@ -1,10 +1,10 @@
+//Backend Logic
 
 
-//First name, Second name, Email address
-
-function User(f_name, s_name, email, password, community) {
+function User(f_name, s_name, username,  email, password, community) {
   this.f_name = f_name;
   this.s_name = s_name;
+  this.username = username;
   this.email = email;
   this.password = password;
   this.communities = [community];
@@ -62,6 +62,7 @@ Post.prototype.star = function(){
   this.stars++;
 }
 
+//Create objects to populate index.
 
 //Default Community everyone is added to...
 var communityAll = new Community("All", "C:\Moringa\Limelight\images\cute-lime.jpg");
@@ -75,7 +76,7 @@ var usiuTitans = new Community("USIU Titans", "C:\Moringa\Limelight\images\cute-
 
 
 
-var grishon = new User("Grishon", "Ng'ang'a", "grishon.nganga01@gmail.com", "123@Iiht", communityAll);
+var grishon = new User("Grishon", "Ng'ang'a","grishonnganga", "grishon.nganga01@gmail.com", "123@Iiht", communityAll);
 var karen = new User("Karen", "Ngala", "karen.ngala@gmail.com", "123@Iiht", communityAll);
 var arnold = new User("Arnold", "Lifereze", "arnold@gmail.com", "123@Iiht", communityAll);
 var josphat = new User("Josphat", "Mwangi", "josphat.kungu@gmail.com", "123@Iiht", communityAll);
@@ -86,7 +87,7 @@ var users = [grishon, karen, arnold, josphat, bruno, maryann];
 
 console.log(users);
 
-var grishonPost = new Post(grishon, "Check out my account! I am cool",communityAll, "https://github.com/grishonnganga/");
+var grishonPost = new Post(grishon, "Check out my account! I am cool", communityAll, "https://github.com/grishonnganga/");
 var karenPost = new Post(karen, "https://github.com/grishonnganga",communityAll);
 var arnoldPost = new Post(arnold, "https://github.com/grishonnganga",communityAll);
 var josphatPost = new Post(josphat, "https://github.com/grishonnganga",communityAll);
@@ -95,12 +96,15 @@ var maryannPost = new Post(maryann, "https://github.com/grishonnganga",community
 
 var posts = [grishonPost,karenPost, arnoldPost, josphatPost, brunoPost, maryannPost];
 
-console.log(posts);
 
-// I know merge conflict will arise here. I just move sll the functions inside one ready() function...
+
+//Frontend ~ Backend Logic
 
 
 $(document).ready(function() {
+
+  //Initialize a variable. If it is false. User has not logged in. If true...
+  var logIn = false;
     //Post Comments...
     posts.forEach((post)=>{
       var user = post.user.f_name;
@@ -127,20 +131,50 @@ $(document).ready(function() {
       $("h6").click(function(event) {
       event.preventDefault();
       });
-  
-$(document).ready(function () {
-  $(".btn").click(function () {
-    $(".hidden").show();
-  });
+      //Form validation for login
 
-  $("#url-upload").click(function () {
-    $(".upload-form").show();
-    $(".upload-button").hide();
-  });
+      $('#url-upload').click(()=>{
+        if(logIn){
+
+          //Handle Upload...
+          $(".upload-form").show();
+          $(".upload-button").hide();
+        }
+      });      
+    
 });
 
-$(document).ready(function () {
-  $("h6").click(function (event) {
-    event.preventDefault();
-  });
+$(document).ready(()=>{
+
+  $('.login-submit').click(()=>{
+      var username = document.getElementById('login-name').value;
+      var password = document.getElementById('login-password').value;
+
+      validateField(username);
+      validateField(password);
+
+      users.forEach((user)=>{
+        if(user.username == username && user.password == password){
+          alert('Done');
+          location.href = "index.html";
+          setTimeout(() => {  console.log("World!"); }, 2000);
+          
+        }else{
+            
+          return;
+        }
+      })
+    });
 });
+
+
+
+function validateField(field){
+
+  if(field == ""){
+      alert('Error! Empty Field. Please Check and retry.');
+      return;
+  }
+}
+
+
