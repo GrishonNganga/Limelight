@@ -9,6 +9,8 @@
 - **Sospetre Kung'u**
 - **Maryann Makena**
 - **Grishon Ng'ang'a**
+- **Arnold Liferezev**
+- **Bruno Kiprono**
 
 ## Description
 
