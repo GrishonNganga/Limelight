@@ -72,19 +72,9 @@ header {
 }
 
 .votes-div:hover {
-<<<<<<< HEAD
-    background-color: lightgrey;
-=======
   background-color: lightgrey;
->>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
 }
 
-<<<<<<< HEAD
-
-/* Add header code here. Incase anything breaks. We are coming for your head Karen!!!!! */
-
-=======
->>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
 header {
   display: flex;
   justify-content: space-between;
@@ -121,18 +111,10 @@ header ul li a:hover {
 }
 
 .menu-toggle {
-<<<<<<< HEAD
-    display: inline;
-}
-
-.dropdown-content {
-    display: none;
-=======
   display: inline;
 }
 .dropdown-content {
   display: none;
->>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
 }
 
 .search-box input[type="text"] {
@@ -510,28 +492,6 @@ form#newcomment input[type="text"] {
 }
 
 @media only screen and (min-width: 1000px) {
-<<<<<<< HEAD
-    .communities {
-        display: inline;
-    }
-    .menu-toggle {
-        display: none;
-    }
-    .dropdown-content {
-        display: block;
-    }
-}
-
-@media only screen and (max-width: 934px) {
-    footer {
-        height: auto;
-    }
-    footer .foot-content {
-        height: auto;
-        flex-direction: column;
-    }
-}
-=======
   .communities {
     display: inline;
   }
@@ -553,4 +513,3 @@ form#newcomment input[type="text"] {
     transform: none !important;
   }
 }
->>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
