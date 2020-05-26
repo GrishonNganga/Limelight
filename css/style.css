@@ -72,17 +72,24 @@ header {
 }
 
 .votes-div:hover {
+<<<<<<< HEAD
     background-color: lightgrey;
+=======
+  background-color: lightgrey;
+>>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
 }
 
+<<<<<<< HEAD
 
 /* Add header code here. Incase anything breaks. We are coming for your head Karen!!!!! */
 
+=======
+>>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 1%;
     padding-top: 3%;
     padding-bottom: 3%;
     height: 20vh; */
@@ -114,23 +121,30 @@ header ul li a:hover {
 }
 
 .menu-toggle {
+<<<<<<< HEAD
     display: inline;
 }
 
 .dropdown-content {
     display: none;
+=======
+  display: inline;
+}
+.dropdown-content {
+  display: none;
+>>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
 }
 
 .search-box input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    padding-right: 30px;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    font-size: 15px;
-    color: limegreen;
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 15px;
+  color: limegreen;
+  outline: none;
 }
 
 .fa-caret-up,
@@ -496,6 +510,7 @@ form#newcomment input[type="text"] {
 }
 
 @media only screen and (min-width: 1000px) {
+<<<<<<< HEAD
     .communities {
         display: inline;
     }
@@ -516,3 +531,26 @@ form#newcomment input[type="text"] {
         flex-direction: column;
     }
 }
+=======
+  .communities {
+    display: inline;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .dropdown-content {
+    display: block;
+  }
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .multi-item-carousel .carousel-inner > .item {
+    transition: 500ms ease-in-out left;
+    transition: 500ms ease-in-out all;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+}
+>>>>>>> cf5df79f267a8ed11efb715472ae63e4cc1f3c08
