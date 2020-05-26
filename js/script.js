@@ -361,38 +361,6 @@ $(document).ready(function () {
         // console.log(tracker);
       });
     });
-  });
 
-  $(document).ready(() => {
-    $(".login-submit").click(() => {
-      var username = document.getElementById("login-name").value;
-      var password = document.getElementById("login-password").value;
-
-      validateField(username);
-      validateField(password);
-
-      users.forEach((user) => {
-        if (user.username == username && user.password == password) {
-          alert("Done");
-          location.href = "index.html";
-          setTimeout(() => {
-            console.log("World!");
-          }, 2000);
-        } else {
-          return;
-        }
-      });
-    });
-
-    // users.forEach(()=>{
-
-    // })
-  });
-
-  function validateField(field) {
-    if (field == "") {
-      alert("Error! Empty Field. Please Check and retry.");
-      return;
-    }
-  }
+});
 });
