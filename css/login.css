@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #f6f5f7;
+  background-color: rgb(221, 221, 221);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +11,9 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   margin: -20px 0 50px;
+}
+.image {
+  padding: 60px;
 }
 
 h1 {
@@ -43,10 +46,10 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border: 1px solid green;
+  background-color: limegreen;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
@@ -159,8 +162,8 @@ input {
 
 .overlay {
   background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background: -webkit-linear-gradient(to right, green, limegreen);
+  background: linear-gradient(to right, green, limegreen);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -210,17 +213,6 @@ input {
 }
 
 .social-container {
-  margin: 20px 0;
-}
-
-.social-container a {
-  border: 1px solid #dddddd;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
   width: 40px;
 }
 

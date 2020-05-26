@@ -67,71 +67,64 @@ header {
   font-size: 13px;
 }
 
-.votes-div:hover{
+.votes-div:hover {
   background-color: lightgrey;
 }
 /* Add header code here. Incase anything breaks. We are coming for your head Karen!!!!! */
 
-
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 1%;
     padding-top: 3%;
     padding-bottom: 3%;
     height: 20vh; */
 }
 
-
-
 header ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 header ul li {
-    float: left;
+  float: left;
 }
 
-
 header ul li a {
-    display: inline;
-    padding: 12px;
-    font-size: 1.1em;
-    text-decoration: none;
-    color: #000000;
+  display: inline;
+  padding: 12px;
+  font-size: 1.1em;
+  text-decoration: none;
+  color: #000000;
 }
 
 header ul li a:hover {
-    background-color: limegreen;
-    color: #fff;
-    text-decoration: none;
-    transition: .5s;
+  background-color: limegreen;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.5s;
 }
 
-.menu-toggle{
-    display: inline;
+.menu-toggle {
+  display: inline;
 }
-.dropdown-content{
-    display: none;
+.dropdown-content {
+  display: none;
 }
-
-
 
 .search-box input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    padding-right: 30px;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    font-size: 15px;
-    color: limegreen;
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 15px;
+  color: limegreen;
+  outline: none;
 }
-
 
 .fa-caret-up,
 .fa-caret-down,
@@ -277,19 +270,19 @@ footer {
 }
 
 footer {
-    background-color: limegreen;
-    color: #fff;
-    height: 62vh;
+  background-color: limegreen;
+  color: #fff;
+  height: 62vh;
 }
 
 .foot-content {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
 .foot-content,
 .footer-section {
-    flex: 1;
+  flex: 1;
 }
 
 .footer-section img,
@@ -297,7 +290,7 @@ footer {
 .footer-section a,
 .contact-info span,
 .socials a {
-    padding-left: 8%;
+  padding-left: 8%;
 }
 
 .fa-facebook,
@@ -410,11 +403,11 @@ footer {
   .communities {
     display: inline;
   }
-  .menu-toggle{
-      display: none;
+  .menu-toggle {
+    display: none;
   }
-  .dropdown-content{
-      display: block;
+  .dropdown-content {
+    display: block;
   }
 }
 
@@ -428,4 +421,3 @@ footer {
     transform: none !important;
   }
 }
-
