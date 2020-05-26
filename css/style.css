@@ -9,7 +9,7 @@
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 main {
@@ -20,55 +20,54 @@ main {
 /* HEADER */
 
 header {
-    padding: 15px 5%;
+  padding: 15px 5%;
 }
 
 .search-box input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    padding-right: 30px;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    font-size: 12px;
-    color: limegreen;
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 12px;
+  color: limegreen;
+  outline: none;
 }
 
 .logo img {
-    width: 100%;
+  width: 100%;
 }
 
 .fa-search {
-    position: absolute;
-    margin-top: 10%;
-    margin-left: 80%;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 80%;
 }
 
 .fa-bars {
-    color: limegreen;
+  color: limegreen;
 }
-
 
 /* .feedback-section{
     margin-top: 100%;
 } */
 
 .card {
-    margin-bottom: 4%;
+  margin-bottom: 4%;
 }
 
 .card-post:hover {
-    border: 1.3px solid grey;
+  border: 1.3px solid grey;
 }
 
 .card a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .votesNumber,
 .feedback-section {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .votes-div:hover {
@@ -132,9 +131,9 @@ header ul li a:hover {
 .fa-caret-up,
 .fa-caret-down,
 .fa-comment,
-.fa-star {
-  color: #dddddd;
-}
+
+.fa-flag {
+  color: grey;
 
 .fa-caret-up:hover {
   color: limegreen;
@@ -144,12 +143,9 @@ header ul li a:hover {
   color: red;
 }
 
-.fa-comment:hover,
-.fa-star:hover {
+.fa-comment:hover, .fa-flag:hover {
   color: white;
-  background-color: #dddddd;
-  padding: 3px;
-  border-radius: 4px;
+  background-color: grey;
 }
 
 .feedback-section {
@@ -159,78 +155,78 @@ header ul li a:hover {
 /* START of css style for CAROUSEL of trendingProjects */
 
 .slider {
-    position: relative;
+  position: relative;
 }
 
 .all-posts {
-    width: 80%;
-    height: 300px;
-    margin: 0px auto;
-    padding: 10px 0px 10px 0px;
-    overflow: hidden;
+  width: 80%;
+  height: 300px;
+  margin: 0px auto;
+  padding: 10px 0px 10px 0px;
+  overflow: hidden;
 }
 
 .all-posts .post {
-    background-color: #fff;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 0px 10px;
-    width: 300px;
-    height: 330px;
-    box-shadow: 1rem 1rem 1rem 1rem lightgray;
+  background-color: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0px 10px;
+  width: 300px;
+  height: 330px;
+  box-shadow: 1rem 1rem 1rem 1rem lightgray;
 }
 
 .all-posts .post img {
-    width: 100%;
-    height: 200px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .all-posts .post .post-info {
-    height: 130px;
+  height: 130px;
 }
 
 .all-posts .post .post-info h4 {
-    margin: 5px;
-    padding: 10px 5px;
+  margin: 5px;
+  padding: 10px 5px;
 }
 
 .sub {
-    padding-left: 3%;
+  padding-left: 3%;
 }
 
 .all-posts .post .post-info a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .all-posts .post .post-info a:hover {
-    color: limegreen;
+  color: limegreen;
 }
 
 .slider-title {
-    text-align: center;
-    margin: 30px auto;
-    color: #2b2d2f;
+  text-align: center;
+  margin: 30px auto;
+  color: #2b2d2f;
 }
 
 .slider .next {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    font-size: 2em;
-    color: limegreen;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  font-size: 2em;
+  color: limegreen;
+  cursor: pointer;
 }
 
 .slider .prev {
-    position: absolute;
-    top: 50%;
-    left: 30px;
-    font-size: 2em;
-    color: limegreen;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  font-size: 2em;
+  color: limegreen;
+  cursor: pointer;
 }
 
 /* MAIN */
@@ -355,9 +351,9 @@ footer {
 }
 
 .about .socials a:hover {
-    border: 1px solid white;
-    transition: all 0.3s;
-    color: #fff;
+  border: 1px solid white;
+  transition: all 0.3s;
+  color: #fff;
 }
 
 .terms {
@@ -481,14 +477,14 @@ form#newcomment input[type="text"] {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 500px) {
-    .fa-search {
-        position: absolute;
-        margin-top: 4%;
-        margin-left: 50%;
-    }
-    .logo img {
-        width: 60%;
-    }
+  .fa-search {
+    position: absolute;
+    margin-top: 4%;
+    margin-left: 50%;
+  }
+  .logo img {
+    width: 60%;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -502,6 +498,14 @@ form#newcomment input[type="text"] {
     display: block;
   }
 }
+
+@media only screen and (max-width: 934px) {
+  footer {
+    height: auto;
+  }
+  footer .foot-content {
+    height: auto;
+    flex-direction: column;
 
 @media all and (transform-3d), (-webkit-transform-3d) {
   .multi-item-carousel .carousel-inner > .item {
