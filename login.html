@@ -17,28 +17,60 @@
 
 </head>
 <body>
-  <div class="container">
-    <div class="login-logo offset-4">
-      <img src="images/limelight-logo-black.png" alt="LimeLight Logo">
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h1>Create Acount</h1>
+        <input type="text" name="" placeholder="Username">
+        <input type="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password2" placeholder="Confirm Password">
+        <button>Sign Up</button>
+      </form>
     </div>
-    <div class="login offset-3">
-      <form id="login-form" action="index.html" method="GET">
-          <div class="form-row">
-            <div class="form-group col-md-7">
-            <label for="full-name">Username</label>
-            <input type="text" value="" class="form-control" id="login-name">
-            </div>
-          </div>
+   </div>
+   <div class="form-container sign-in-container">
+        <div class="login-logo offset-4">
+          <img src="images/limelight-logo-black.png" alt="LimeLight Logo">
+        </div>
+        <div class="login offset-3">
+          <form id="login-form" action="index.html" method="GET">
             <div class="form-row">
-            <div class="form-group col-md-7">
-            <label for="live-link">Password</label>
-            <input type="password" value="" class="form-control" id="login-password">
+              <div class="form-group col-md-7">
+                <h1>Sign in</h1>
+                <span>or use your account</span>
+                <label for="full-name">Username</label>
+                <input type="text" value="" class="form-control" id="login-name">
+              </div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-success offset-3 mt-5 login-submit" id="login-button" >LOGIN</button>
-        </form>
-  
-  </div> 
+            <div class="form-row">
+              <div class="form-group col-md-7">
+                <label for="live-link">Password</label>
+                <input type="password" value="" class="form-control" id="login-password">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success offset-3 mt-5 login-submit" id="login-button">LOGIN</button>
+          </form>
+        
+        </div>
+        </div>
+
+   </div>
+   <div class="overlay-container">
+     <div class="overlay">
+       <div class="overlay-panel overlay-left">
+         <h1>Welcome Back</h1>
+         <p>To keep connected with us please login with your personal info
+         </p>
+         <button class="ghost" id="signIn">Log In</button>
+       </div>
+       <div class="ovelay-panel overlay-right">
+         <h1>Hello, Friend!</h1>
+         <p>Enter your personal details and start journey with us </p>
+         <button class="ghost" id="signUp">Sign Up</button>
+       </div>
+     </div>
+   </div>
   </div>
     
 </body>
