@@ -96,7 +96,7 @@ function checkStatus(){
       // User is signed in.
       console.log("User logged in.");
       // console.log(user);
-      // window.location.href = "index.html";
+      window.location.href = "index.html";
       // ...
       
     } else {
