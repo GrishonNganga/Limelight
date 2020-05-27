@@ -273,6 +273,8 @@ $(document).ready(function () {
     });
 
     $("#url-upload").click(function () {
+      var user = firebase.auth().currentUser;
+      console.log(user);
       $(".upload-form").show();
       $(".upload-button").hide();
     });
@@ -339,11 +341,7 @@ $(document).ready(function () {
     //Form validation for login
 
     $("#url-upload").click(() => {
-      if (logIn) {
-        //Handle Upload...
-        $(".upload-form").show();
-        $(".upload-button").hide();
-      }
+      
     });
 
     var trackerr = 0;

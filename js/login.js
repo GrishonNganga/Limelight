@@ -10,6 +10,7 @@ signInButton.addEventListener("click", () => {
   container.classList.remove("right-panel-active");
 });
 
+//For sign in.
 function signIn(){
   var email = document.getElementById('signin-username').value;
   var passwd = document.getElementById('signin-passwd').value;
@@ -21,6 +22,7 @@ function signIn(){
   sanitise("login", data);
 }
 
+//For sign up.
 function signUp(){
   var userName = document.getElementById('signup-name').value;
   var email = document.getElementById('signup-email').value;
@@ -62,7 +64,7 @@ function sanitise(operation, data){
       alert('Name can not be a number');
       return;
     }
-    signUpFirebase(data);
+    signUpFirebase(data, calledLater);
   }
 
   console.log("Everything is good!");
@@ -71,23 +73,17 @@ function sanitise(operation, data){
 }
 
 
-function signUpFirebase(data){
+  function signUpFirebase(data){
+  var name = data.name;
   var email = data.emailAddress;
   var password = data.password;
+  firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed)=>{
+    console.log(data);
+    console.log(dataPassed.user.uid);
 
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // [START_EXCLUDE]
-    if (errorCode == 'auth/weak-password') {
-      alert('The password is too weak.');
-    } else {
-      alert(errorMessage);
-    }
-    console.log(error);
-    // [END_EXCLUDE]
+    
   });
+  
 }
 
 window.onload = ()=>{
@@ -99,13 +95,18 @@ function checkStatus(){
     if (user) {
       // User is signed in.
       console.log("User logged in.");
-      console.log(user);
-      window.location.href = "index.html";
+      // console.log(user);
+      // window.location.href = "index.html";
       // ...
       
     } else {
       // User is signed out.
+      console.log("Users is not logged in");
     
     }
   });
+}
+
+const calledLater = ()=>{
+  console.log("This is called afterwards");
 }
