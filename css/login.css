@@ -12,10 +12,9 @@ body {
   height: 100vh;
   margin: -20px 0 50px;
 }
-.image {
-  padding: 60px;
+.image img{
+  width: 25%;
 }
-
 h1 {
   font-weight: bold;
   margin: 0;
