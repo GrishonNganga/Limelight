@@ -77,10 +77,14 @@ function sanitise(operation, data){
   var name = data.name;
   var email = data.emailAddress;
   var password = data.password;
+  const database = firebase.database();
   firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed)=>{
     console.log(data);
     console.log(dataPassed.user.uid);
-
+    var createdUser = dataPassed.user.uid;
+    database.ref("users/" +createdUser).set({
+      name: data.name
+    });
     
   });
   
