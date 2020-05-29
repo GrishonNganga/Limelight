@@ -223,8 +223,7 @@ var posts = [
 
 //Frontend ~ Backend Logic
 
-$(document).ready(function () {
-  //carousel
+$(document).ready(()=>{
   $(".all-posts").slick({
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -259,6 +258,7 @@ $(document).ready(function () {
     ],
   });
 
+
   $(".btn").click(function () {
     $(".hidden").show();
   });
@@ -271,94 +271,189 @@ $(document).ready(function () {
     $(".btn").click(function () {
       $(".hidden").show();
     });
-
-    $("#url-upload").click(function () {
-      var user = firebase.auth().currentUser;
-      console.log(user);
-      $(".upload-form").show();
-      $(".upload-button").hide();
-    });
   });
+
+
+  $("#url-upload").click(function () {
+    var database = firebase.database();
+    var user = firebase.auth().currentUser;
+    if(user == null){
+      console.log("Nothing to be done here there is no user!");
+    }else{
+    //   $(".upload-form").show();
+    // $(".upload-button").hide();
+
+    var uid = user.uid;
+    console.log(user);
+    var newPost = database.ref("posts");
+    var newUserPost = database.ref("userPosts");
+
+      var addedPost = newPost.push({
+        user: uid,
+        body: "This is the body",
+        live: "This is the livelink."
+      });
+
+      var postId = addedPost.key;
+      console.log(postId);
+
+      database.ref("userPost/"+uid).child(postId).set(postId);
+    }
+    
+  });
+})
+
+
+
+
+
+$(document).ready(function () {
+
+  
 
   //Post Comments...
-  var postsCount = 0;
-  posts.forEach((post) => {
-    postsCount++;
-    var user = post.user.f_name;
-    var message = post.message;
-    var link = post.link;
-    var comments = post.comments;
-    var commentStars = post.stars;
-    var community = post.community;
+  // var postsCount = 0;
+  // posts.forEach((post) => {
+  //   postsCount++;
+  //   var user = post.user.f_name;
+  //   var message = post.message;
+  //   var link = post.link;
+  //   var comments = post.comments;
+  //   var commentStars = post.stars;
+  //   var community = post.community;
 
+  //   var commentsCounter = 0;
+  //   comments.forEach((comment) => {
+  //     counter++;
+  //   });
+
+    // $(".posts").html(
+    //   $(".posts").html() +
+    //     '<div class="container ' +
+    //     postsCount +
+    //     ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
+    //     user +
+    //     ' 2 hours ago</p></div></div><div class="row"><div class="col">' +
+    //     "<a href=" +
+    //     link +
+    //     ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
+    //     message +
+    //     "</a>" +
+    //     '</div></div><div class="row feedback-section"><div class="col"><i class="fa fa-comment">' +
+    //     commentsCounter +
+    //     'comments</i></div><div class="col"><i class="fa fa-flag">' +
+    //     "Report</i></div></div></div></div></div>"
+    // );
+  // });
+
+  // var communitiesCount = 0;
+  // communities.forEach((community) => {
+  //   communitiesCount++;
+  //   var name = community.communityName;
+
+    // $(".card-text").html(
+    //   $(".card-text").html() +
+    //     '<p class="card-text"><h6 class="font-weight-bold">' +
+    //     communitiesCount +
+    //     "      " +
+    //     name +
+    //     "</h6>"
+    // );
+
+
+
+
+
+
+
+    // var trackerr = 0;
+    // posts.forEach((post) => {
+    //   trackerr++;
+    //   $("." + trackerr.toString()).click((event) => {
+    //     var id = event.currentTarget;
+    //     console.log(id);
+    //     id.attr("class")
+    //       .split(" ")
+    //       .map(function (clssName) {
+    //         $("#message").append(clssName + " ");
+    //         console.log(clssName);
+    //       });
+    //     // console.log(tracker);
+    //   });
+    // });
+
+// });
+});
+
+
+var user;
+var posts;
+
+window.onload = ()=>{
+  
+  loadPosts();
+  
+  user = false;
+  checkStatus();
+
+}
+
+function checkStatus(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      console.log("User logged in.");
+      console.log(user);
+      console.log(user.uid);
+      // ...
+      
+    } else {
+      // User is signed out.
+      console.log("No user logged in!");
+      //User is not logged in.
+    
+      user = false;
+    }
+  });
+}
+function loadPosts(){
+  console.log(users);
+  var database = firebase.database();
+  // database.
+  database.ref("posts").once('value', function(posts) {
+    console.log(posts.val());
+    var postsCount = 0;
     var commentsCounter = 0;
-    comments.forEach((comment) => {
-      counter++;
-    });
 
-    $(".posts").html(
-      $(".posts").html() +
-        '<div class="container ' +
-        postsCount +
-        ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
-        user +
-        ' 2 hours ago</p></div></div><div class="row"><div class="col">' +
-        "<a href=" +
-        link +
-        ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
-        message +
-        "</a>" +
-        '</div></div><div class="row feedback-section"><div class="col"><i class="fa fa-comment">' +
-        commentsCounter +
-        'comments</i></div><div class="col"><i class="fa fa-flag">' +
-        "Report</i></div></div></div></div></div>"
-    );
+    posts.forEach((post)=>{
+       postsCount++;
+      // var user = post.user.f_name;
+     
+      var post = post.valueOf("body").val();
+      console.log(post);
+      var message = post.body;
+      var link = post.live;
+      var user = post.user;
+      //console.log(link);
+
+      $(".posts").html(
+        $(".posts").html() +
+          '<div class="container ' +
+          postsCount +
+          ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
+          user +
+          ' 2 hours ago</p></div></div><div class="row"><div class="col">' +
+          "<a href=" +
+          link +
+          ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
+          message +
+          "</a>" +
+          '</div></div><div class="row feedback-section"><div class="col"><i class="fa fa-comment">' +
+          commentsCounter +
+          'comments</i></div><div class="col"><i class="fa fa-flag">' +
+          "Report</i></div></div></div></div></div>"
+      );
+    });
   });
 
-  var communitiesCount = 0;
-  communities.forEach((community) => {
-    communitiesCount++;
-    var name = community.communityName;
-
-    $(".card-text").html(
-      $(".card-text").html() +
-        '<p class="card-text"><h6 class="font-weight-bold">' +
-        communitiesCount +
-        "      " +
-        name +
-        "</h6>"
-    );
-
-    $(document).ready(function () {
-      $("h6").click(function (event) {
-        event.preventDefault();
-      });
-    });
-
-    $("h6").click(function (event) {
-      event.preventDefault();
-    });
-    //Form validation for login
-
-    $("#url-upload").click(() => {
-      
-    });
-
-    var trackerr = 0;
-    posts.forEach((post) => {
-      trackerr++;
-      $("." + trackerr.toString()).click((event) => {
-        var id = event.currentTarget;
-        console.log(id);
-        id.attr("class")
-          .split(" ")
-          .map(function (clssName) {
-            $("#message").append(clssName + " ");
-            console.log(clssName);
-          });
-        // console.log(tracker);
-      });
-    });
-
-});
-});
+}
