@@ -280,24 +280,29 @@ $(document).ready(()=>{
     if(user == null){
       console.log("Nothing to be done here there is no user!");
     }else{
-    //   $(".upload-form").show();
-    // $(".upload-button").hide();
+      var uid = user.uid;
+      var username;
+      database.ref("users/" +uid).once("value", (usernameToGet)=>{
+        username = usernameToGet.val().name;
 
-    var uid = user.uid;
-    console.log(user);
-    var newPost = database.ref("posts");
-    var newUserPost = database.ref("userPosts");
+        //This code should be refactored with legit promises...
 
-      var addedPost = newPost.push({
-        user: uid,
-        body: "This is the body",
-        live: "This is the livelink."
+        var newPost = database.ref("posts");
+
+        var addedPost = newPost.push({
+          user: uid,
+          username: username,
+          body: "This is the body",
+          live: "This is the livelink.",
+          timestamp: firebase.database.ServerValue.TIMESTAMP
+        });
+
+        var postId = addedPost.key;
+        console.log(postId);
+
+        database.ref("userPost/"+uid).child(postId).set(postId);
+        
       });
-
-      var postId = addedPost.key;
-      console.log(postId);
-
-      database.ref("userPost/"+uid).child(postId).set(postId);
     }
     
   });
@@ -433,7 +438,9 @@ function loadPosts(){
       console.log(post);
       var message = post.body;
       var link = post.live;
-      var user = post.user;
+      var user = post.username;
+      var timestamp = new Date(post.timestamp * 1000);
+      timestamp = timestamp.getHours();
       //console.log(link);
 
       $(".posts").html(
@@ -441,8 +448,8 @@ function loadPosts(){
           '<div class="container ' +
           postsCount +
           ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
-          user +
-          ' 2 hours ago</p></div></div><div class="row"><div class="col">' +
+          user + ' ' +
+          timestamp + ' hours ago</p></div></div><div class="row"><div class="col">' +
           "<a href=" +
           link +
           ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
