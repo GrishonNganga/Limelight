@@ -57,6 +57,9 @@ function sanitise(operation, data){
     return;
   }
 
+  if(operation == "login"){
+    signInFirebase(data);
+  }
   if(operation == "signup"){
     var name = data.name;
     
@@ -73,22 +76,35 @@ function sanitise(operation, data){
 }
 
 
-  function signUpFirebase(data){
-  var name = data.name;
-  var email = data.emailAddress;
-  var password = data.password;
-  const database = firebase.database();
-  firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed)=>{
-    console.log(data);
-    console.log(dataPassed.user.uid);
-    var createdUser = dataPassed.user.uid;
-    database.ref("users/" +createdUser).set({
-      name: data.name
-    });
-    
+function signUpFirebase(data){
+var name = data.name;
+var email = data.emailAddress;
+var password = data.password;
+const database = firebase.database();
+firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed)=>{
+  console.log(data);
+  console.log(dataPassed.user.uid);
+  var createdUser = dataPassed.user.uid;
+  database.ref("users/" +createdUser).set({
+    name: data.name
   });
   
+});
+
 }
+function signInFirebase(data){
+  var email = data.emailAddress;
+  var password = data.password;
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+    // ...
+  });
+}
+
 
 window.onload = ()=>{
   checkStatus();
