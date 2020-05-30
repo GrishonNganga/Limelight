@@ -22,6 +22,9 @@ body{
     text-align: center;
     border-right: 2.2px solid white;
 }
+.upload-loading-btn{
+    display: none;
+}
 .live-div{
     text-align: center;
     border-right: 2.2px solid white;

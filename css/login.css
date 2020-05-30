@@ -43,6 +43,12 @@ a {
   margin: 15px 0;
 }
 
+.spinner-grow{
+  display: none;
+  width: 70px;
+  height: 70px;
+}
+
 button {
   border-radius: 20px;
   border: 1px solid green;

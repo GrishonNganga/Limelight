@@ -285,7 +285,7 @@ $(document).ready(()=>{
       database.ref("users/" +uid).once("value", (usernameToGet)=>{
         username = usernameToGet.val().name;
 
-        //This code should be refactored with legit promises...
+        //Todo This code should be refactored with legit promises...
 
         var newPost = database.ref("posts");
 
@@ -301,7 +301,6 @@ $(document).ready(()=>{
         console.log(postId);
 
         database.ref("userPost/"+uid).child(postId).set(postId);
-        
       });
     }
     
@@ -422,6 +421,7 @@ function checkStatus(){
   });
 }
 function loadPosts(){
+  $('.spinner-grow').toggle();
   console.log(users);
   var database = firebase.database();
   // database.
@@ -430,6 +430,7 @@ function loadPosts(){
     var postsCount = 0;
     var commentsCounter = 0;
 
+    $('.spinner-grow').toggle();
     posts.forEach((post)=>{
        postsCount++;
       // var user = post.user.f_name;
@@ -455,10 +456,10 @@ function loadPosts(){
           ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
           message +
           "</a>" +
-          '</div></div><div class="row feedback-section"><div class="col"><i class="fa fa-comment">' +
+          '</div></div><div class="row feedback-section"><div class="col"><i class="fas fa-comment-alt"> ' +
           commentsCounter +
-          'comments</i></div><div class="col"><i class="fa fa-flag">' +
-          "Report</i></div></div></div></div></div>"
+          ' comments</i></div><div class="col"><i class="fa fa-flag offset-5">' +
+          " report</i></div></div></div></div></div>"
       );
     });
   });
