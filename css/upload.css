@@ -5,31 +5,21 @@ body{
     background-color: white;
 }
 
-.live{
+.live, .images{
     display: none;
 }
-.body-div{
-    
-    border-top-left-radius: 5px;
-    border-left: 2.2px solid white;
+.body-div:hover, .live-div:hover, .images-div:hover{
+    background-color: rgb(238, 242, 233);
 }
-.body-div, .live-div{
-
-    border-top: 2.2px solid white;
-}
-.body-div{
-    /* border-bottom: 2.2px solid limegreen; */
+.body-div, .live-div, .images-div{
     text-align: center;
-    border-right: 2.2px solid white;
 }
 .upload-loading-btn{
     display: none;
 }
 .live-div{
     text-align: center;
-    border-right: 2.2px solid white;
-    border-top-right-radius: 5px;
-    /* border-bottom: 2.2px solid gray; */
+    
 }
 .guidelines-head{
     background-image: url("../images/community-art-2.png");
@@ -43,7 +33,7 @@ body{
     padding-bottom: 15px;
 }
 
-.body-div p, .live-div p, .message-img {
+.body-div p, .live-div p, .images-div p {
     line-height: normal;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -54,7 +44,6 @@ body{
 }
 
 .inactive{
-    border-bottom: 2.2px solid white;
     color: gray;
 }
 .active{
