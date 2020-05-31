@@ -19,6 +19,10 @@ $(document).ready(()=>{
         $('.live').hide();
         $('.images').hide();
         $('.body').show();
+        $('.live-div').removeClass('selected');
+        $('.images-div').removeClass('unselected');
+        $('.body-div').removeClass('unselected');
+        $('.body-div').removeClass('selected');
         $('.post-img').removeClass('inactive-img');
         $('.post-img').addClass('active-img');
         $('.link-img').removeClass('active-img');
@@ -44,6 +48,10 @@ $(document).ready(()=>{
         $('.body').hide();
         $('.images').hide();
         $('.live').show();
+        $('.body-div').removeClass('selected');
+        $('.images-div').removeClass('selected');
+        $('.live-div').removeClass('unselected');
+        $('.live-div').addClass('selected');
         $('.link-img').removeClass('inactive-img');
         $('.link-img').addClass('active-img');
         $('.post-img').removeClass('active-img');
@@ -68,6 +76,10 @@ $(document).ready(()=>{
         $('.body').hide();
         $('.live').hide();
         $('.images').show();
+        $('.live-div').removeClass('selected');
+        $('.body-div').removeClass('selected');
+        $('.images-div').removeClass('unselected');
+        $('.images-div').addClass('selected');
         $('.images-img').removeClass('inactive-img');
         $('.images-img').addClass('active-img');
         $('.post-img').removeClass('active-img');

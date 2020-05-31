@@ -21,6 +21,12 @@ body{
     text-align: center;
     
 }
+.selected{
+    background-color: rgb(238, 242, 233);
+}
+.unselected{
+    background-color: white;
+}
 .guidelines-head{
     background-image: url("../images/community-art-2.png");
     background-position: center;
@@ -52,6 +58,19 @@ body{
 }
 .active-img{
     color: limegreen;
+}
+
+.btn-success{
+    background-color: limegreen;
+}
+.btn-light{
+    color: limegreen;
+    border: 1px solid limegreen;
+}
+.btn-light:hover{
+    color: limegreen;
+    border: 1px solid limegreen;
+
 }
 .inactive-img{
     color: gray;
