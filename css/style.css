@@ -20,6 +20,7 @@ main {
 /* HEADER */
 
 header {
+  background-color: white;
   padding: 15px 5%;
 }
 
@@ -43,6 +44,12 @@ header {
   position: absolute;
   margin-top: 10%;
   margin-left: 80%;
+}
+
+.spinner-grow{
+  display: none;
+  width: 50px;
+  height: 50px;
 }
 
 .fa-bars {
@@ -130,7 +137,8 @@ header ul li a:hover {
 
 .fa-caret-up,
 .fa-caret-down,
-.fa-comment,
+.fa-comment, 
+.fa-comment-alt,
 
 .fa-flag {
   color: grey;
@@ -143,7 +151,7 @@ header ul li a:hover {
   color: red;
 }
 
-.fa-comment:hover, .fa-flag:hover {
+.fa-comment:hover, .fa-flag:hover, .fa-comment-alt:hover {
   color: white;
   background-color: grey;
 }
