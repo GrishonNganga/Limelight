@@ -1,37 +1,51 @@
-body{
+body {
     background-color: rgb(219, 219, 215);
 }
-.posts-options{
+
+.posts-options {
     background-color: white;
 }
 
-.live{
+.live {
     display: none;
 }
-.body-div{
-    
+
+.body-div {
     border-top-left-radius: 5px;
     border-left: 2.2px solid white;
 }
-.body-div, .live-div{
 
+.body-div,
+.live-div {
     border-top: 2.2px solid white;
 }
-.body-div{
+
+.body-div {
     /* border-bottom: 2.2px solid limegreen; */
     text-align: center;
     border-right: 2.2px solid white;
 }
-.upload-loading-btn{
+
+.create-title {
+    padding-top: 5%;
+    margin: 30px auto;
+    color: #2b2d2f;
+}
+
+.upload-loading-btn {
     display: none;
 }
-.live-div{
+
+.live-div {
     text-align: center;
     border-right: 2.2px solid white;
     border-top-right-radius: 5px;
     /* border-bottom: 2.2px solid gray; */
 }
-.body-div p, .live-div p, .message-img {
+
+.body-div p,
+.live-div p,
+.message-img {
     line-height: normal;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -41,24 +55,28 @@ body{
     color: gray;
 }
 
-.inactive{
+.inactive {
     border-bottom: 2.2px solid white;
     color: gray;
 }
-.active{
+
+.active {
     border-bottom: 2.2px solid limegreen;
     color: limegreen;
 }
-.active-img{
+
+.active-img {
     color: limegreen;
 }
-.inactive-img{
+
+.inactive-img {
     color: gray;
 }
 
-.active-txt{
+.active-txt {
     color: limegreen;
 }
-.inactive-txt{
+
+.inactive-txt {
     color: gray;
 }
