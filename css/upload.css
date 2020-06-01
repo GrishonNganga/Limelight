@@ -6,24 +6,22 @@ body {
     background-color: white;
 }
 
-.live {
+.live,
+.images {
     display: none;
 }
 
-.body-div {
-    border-top-left-radius: 5px;
-    border-left: 2.2px solid white;
+.body-div:hover,
+.live-div:hover,
+.images-div:hover {
+    background-color: rgb(238, 242, 233);
 }
 
 .body-div,
-.live-div {
-    border-top: 2.2px solid white;
-}
-
-.body-div {
-    /* border-bottom: 2.2px solid limegreen; */
+.live-div,
+.images-div {
+    cursor: pointer;
     text-align: center;
-    border-right: 2.2px solid white;
 }
 
 .create-title {
@@ -38,14 +36,52 @@ body {
 
 .live-div {
     text-align: center;
-    border-right: 2.2px solid white;
-    border-top-right-radius: 5px;
-    /* border-bottom: 2.2px solid gray; */
+}
+
+.selected {
+    background-color: rgb(238, 242, 233);
+}
+
+.unselected {
+    background-color: white;
+}
+
+.images-upload,
+.image-preview {
+    display: none;
+}
+
+.addPic {
+    list-style-type: none;
+}
+
+.addPic li {
+    display: inline;
+}
+
+.image-preview img {
+    width: 45%;
+    margin-top: 5%;
+    margin-right: 2%;
+}
+
+.guidelines-head {
+    background-image: url("../images/community-art-2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.card-text,
+.create-title {
+    border-bottom: .5px solid gray;
+    padding-bottom: 15px;
 }
 
 .body-div p,
 .live-div p,
-.message-img {
+.images-div p {
     line-height: normal;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -67,6 +103,20 @@ body {
 
 .active-img {
     color: limegreen;
+}
+
+.btn-success {
+    background-color: limegreen;
+}
+
+.btn-light {
+    color: limegreen;
+    border: 1px solid limegreen;
+}
+
+.btn-light:hover {
+    color: limegreen;
+    border: 1px solid limegreen;
 }
 
 .inactive-img {
