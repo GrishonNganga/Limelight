@@ -12,6 +12,7 @@ body{
     background-color: rgb(238, 242, 233);
 }
 .body-div, .live-div, .images-div{
+    cursor: pointer;
     text-align: center;
 }
 .upload-loading-btn{
@@ -26,6 +27,21 @@ body{
 }
 .unselected{
     background-color: white;
+}
+.images-upload, .image-preview{
+    display: none ;
+}
+
+.addPic{
+    list-style-type: none;
+}
+.addPic li{
+    display: inline;
+}
+.image-preview img{
+    width: 45%;
+    margin-top: 5%;
+    margin-right: 2%;
 }
 .guidelines-head{
     background-image: url("../images/community-art-2.png");

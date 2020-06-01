@@ -48,12 +48,19 @@
                         <p class="live-txt"><i class="fas fa-map link-img inactive-img"></i> Link</p>
                     </div>
                 </div>
+                <div class="row image-preview">
+                    <div class="col card image-preview-card" id="image-preview-card">
+                        <ul class="addPic" id="addPic">
+
+                        </ul>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="form-group col body p-0">
                         <textarea class="form-control" id="body" name="editor1" rows="5" placeholder="Description"></textarea>
                     </div>
                     <div class="card col images p-5 mb-4">
-                        <button class="btn btn-light offset-5">Upload</button>
+                       <label for="file" id="imgInput" class="btn btn-light offset-5">Upload</label><input multiple class="images-upload" type="file"  accept="image/gif, image/jpeg, image/png" name="image" id="file" onchange="loadFile(event)">
                     </div>
                     <div class="form-group col live p-0">
                         <textarea id="live" name="editor1" class="form-control" rows="2" placeholder="Project Live link."></textarea>
@@ -110,6 +117,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-storage.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/upload.js"></script>
 </body>

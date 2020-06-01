@@ -313,6 +313,7 @@ $(document).ready(()=>{
 
 $(document).ready(function () {
 
+  loadPosts();
   
 
   //Post Comments...
@@ -395,7 +396,7 @@ var posts;
 
 window.onload = ()=>{
   
-  loadPosts();
+  
   
   user = false;
   checkStatus();

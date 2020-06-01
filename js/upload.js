@@ -15,12 +15,19 @@ function checkStatus(){
 }
 
 $(document).ready(()=>{
+
+    let imageDisplay;
+    document.getElementById('file').onchange=(event)=>{
+        loadFile(event)
+    }
+
     $('.body-div').click(()=>{
         $('.live').hide();
         $('.images').hide();
+        $('.image-preview').hide();
         $('.body').show();
         $('.live-div').removeClass('selected');
-        $('.images-div').removeClass('unselected');
+        $('.images-div').removeClass('selected');
         $('.body-div').removeClass('unselected');
         $('.body-div').removeClass('selected');
         $('.post-img').removeClass('inactive-img');
@@ -47,6 +54,7 @@ $(document).ready(()=>{
     $('.live-div').click(()=>{
         $('.body').hide();
         $('.images').hide();
+        $('.image-preview').hide();
         $('.live').show();
         $('.body-div').removeClass('selected');
         $('.images-div').removeClass('selected');
@@ -76,6 +84,7 @@ $(document).ready(()=>{
         $('.body').hide();
         $('.live').hide();
         $('.images').show();
+        $('.image-preview').show();
         $('.live-div').removeClass('selected');
         $('.body-div').removeClass('selected');
         $('.images-div').removeClass('unselected');
@@ -100,6 +109,11 @@ $(document).ready(()=>{
         $('.images-txt').addClass('active-txt');
     });
 
+    $('.btn-light').click(()=>{
+        
+        $('.image-preview').show();
+    })
+
     $('.cancel-btn').click(()=>{
         window.location.href = "index.html";
     });
@@ -115,15 +129,20 @@ $(document).ready(()=>{
             console.log("Post Text can't be empty.")
             return;
         }
+        if(imageDisplay == null){
+            console.log("Upload at least one image");
+            return;
+        }
         if(live == ""){
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
             console.log("Where is your live link?");
             return;
         }
+
         var database = firebase.database();
+        var storage = firebase.storage();
         var user = firebase.auth().currentUser;
-        console.log(user.emailVerified);
         if(user == null){
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
@@ -131,19 +150,35 @@ $(document).ready(()=>{
         }else{
           var uid = user.uid;
           var username;
+          let postsImages = storage.ref("posts");
+          let newPost = database.ref('posts');
+
+          let allImages = [];
+          console.log(imageDisplay);
+          for(let i = 0; i < imageDisplay.length; i++){
+            let file = imageDisplay[i];
+            let name = new Date()+'-'+imageDisplay[i].name;
+            let metadata = {
+                contentType: imageDisplay[i].type
+            }
+            postsImages.child(name).put(file, metadata)
+            .then(()=>{
+                console.log("Upload successful!");
+            });
+            allImages.push(name);
+        }
           database.ref("users/" +uid).once("value", (usernameToGet)=>{
             username = usernameToGet.val().name;
     
             //This code should be refactored with legit promises...
-    
-            var newPost = database.ref("posts");
     
             var addedPost = newPost.push({
               user: uid,
               username: username,
               body: body,
               live: live,
-              timestamp: firebase.database.ServerValue.TIMESTAMP
+              timestamp: firebase.database.ServerValue.TIMESTAMP,
+              images: allImages
             });
     
             var postId = addedPost.key;
@@ -158,5 +193,31 @@ $(document).ready(()=>{
           });
         }
         
-      });
+    });
+
+    function loadFile(event) {
+        $('.image-preview').show();
+        var image = document.getElementById('imageUpload');
+        let imageList = document.getElementById('addPic');                            
+        
+
+        imageDisplay = event.target.files;
+        if(imageDisplay.length > 0){
+            console.log(imageDisplay);
+            for(let i = 0; i < imageDisplay.length; i++){
+                let imageLi = document.createElement('li');
+                let imgElement = document.createElement('img');
+                let image = imageDisplay[i];
+                const imageURL = window.URL.createObjectURL(image);
+                console.log(imageURL);
+                imgElement.setAttribute('src', imageURL);
+                imageLi.appendChild(imgElement);
+                imageList.appendChild(imageLi);
+            }
+        }else{
+            $('.image-preview').hide();
+        }
+        
+
+    };
 });
