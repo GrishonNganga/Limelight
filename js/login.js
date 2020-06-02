@@ -50,6 +50,10 @@ function sanitise(operation, data) {
         emailError = "This field cannot be empty!";
         document.getElementById("errorEmail").innerHTML = emailError;
         document.getElementById("signin-username").style.backgroundColor = "pink";
+        document.getElementById("signin-passwd").style.backgroundColor = "white";
+        $('#errorEmail').show();
+        $('#errorPass').hide();
+        $('#status').hide();
         $('.spinner-grow').toggle();
         return;
     } else
@@ -57,6 +61,10 @@ function sanitise(operation, data) {
         emailError = "This field cannot be empty!";
         document.getElementById("errorPass").innerHTML = emailError;
         document.getElementById("signin-passwd").style.backgroundColor = "pink";
+        document.getElementById("signin-username").style.backgroundColor = "white";
+        $('#errorPass').show();
+        $('#errorEmail').hide();
+        $('#status').hide();
         $('.spinner-grow').toggle();
         return;
     }
@@ -72,6 +80,11 @@ function sanitise(operation, data) {
             nameError = "This field cannot be empty!";
             document.getElementById("errorText").innerHTML = nameError;
             document.getElementById("signup-name").style.backgroundColor = "pink";
+            document.getElementById("signup-email").style.backgroundColor = "white";
+            document.getElementById("signup-passwd").style.backgroundColor = "white";
+            $('#errorText').show();
+            $('#mailError').hide();
+            $('#passError').hide();
             $('.spinner-grow').toggle();
             return;
         } else
@@ -79,6 +92,11 @@ function sanitise(operation, data) {
             nameError = "This field cannot be a number!";
             document.getElementById("errorText").innerHTML = nameError;
             document.getElementById("signup-name").style.backgroundColor = "pink";
+            document.getElementById("signup-email").style.backgroundColor = "white";
+            document.getElementById("signup-passwd").style.backgroundColor = "white";
+            $('#errorText').show();
+            $('#mailError').hide();
+            $('#passError').hide();
             $('.spinner-grow').toggle();
             return;
         } else
@@ -86,6 +104,11 @@ function sanitise(operation, data) {
             emailError = "This field cannot be empty!";
             document.getElementById("mailError").innerHTML = emailError;
             document.getElementById("signup-email").style.backgroundColor = "pink";
+            document.getElementById("signup-passwd").style.backgroundColor = "white";
+            document.getElementById("signup-name").style.backgroundColor = "white";
+            $('#errorText').hide();
+            $('#mailError').show();
+            $('#passError').hide();
             $('.spinner-grow').toggle();
             return;
         } else
@@ -93,12 +116,22 @@ function sanitise(operation, data) {
             passwordError = "This field cannot be empty!";
             document.getElementById("passError").innerHTML = passwordError;
             document.getElementById("signup-passwd").style.backgroundColor = "pink";
+            document.getElementById("signup-email").style.backgroundColor = "white";
+            document.getElementById("signup-name").style.backgroundColor = "white";
+            $('#errorText').hide();
+            $('#mailError').hide();
+            $('#passError').show();
             $('.spinner-grow').toggle();
             return;
         } else if (password.length < 8) {
             passwordError = "Password is too short!";
             document.getElementById("passError").innerHTML = passwordError;
             document.getElementById("signup-passwd").style.backgroundColor = "grey";
+            document.getElementById("signup-email").style.backgroundColor = "white";
+            document.getElementById("signup-name").style.backgroundColor = "white";
+            $('#errorText').hide();
+            $('#mailError').hide();
+            $('#passError').show();
             $('.spinner-grow').toggle();
             return;
         }
@@ -140,6 +173,9 @@ function signInFirebase(data) {
         console.log(errorMessage);
         logStatus = "Incorrect email or password!";
         document.getElementById("status").innerHTML = logStatus;
+        $('#errorPass').hide();
+        $('#errorEmail').hide();
+        $('#status').show();
         // ...
     });
 }
