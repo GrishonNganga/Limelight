@@ -1,12 +1,12 @@
-window.onload = (()=>{
+window.onload = (() => {
     checkStatus();
 });
 
-function checkStatus(){
-    firebase.auth().onAuthStateChanged((user)=>{
-        if(user){
+function checkStatus() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
             console.log("User logged in!");
-        }else{
+        } else {
             console.log("No user logged in.");
             window.location.href = "login.html";
         }
@@ -14,14 +14,14 @@ function checkStatus(){
 
 }
 
-$(document).ready(()=>{
+$(document).ready(() => {
 
     let imageDisplay;
-    document.getElementById('file').onchange=(event)=>{
+    document.getElementById('file').onchange = (event) => {
         loadFile(event)
     }
 
-    $('.body-div').click(()=>{
+    $('.body-div').click(() => {
         $('.live').hide();
         $('.images').hide();
         $('.image-preview').hide();
@@ -48,10 +48,10 @@ $(document).ready(()=>{
         $('.images-txt').addClass('inactive-txt');
         $('.body-txt').removeClass('inactive-txt');
         $('.body-txt').addClass('active-txt');
-        
+
     });
 
-    $('.live-div').click(()=>{
+    $('.live-div').click(() => {
         $('.body').hide();
         $('.images').hide();
         $('.image-preview').hide();
@@ -80,7 +80,7 @@ $(document).ready(()=>{
         $('.live-txt').addClass('active-txt');
     });
 
-    $('.images-div').click(()=>{
+    $('.images-div').click(() => {
         $('.body').hide();
         $('.live').hide();
         $('.images').show();
@@ -109,102 +109,110 @@ $(document).ready(()=>{
         $('.images-txt').addClass('active-txt');
     });
 
-    $('.btn-light').click(()=>{
-        
+    $('.btn-light').click(() => {
+
         $('.image-preview').show();
     })
 
-    $('.cancel-btn').click(()=>{
+    $('.cancel-btn').click(() => {
         window.location.href = "index.html";
     });
 
-    $(".upload-btn").click(function () {
+    $(".upload-btn").click(function() {
         $('.upload-btn').toggle();
         $(".upload-loading-btn").toggle();
         var body = CKEDITOR.instances['body'].getData();
         var live = document.getElementById('live').value;
-        if(body === ""){
+        if (body === "") {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
-            console.log("Post Text can't be empty.")
+            textError = "Post description cannot be empty!";
+            document.getElementById("errors").innerHTML = textError;
+            document.getElementById("errors").style.color = "red";
             return;
         }
-        if(imageDisplay == null){
-            console.log("Upload at least one image");
-            return;
-        }
-        if(live == ""){
+        if (imageDisplay == null) {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
-            console.log("Where is your live link?");
+            textError = "Upload at least one image!";
+            document.getElementById("errors").innerHTML = textError;
+            document.getElementById("errors").style.color = "red";
+            return;
+        }
+        if (live == "") {
+            $('.upload-btn').toggle();
+            $(".upload-loading-btn").toggle();
+            textError = "Please provide a live link to your work!";
+            document.getElementById("errors").innerHTML = textError;
+            document.getElementById("errors").style.color = "red";
             return;
         }
 
         var database = firebase.database();
         var storage = firebase.storage();
         var user = firebase.auth().currentUser;
-        if(user == null){
+        if (user == null) {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
-          console.log("Nothing to be done here there is no user!");
-        }else{
-          var uid = user.uid;
-          var username;
-          let postsImages = storage.ref("posts");
-          let newPost = database.ref('posts');
+            console.log("Nothing to be done here there is no user!");
+        } else {
+            var uid = user.uid;
+            var username;
+            let postsImages = storage.ref("posts");
+            let newPost = database.ref('posts');
 
-          let allImages = [];
-          console.log(imageDisplay);
-          for(let i = 0; i < imageDisplay.length; i++){
-            let file = imageDisplay[i];
-            let name = new Date()+'-'+imageDisplay[i].name;
-            let metadata = {
-                contentType: imageDisplay[i].type
+            let allImages = [];
+            console.log(imageDisplay);
+            for (let i = 0; i < imageDisplay.length; i++) {
+                let file = imageDisplay[i];
+                let name = new Date() + '-' + imageDisplay[i].name;
+                let metadata = {
+                    contentType: imageDisplay[i].type
+                }
+                postsImages.child(name).put(file, metadata)
+                    .then(() => {
+                        console.log("Upload successful!");
+                    });
+                allImages.push(name);
             }
-            postsImages.child(name).put(file, metadata)
-            .then(()=>{
-                console.log("Upload successful!");
+            database.ref("users/" + uid).once("value", (usernameToGet) => {
+                username = usernameToGet.val().name;
+
+                //This code should be refactored with legit promises...
+
+                var addedPost = newPost.push({
+                    user: uid,
+                    username: username,
+                    body: body,
+                    live: live,
+                    timestamp: firebase.database.ServerValue.TIMESTAMP,
+                    images: allImages
+                });
+
+                var postId = addedPost.key;
+                console.log(postId);
+
+                database.ref("userPost/" + uid).child(postId).set(postId).then(() => {
+                    window.location.href = "index.html";
+                    $('.upload-btn').toggle();
+                    $(".upload-loading-btn").toggle();
+                });
+
             });
-            allImages.push(name);
         }
-          database.ref("users/" +uid).once("value", (usernameToGet)=>{
-            username = usernameToGet.val().name;
-    
-            //This code should be refactored with legit promises...
-    
-            var addedPost = newPost.push({
-              user: uid,
-              username: username,
-              body: body,
-              live: live,
-              timestamp: firebase.database.ServerValue.TIMESTAMP,
-              images: allImages
-            });
-    
-            var postId = addedPost.key;
-            console.log(postId);
-    
-            database.ref("userPost/"+uid).child(postId).set(postId).then(()=>{
-                window.location.href = "index.html";
-                $('.upload-btn').toggle();
-                $(".upload-loading-btn").toggle();
-            });
-            
-          });
-        }
-        
+
     });
 
     function loadFile(event) {
         $('.image-preview').show();
         var image = document.getElementById('imageUpload');
-        let imageList = document.getElementById('addPic');                            
-        
+        let imageList = document.getElementById('addPic');
+
 
         imageDisplay = event.target.files;
-        if(imageDisplay.length > 0){
+        if (imageDisplay.length > 0) {
             console.log(imageDisplay);
-            for(let i = 0; i < imageDisplay.length; i++){
+            for (let i = 0; i < imageDisplay.length; i++) {
                 let imageLi = document.createElement('li');
                 let imgElement = document.createElement('img');
                 let image = imageDisplay[i];
@@ -214,10 +222,10 @@ $(document).ready(()=>{
                 imageLi.appendChild(imgElement);
                 imageList.appendChild(imageLi);
             }
-        }else{
+        } else {
             $('.image-preview').hide();
         }
-        
+
 
     };
 });
