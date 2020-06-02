@@ -116,8 +116,71 @@ function loadPosts(){
       var message = post.body;
       var link = post.live;
       var user = post.username;
-      var timestamp = new Date(post.timestamp * 1000);
-      timestamp = timestamp.getHours();
+      var timestamp = new Date(post.timestamp);
+      var when;
+      var postedAgoText;
+     
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth();
+      var dayOfMonth = date.getDay();
+      var hourOfDay = date.getHours();
+      var minsOfHour = date.getMinutes();
+      var secsOfMins = date.getSeconds();
+
+      var postYear = timestamp.getFullYear();
+      var postMonth = timestamp.getMonth();
+      var postDay = timestamp.getDay();
+      var postTimeMins = timestamp.getMinutes();
+      var postTimeHours = timestamp.getHours();
+      var postTimeSecs = timestamp.getSeconds();
+
+      if(year === postYear){
+          if(month === postMonth){
+            if(dayOfMonth === postDay){
+              if(hourOfDay === postTimeHours){
+                if(minsOfHour === postTimeMins){
+                  when = secsOfMins - postTimeSecs ;
+                  postedAgoText = "seconds ago";
+                }else if(minsOfHour - postTimeMins === 1){
+                    when = minsOfHour - postTimeMins ;
+                    postedAgoText = "minute ago";
+                }else{
+                    when = minsOfHour - postTimeMins ;
+                    postedAgoText = "minutes ago";   
+                }
+              }else if(hourOfDay - postTimeHours === 1){
+                  when = hourOfDay - postTimeHours ;
+                  postedAgoText = "hour ago";
+              }else{
+                  when = hourOfDay - postTimeHours ;
+                  postedAgoText = "hours ago";   
+              }
+            }else if(dayOfMonth - postDay === 1){
+                when = dayOfMonth -  postDay;
+                postedAgoText = "day ago";
+            }else{
+              when = dayOfMonth - postDay ;
+              postedAgoText = "days ago";
+            }
+          }else if(month - postMonth === 1){
+              when = month - postMonth ;
+              postedAgoText = "month ago";
+          }
+          else{
+              when = month - postMonth;
+              postedAgoText = "months ago";
+          }
+      }else if(year - postYear === 1){
+          when = year - postYear ;
+          postedAgoText = "year ago";
+      }
+      else{
+          when = year - postYear ;
+          postedAgoText = "years ago";
+      }
+      console.log("Timestamp starts here!");
+      
 
       $(".posts").html(
         $(".posts").html() +
@@ -125,7 +188,7 @@ function loadPosts(){
           postsCount +
           ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
           user + ' ' +
-          timestamp + ' hours ago</p></div></div><div class="row"><div class="col">' +
+          when +" "+postedAgoText+'</p></div></div><div class="row"><div class="col">' +
           "<a href=" +
           link +
           ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
