@@ -255,6 +255,13 @@ footer {
     color: #fff;
 }
 
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-instagram:hover,
+.fa-youtube:hover {
+    color: grey;
+}
+
 .about .contact-info span {
     display: block;
     margin-bottom: 8px;
@@ -275,9 +282,9 @@ footer {
 }
 
 .about .socials a:hover {
-    border: 1px solid white;
+    border: none;
+    margin-left: 5px;
     transition: all 0.3s;
-    color: #fff;
 }
 
 .terms {
@@ -338,6 +345,10 @@ footer {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.btn:hover {
+    color: limegreen;
 }
 
 .here {
