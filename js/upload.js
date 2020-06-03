@@ -1,22 +1,18 @@
-window.onload = (() => {
-    checkStatus();
-});
-
-function checkStatus() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            console.log("User logged in!");
-        } else {
-            console.log("No user logged in.");
-            window.location.href = "login.html";
-        }
-    })
-
-}
-
 $(document).ready(() => {
-
+    let uid;
+    let username;
     let imageDisplay;
+    let images = [];
+    let imageNames = [];
+    let database = firebase.database();
+    let storage = firebase.storage();
+    let user;
+    let postsImages = storage.ref("posts");
+    let newPost = database.ref('posts');
+    let body;
+    let live;
+    let counter = 0;
+    checkStatus();
     document.getElementById('file').onchange = (event) => {
         loadFile(event)
     }
@@ -121,8 +117,8 @@ $(document).ready(() => {
     $(".upload-btn").click(function() {
         $('.upload-btn').toggle();
         $(".upload-loading-btn").toggle();
-        var body = CKEDITOR.instances['body'].getData();
-        var live = document.getElementById('live').value;
+        body = CKEDITOR.instances['body'].getData();
+        live = document.getElementById('live').value;
         if (body === "") {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
@@ -148,60 +144,91 @@ $(document).ready(() => {
             return;
         }
 
-        var database = firebase.database();
-        var storage = firebase.storage();
-        var user = firebase.auth().currentUser;
+        
+        
         if (user == null) {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
             console.log("Nothing to be done here there is no user!");
         } else {
-            var uid = user.uid;
-            var username;
-            let postsImages = storage.ref("posts");
-            let newPost = database.ref('posts');
+            uid = user.uid;
+            
 
-            let allImages = [];
-            console.log(imageDisplay);
-            for (let i = 0; i < imageDisplay.length; i++) {
-                let file = imageDisplay[i];
-                let name = new Date() + '-' + imageDisplay[i].name;
-                let metadata = {
-                    contentType: imageDisplay[i].type
-                }
-                postsImages.child(name).put(file, metadata)
-                    .then(() => {
-                        console.log("Upload successful!");
-                    });
-                allImages.push(name);
+            //Saves the images to firebase storage...
+            Promise.all(
+                images.map((image)=>{
+                    uploadFileToStorage(image, saveToDB);
+                })
+            )
+            .catch((err)=>{
+                console.log("Some failed. Error is "+err.message);
+            });
+
+        }
+
+    });
+
+    //This checks if user is logged in or not. If logged in. Sets the global variables.
+    function checkStatus() {
+        firebase.auth().onAuthStateChanged((userLoggedIn) => {
+            if (userLoggedIn) {
+                user = userLoggedIn;
+                console.log("User logged in!");
+            } else {
+                console.log("No user logged in.");
+                window.location.href = "login.html";
             }
-            database.ref("users/" + uid).once("value", (usernameToGet) => {
-                username = usernameToGet.val().name;
+        })
+    
+    }
 
-                //This code should be refactored with legit promises...
 
-                var addedPost = newPost.push({
-                    user: uid,
-                    username: username,
-                    body: body,
-                    live: live,
-                    timestamp: firebase.database.ServerValue.TIMESTAMP,
-                    images: allImages
-                });
+    function uploadFileToStorage(file, saveToDB){
+        var name = new Date() + "-"+file.name;
+        var metadata = {
+            contentType: file.type
+        }
+        postsImages.child(name).put(file, metadata)
+        .then((snapshot)=>{
+            const data = snapshot.metadata.fullPath;
+            console.log(data);
+            saveToDB(data);
+        })
+        .catch((err)=>{
+            console.log("Something went wrong! "+err.message);
+        });
+    }
 
-                var postId = addedPost.key;
-                console.log(postId);
 
-                database.ref("userPost/" + uid).child(postId).set(postId).then(() => {
+    function saveToDB(image){
+        counter++;
+        database.ref("users/" + uid).once("value", (usernameToGet) => {
+            username = usernameToGet.val().name;
+            console.log("The image is not null" +image);
+
+            //This code should be refactored with legit promises...
+
+            newPost.push({
+                user: uid,
+                username: username,
+                body: body,
+                live: live,
+                timestamp: firebase.database.ServerValue.TIMESTAMP,
+                images: imageNames
+            }).then((snap)=>{
+                console.log("This is the post thst has been added " +snap);
+                console.log("Added post key is "+snap.key);
+                database.ref("userPost/" + uid).child(snap.key).set(snap.key).then(() => {
                     window.location.href = "index.html";
                     $('.upload-btn').toggle();
                     $(".upload-loading-btn").toggle();
                 });
-
+            }).catch((err)=>{
+                console.log("Post was not successful due to "+err.message);
             });
-        }
+        });
+    }
 
-    });
 
     function loadFile(event) {
         $('.image-preview').show();
@@ -221,6 +248,10 @@ $(document).ready(() => {
                 imgElement.setAttribute('src', imageURL);
                 imageLi.appendChild(imgElement);
                 imageList.appendChild(imageLi);
+
+                images.push(imageDisplay[i]);
+                imageNames.push("posts/"+imageDisplay[i].name);
+
             }
         } else {
             $('.image-preview').hide();
