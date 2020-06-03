@@ -1,6 +1,7 @@
 var postID;
 var uid;
 var database = firebase.database();
+var storage = firebase.storage().ref('posts');
 $(document).ready(()=>{
     var query = window.location.search;
     var post = query.substring(6);
@@ -14,6 +15,16 @@ $(document).ready(()=>{
         var username = incomingPost.username;
         var body = incomingPost.body;
         var live = incomingPost.live;
+        var images = incomingPost.images;
+        var showImages = [];
+        images.forEach((image)=>{
+            imageRef = storage.child(image);
+            imageRef.getDownloadURL().then((imageURL)=>{
+                console.log(imageURL);
+                showImages.push(imageURL);
+            });
+        })
+        console.log(showImages);
 
         
         var timestamp = new Date(incomingPost.timestamp);
@@ -162,7 +173,7 @@ function pullComments(){
                     if(dayOfMonth === postDay){
                     if(hourOfDay === postTimeHours){
                         if(minsOfHour === postTimeMins){
-                        when = postTimeSecs - secsOfMins ;
+                        when = secsOfMins - postTimeSecs ;
                         postedAgoText = "seconds ago";
                         }else if(minsOfHour - postTimeMins === 1){
                             when = minsOfHour - postTimeMins ;
