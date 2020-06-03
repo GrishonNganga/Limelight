@@ -14,7 +14,7 @@
 .images img{
     width: 100%;
 }
-.authed{
+.un-authed{
     display: none;
 }
 body{

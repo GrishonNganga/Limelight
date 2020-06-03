@@ -33,13 +33,13 @@
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col posted-info">
-                                Posted by Grishon 2 hours ago.
+                            <div class="col posted-info" id="post-username">
+                                <!-- Posted by Grishon 2 hours ago. -->
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <div class="col">
-                                This is the post!
+                            <div class="col" id="body">
+                                <!-- This is the post! -->
                             </div>
                         </div>
                         <div class="row">
@@ -62,8 +62,8 @@
                 This is the other!
             </div>
         </div>
-        <div class="row authed">
-            <div class="col-7 card">
+        <div class="row un-authed offset-1">
+            <div class="col-6 card">
                 <div class="row ">
                     <div class="col-8">
                         Login in or sign up to make a comment.
@@ -77,7 +77,7 @@
                 </div>           
             </div>
         </div>
-        <div class="row offset-1 offset-0">
+        <div class="row offset-1 offset-0 authed">
             <div class="col">
                 <div class="row">
                     <div class="col posted-info">
@@ -86,7 +86,12 @@
                 </div>
                 <div class="row">   
                     <div class="col-7">
-                        <textarea class="form-control" name="comment" id="post-comment" rows="5"></textarea>
+                        <textarea class="form-control" name="comment" id="comment-box" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success mt-2 offset-3 post-comment">Submit</button>
                     </div>
                 </div>
             </div>
@@ -96,11 +101,11 @@
                 Sort by Latest
             </div>
         </div>
-        <div class="row mt-3 comments-section">
+        <div class="row mt-3 comments-div">
             <div class="col">
                 <div class="row">
-                    <div class="col-7">
-                        <div class=" container row original">
+                    <div class="col-7 comments-section">
+                        <!-- <div class=" container row original comment">
                             <div class="col-2 col-sm-1">
                                 <div class="row">
                                     <div class="col">
@@ -130,79 +135,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-7">
-                        <div class=" container row original">
-                            <div class="col-2 col-sm-1">
-                                <div class="row">
-                                    <div class="col">
-                                        <i class="fa fa-caret-up fa-2x" ></i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col votes-number">
-                                        200
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <i class="fa fa-caret-down fa-2x" ></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col posted-info">
-                                        Posted by Grishon 2 hours ago.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        This is the post!
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-7">
-                        <div class=" container row original">
-                            <div class="col-2 col-sm-1">
-                                <div class="row">
-                                    <div class="col">
-                                        <i class="fa fa-caret-up fa-2x" ></i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col votes-number">
-                                        200
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <i class="fa fa-caret-down fa-2x" ></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col posted-info">
-                                        Posted by Grishon 2 hours ago.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        This is the post!
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
