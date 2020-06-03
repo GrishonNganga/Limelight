@@ -110,6 +110,8 @@ function loadPosts(){
     $('.spinner-grow').toggle();
     posts.forEach((post)=>{
        postsCount++;
+
+       var postId = post.key;
      
       var post = post.valueOf("body").val();
       console.log(post);
@@ -179,26 +181,23 @@ function loadPosts(){
           when = year - postYear ;
           postedAgoText = "years ago";
       }
-      console.log("Timestamp starts here!");
-      
 
       $(".posts").html(
         $(".posts").html() +
-          '<div class="container ' +
+          '<a href="post.html?post='+postId+'"><div class="container container_' +
           postsCount +
           ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
           user + ' ' +
-          when +" "+postedAgoText+'</p></div></div><div class="row"><div class="col">' +
-          "<a href=" +
-          link +
-          ' target="_blank" rel="noopener noreferrer" class="text-dark font-weight-bold">' +
+          when +" "+postedAgoText+'</p></div></div><div class="row"><div class="col">' + 
           message +
-          "</a>" +
           '</div></div><div class="row feedback-section"><div class="col"><i class="fas fa-comment-alt"> ' +
           commentsCounter +
           ' comments</i></div><div class="col"><i class="fa fa-flag offset-5">' +
-          " report</i></div></div></div></div></div>"
+          " report</i></div></div></div></div></div></a>"
       );
+      $('.container_'+postsCount).click(()=>{
+        window.location.href = "https://google.com";
+      });
     });
   });
 

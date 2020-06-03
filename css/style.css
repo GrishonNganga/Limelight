@@ -116,7 +116,7 @@ main {
     padding-left: 3%;
 }
 
-.all-posts .post .post-info a {
+.all-posts .post .post-info a, a {
     text-decoration: none;
     color: inherit;
 }
@@ -274,6 +274,10 @@ footer {
     transition: all 0.3s;
 }
 
+a:hover{
+    text-decoration: none;
+    color: inherit;
+}
 .about .socials a:hover {
     border: 1px solid white;
     transition: all 0.3s;

@@ -1,0 +1,32 @@
+.votes-number{
+    font-size: 13px;
+}
+/* .original{
+    background-color: red;
+}
+.other{
+    background-color: blue;
+} */
+.sort{
+    border-spacing: 20px;
+    border-bottom: 2px solid black;
+}
+.images img{
+    width: 100%;
+}
+.authed{
+    display: none;
+}
+body{
+    background-color: gray;
+}
+.post-page{
+    background-color: white;
+}
+.offset-0{
+    margin-left: 5%;
+}
+.posted-info{
+    font-size: 13px;
+    color: gray;
+}
