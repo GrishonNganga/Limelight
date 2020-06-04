@@ -1,7 +1,5 @@
 $(document).ready(() => {
-    let user;
-    let body;
-    let live;
+    
     let images;
 
     //Check if user is logged in or not. If user is not logged in.
@@ -253,7 +251,7 @@ function uploadImagesToFirebaseDatabase(image, uid){
                 //window.location.href = "index.html";
                 $('.upload-btn').toggle();
                 $(".upload-loading-btn").toggle();
-                // window.location.href = "index.html";
+                window.location.href = "index.html";
             });
         }).catch((err)=>{
             console.log("Post was not successful due to "+err.message);
