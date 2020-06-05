@@ -1,40 +1,29 @@
 $(document).ready(() => {
-    
-    let images;
 
     //Check if user is logged in or not. If user is not logged in.
     checkStatus();
 
-    //Set listener for images uploaded.
-    document.getElementById('file').onchange = (event) => {
-        images = loadFile(event);
-    }
-
     $('.body-div').click(() => {
         $('.live').hide();
-        $('.images').hide();
-        $('.image-preview').hide();
+
         $('.body').show();
         $('.live-div').removeClass('selected');
-        $('.images-div').removeClass('selected');
+       
         $('.body-div').removeClass('unselected');
         $('.body-div').removeClass('selected');
         $('.post-img').removeClass('inactive-img');
         $('.post-img').addClass('active-img');
         $('.link-img').removeClass('active-img');
         $('.link-img').addClass('inactive-img');
-        $('.images-img').removeClass('active-img');
-        $('.images-img').addClass('inactive-img');
+        
         $('.body-div').removeClass('inactive');
         $('.body-div').addClass('active');
         $('.live-div').removeClass('active');
         $('.live-div').addClass('inactive');
-        $('.images-div').removeClass('active');
-        $('.images-div').addClass('inactive');
+       
         $('.live-txt').removeClass('active-txt');
         $('.live-txt').addClass('inactive-txt');
-        $('.images-txt').removeClass('active-txt');
-        $('.images-txt').addClass('inactive-txt');
+        
         $('.body-txt').removeClass('inactive-txt');
         $('.body-txt').addClass('active-txt');
 
@@ -42,60 +31,27 @@ $(document).ready(() => {
 
     $('.live-div').click(() => {
         $('.body').hide();
-        $('.images').hide();
-        $('.image-preview').hide();
+       
         $('.live').show();
         $('.body-div').removeClass('selected');
-        $('.images-div').removeClass('selected');
+       
         $('.live-div').removeClass('unselected');
         $('.live-div').addClass('selected');
         $('.link-img').removeClass('inactive-img');
         $('.link-img').addClass('active-img');
         $('.post-img').removeClass('active-img');
         $('.post-img').addClass('inactive-img');
-        $('.images-img').removeClass('active-img');
-        $('.images-img').addClass('inactive-img');
+       
         $('.live-div').removeClass('inactive');
         $('.live-div').addClass('active');
         $('.body-div').removeClass('active');
         $('.body-div').addClass('inactive');
-        $('.images-div').removeClass('active');
-        $('.images-div').addClass('inactive');
+       
         $('.body-txt').removeClass('active-txt');
         $('.body-txt').addClass('inactive-txt');
-        $('.images-txt').removeClass('active-txt');
-        $('.images-txt').addClass('inactive-txt');
+        
         $('.live-txt').removeClass('inactive-txt');
         $('.live-txt').addClass('active-txt');
-    });
-
-    $('.images-div').click(() => {
-        $('.body').hide();
-        $('.live').hide();
-        $('.images').show();
-        $('.image-preview').show();
-        $('.live-div').removeClass('selected');
-        $('.body-div').removeClass('selected');
-        $('.images-div').removeClass('unselected');
-        $('.images-div').addClass('selected');
-        $('.images-img').removeClass('inactive-img');
-        $('.images-img').addClass('active-img');
-        $('.post-img').removeClass('active-img');
-        $('.post-img').addClass('inactive-img');
-        $('.link-img').removeClass('active-img');
-        $('.link-img').addClass('inactive-img');
-        $('.images-div').removeClass('inactive');
-        $('.images-div').addClass('active');
-        $('.body-div').removeClass('active');
-        $('.body-div').addClass('inactive');
-        $('.live-div').removeClass('active');
-        $('.live-div').addClass('inactive');
-        $('.body-txt').removeClass('active-txt');
-        $('.body-txt').addClass('inactive-txt');
-        $('.live-txt').removeClass('active-txt');
-        $('.live-txt').addClass('inactive-txt');
-        $('.images-txt').removeClass('inactive-txt');
-        $('.images-txt').addClass('active-txt');
     });
 
     $('.btn-light').click(() => {
@@ -110,8 +66,8 @@ $(document).ready(() => {
     $(".upload-btn").click(function() {
         $('.upload-btn').toggle();
         $(".upload-loading-btn").toggle();
-        body = CKEDITOR.instances['body'].getData();
-        live = document.getElementById('live').value;
+        let body = CKEDITOR.instances['body'].getData();
+        let live = document.getElementById('live').value;
         if (body === "") {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
@@ -139,7 +95,7 @@ $(document).ready(() => {
 
             //Upload the images and get their file paths!
             
-            uploadPost(uid);
+            uploadPost(uid, body, live);
 
         }
 
@@ -181,7 +137,7 @@ function checkStatus() {
 //Upload selected files to database storage.
 
 //Upload the name to the files uploaded to the db.
-function uploadPost(uid){
+function uploadPost(uid, body, live){
     firebase.database().ref("users/" + uid).once("value", (usernameToGet) => {
         username = usernameToGet.val().name;
 
