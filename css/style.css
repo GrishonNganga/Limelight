@@ -185,6 +185,11 @@ ul li {
     color: white;
 }
 
+.results-cancel{
+    font-size: 1.8em;
+    margin-top: 20px;
+    
+}
 .communities {
     display: none;
 }

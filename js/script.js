@@ -1,5 +1,6 @@
 var user;
 var postsForFilter;
+var postsToUse;
 
 window.onload = ()=>{
 
@@ -15,14 +16,31 @@ $(document).ready(()=>{
   $('#search-btn').click((event)=>{
     event.preventDefault();
     let search = document.getElementById('search-input').value;
-    // const filteredPosts = postsForFilter.map((post)=>{
-    //   if(post.body.includes(search)){
-    //     return post;
-    //   }
-    // });
-    console.log(postsForFilter);
+    
+    const searchResults = searchForPost(search);
 
-    //console.log(filteredPosts);
+    $('.posts').empty();
+    if(searchResults.length > 0){
+     
+      $('.posts').html(
+        $('.posts').html()+ '<div class="remove-filter"><span class="badge badge-pill badge-danger mb-3">'+search+'<span class="results-cancel"> X</span></span></div>');
+
+      displayPosts(searchResults);
+    }else{
+      $('.posts').html(
+        $('.posts').html()+ '<p>Sorry no records match your request.</p>'
+      )
+    }
+    
+
+  });
+
+  $('.remove-filter').click(()=>{
+    console.log("This has been run!")
+    $('.posts').addEventListener("click", ()=>{
+      console.log("Has been clicked inside!");
+    });
+    displayPosts(postsToUse);
   });
 
 
@@ -96,7 +114,22 @@ function checkStatus(){
   });
 }
 
+function searchForPost(search){
+  let filteredArray = [];
+  
 
+    postsForFilter.forEach((post)=>{
+      if(post.val().body === undefined){
+        return;
+      }
+      if(post.val().body.includes(search)){
+        filteredArray.push(post);
+        console.log(search);
+      }
+    });
+    
+    return filteredArray;
+}
 function displayPosts(posts){
   posts.forEach((post)=>{
   
@@ -190,6 +223,8 @@ async function launchUI(){
   //Get data from database.
   $('.spinner-grow').toggle();
   const posts = await getPostsFromDB();
+  postsToUse = posts;  
+
 
   postsForFilter = posts;
   //Pass gotten data to be displayed...
