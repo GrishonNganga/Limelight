@@ -78,20 +78,35 @@ $(document).ready(()=>{
     }
     
   });
+  document.getElementById('logout').onclick = (event)=>{
+    event.preventDefault();
+    firebase.auth().signOut().then(() => {
+      console.log('Successful log out');
+      window.open('index.html');
+    })
+  }
 });
 
 function checkStatus(){
-  firebase.auth().onAuthStateChanged(function(user) {
+  let caretUserDiv = document.getElementById('caret-username');
+  
+  let username;
+  firebase.auth().onAuthStateChanged( async(user)=> {
     if (user) {
       // User is signed in.
-      console.log("User logged in.");
-      console.log(user);
+      await firebase.database().ref("users/" +user.uid).once("value", (userObject)=>{
+        username = userObject.val().name;
+        caretUserDiv.innerHTML = username;
+        console.log(username);
+      });
+      
       console.log(user.uid);
       // ...
       
     } else {
       // User is signed out.
       console.log("No user logged in!");
+      caretUserDiv.innerHTML = "Anonymous";
       //User is not logged in.
     
       user = false;
@@ -195,9 +210,6 @@ function loadPosts(){
           ' comments</i></div><div class="col"><i class="fa fa-flag offset-5">' +
           " report</i></div></div></div></div></div></a>"
       );
-      $('.container_'+postsCount).click(()=>{
-        window.location.href = "https://google.com";
-      });
     });
   });
 

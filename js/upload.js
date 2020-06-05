@@ -156,13 +156,19 @@ $(document).ready(() => {
 
     //This checks if user is logged in or not. If logged in. Sets the global variables.
     
-    
+    document.getElementById('logout').onclick = (event)=>{
+        event.preventDefault();
+        firebase.auth().signOut().then(()=>{
+            console.log("Logged out the user!");
+            window.location.href = "upload.html";
+        })
+    }
 });
 
 //Check if user is logged in or not!
 function checkStatus() {
     let caretUserDiv = document.getElementById("caret-username");
-    caretUserDiv.innerHTML = "Anonymous";
+    
     firebase.auth().onAuthStateChanged(async (userLoggedIn) => {
         if (userLoggedIn) {
 
@@ -174,6 +180,7 @@ function checkStatus() {
             caretUserDiv.innerHTML = username;
         } else {
             console.log("No user logged in.");
+            caretUserDiv.innerHTML = "Anonymous";
             window.location.href = "login.html";
         }
     })
