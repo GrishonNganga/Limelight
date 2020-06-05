@@ -120,14 +120,6 @@ $(document).ready(() => {
             document.getElementById("errors").style.color = "red";
             return;
         }
-        if (images == null) {
-            $('.upload-btn').toggle();
-            $(".upload-loading-btn").toggle();
-            textError = "Upload at least one image!";
-            document.getElementById("errors").innerHTML = textError;
-            document.getElementById("errors").style.color = "red";
-            return;
-        }
         if (live == "") {
             $('.upload-btn').toggle();
             $(".upload-loading-btn").toggle();
@@ -146,9 +138,8 @@ $(document).ready(() => {
             uid = user.uid;
 
             //Upload the images and get their file paths!
-            let imagesArr = uploadImagesToFirebaseStorage(images);
             
-            uploadImagesToFirebaseDatabase(imagesArr, uid);
+            uploadPost(uid);
 
         }
 
@@ -187,65 +178,10 @@ function checkStatus() {
 
 }
 
-
-//Load the files selected by a user. To populate accordingly on the UI!
-function loadFile(event) {
-    $('.image-preview').show();
-    let imageList = document.getElementById('addPic');
-
-    imageDisplay = event.target.files;
-    if (imageDisplay.length > 0) {
-        console.log(imageDisplay);
-        for (let i = 0; i < imageDisplay.length; i++) {
-            let imageLi = document.createElement('li');
-            let imgElement = document.createElement('img');
-            let image = imageDisplay[i];
-            const imageURL = window.URL.createObjectURL(image);
-            imgElement.setAttribute('src', imageURL);
-            imageLi.appendChild(imgElement);
-            imageList.appendChild(imageLi);
-
-        }
-        console.log(imageDisplay.toString());
-    } else {
-        $('.image-preview').hide();
-    }
-
-    return imageDisplay;
-
-}
-
 //Upload selected files to database storage.
-function uploadImagesToFirebaseStorage(images){
-    let allImgs = [];
-    try{
-        
-        const imagesURLS = Promise.all(
-            [...images].map((image)=>{
-                let metadata = {
-                    contentType: image.type
-                }
-                let name = Date.now() + "-" +image.name;
-                let date = new Date().getMonth().toString()
-                const savedSnapshot = firebase.storage().ref("posts").child(name).put(image,metadata)
-
-                savedSnapshot.catch((err)=>{console.log(err.message)})
-                savedSnapshot.then(()=>{
-                    console.log("Everything is done here!");
-                })
-
-                allImgs.push(savedSnapshot.snapshot.ref.fullPath);
-            })
-        )
-    }catch(err){
-        console.log(err.message);
-    }
-    return allImgs;
-}
-
 
 //Upload the name to the files uploaded to the db.
-function uploadImagesToFirebaseDatabase(image, uid){
+function uploadPost(uid){
     firebase.database().ref("users/" + uid).once("value", (usernameToGet) => {
         username = usernameToGet.val().name;
 
@@ -255,13 +191,12 @@ function uploadImagesToFirebaseDatabase(image, uid){
             body: body,
             live: live,
             timestamp: firebase.database.ServerValue.TIMESTAMP,
-            images: image
         }).then((snap)=>{
             firebase.database().ref("userPost/" + uid).child(snap.key).set(snap.key).then(() => {
                 //window.location.href = "index.html";
                 $('.upload-btn').toggle();
                 $(".upload-loading-btn").toggle();
-                //window.location.href = "index.html";
+                window.location.href = "index.html";
             });
         }).catch((err)=>{
             console.log("Post was not successful due to "+err.message);
