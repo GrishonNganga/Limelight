@@ -225,11 +225,14 @@ function uploadImagesToFirebaseStorage(images){
                 let metadata = {
                     contentType: image.type
                 }
-                let name = new Date() + "-" +image.name;
+                let name = Date.now() + "-" +image.name;
                 let date = new Date().getMonth().toString()
-                const savedSnapshot = firebase.storage().ref("posts").child(date).child(name).put(image,metadata)
+                const savedSnapshot = firebase.storage().ref("posts").child(name).put(image,metadata)
 
                 savedSnapshot.catch((err)=>{console.log(err.message)})
+                savedSnapshot.then(()=>{
+                    console.log("Everything is done here!");
+                })
 
                 allImgs.push(savedSnapshot.snapshot.ref.fullPath);
             })
@@ -258,7 +261,7 @@ function uploadImagesToFirebaseDatabase(image, uid){
                 //window.location.href = "index.html";
                 $('.upload-btn').toggle();
                 $(".upload-loading-btn").toggle();
-                window.location.href = "index.html";
+                //window.location.href = "index.html";
             });
         }).catch((err)=>{
             console.log("Post was not successful due to "+err.message);

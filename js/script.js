@@ -199,16 +199,16 @@ function loadPosts(){
 
       $(".posts").html(
         $(".posts").html() +
-          '<a href="post.html?post='+postId+'"><div class="container container_' +
+          '<div class="container container_' +
           postsCount +
-          ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><div class="row"><div class="col"><p class="owner">Posted by ' +
+          ' card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><a href='+link+' target ="_blank" rel="noopener noreferrer"><div class="row"><div class="col"><p class="owner">Posted by ' +
           user + ' ' +
           when +" "+postedAgoText+'</p></div></div><div class="row"><div class="col">' + 
           message +
-          '</div></div><div class="row feedback-section"><div class="col"><i class="fas fa-comment-alt"> ' +
+          '</div></div><div class="row feedback-section"><a href="post.html?post='+postId+'"><div class="col"><i class="fas fa-comment-alt">' +
           commentsCounter +
-          ' comments</i></div><div class="col"><i class="fa fa-flag offset-5">' +
-          " report</i></div></div></div></div></div></a>"
+          ' comments</i></div></a><div class="col"><i class="fa fa-flag offset-5">' +
+          " report</i></div></div></a></div></div></div>"
       );
     });
   });

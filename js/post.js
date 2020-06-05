@@ -18,13 +18,15 @@ $(document).ready(()=>{
         var images = incomingPost.images;
         var showImages = [];
         images.forEach((image)=>{
+            image = image.substring(6);
+            console.log(image);
             imageRef = storage.child(image);
             imageRef.getDownloadURL().then((imageURL)=>{
                 console.log(imageURL);
                 showImages.push(imageURL);
-            });
+            }).catch((err)=>console.log(err.message))
         })
-        console.log(showImages);
+        console.log(images);
 
         
         var timestamp = new Date(incomingPost.timestamp);
