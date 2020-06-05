@@ -407,11 +407,7 @@ form#newcomment input[type="text"] {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 500px) {
-    .fa-search {
-        position: absolute;
-        margin-top: 4%;
-        margin-left: 50%;
-    }
+   
     .logo img {
         width: 60%;
     }
