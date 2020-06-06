@@ -32,9 +32,23 @@ $(document).ready(()=>{
       if(searchResults.length > 0){
       
         $('.posts').html(
-          $('.posts').html()+ '<div class="remove-filter"><span class="badge badge-pill badge-danger mb-3">'+search+'<span class="results-cancel"> X</span></span></div>');
+          $('.posts').html()+ '<span class="badge badge-pill badge-danger mb-3"  id="remove-filter">'+search+'  <i class="fas fa-window-close"></i></span>');
 
         displayPosts(searchResults);
+
+
+        document.getElementById("remove-filter").addEventListener("click", ()=>{
+          console.log("This has been run!")
+         
+          $('remove-filter').empty();
+         $('.posts').empty();
+         $('.posts').html(
+          $('.posts').html()+ '<p>Latest posts.</p>'
+        )
+        $('.spinner-grow').toggle();
+          displayPosts(postsToUse);
+          $('.spinner-grow').toggle();
+        })
       }else{
         $('.posts').html(
           $('.posts').html()+ '<p>Sorry no records match your request.</p>'
@@ -42,16 +56,13 @@ $(document).ready(()=>{
       }
     }
     
+
+    
+  
   })
 
-  $('.remove-filter').click(()=>{
-    console.log("This has been run!")
-    $('.posts').addEventListener("click", ()=>{
-      console.log("Has been clicked inside!");
-    });
-    displayPosts(postsToUse);
-  });
 
+  
 
   //Carousel...
   $(".all-posts").slick({
@@ -133,7 +144,6 @@ function searchForPost(search){
       }
       if(post.val().body.includes(search)){
         filteredArray.push(post);
-        console.log(search);
       }
     });
     

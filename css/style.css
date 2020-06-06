@@ -86,6 +86,9 @@ main {
     overflow: hidden;
 }
 
+.mtt-1{
+    margin-top: 10px;
+}
 .all-posts .post {
     background-color: #fff;
     border-radius: 5px;
