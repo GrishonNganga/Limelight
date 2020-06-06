@@ -72,14 +72,14 @@
                             <div class="col-md-4">
                                 <form action="">
                                     <div class="input-group">
-                                        <input type="text" class="form-control search-input" placeholder="Search...">
+                                        <input type="text" class="form-control search-input" placeholder="Search..." id="search-input">
                                     </div>
                                 </form>
                             </div>
                             <div class="col-xs-2 offset-2">
                                 <div class="dropdown">
                                     <div class="dropdown-toggle" id="mymenu" data-toggle="dropdown">
-                                        <i class="fa fa-user text-dark fa-lg"><span class="caret">Makena</span></i>
+                                        <i class="fa fa-user text-dark fa-lg"><span class="caret" id="caret-username"></span></i>
                                     </div>
                                     <ul class="dropdown-menu" aria-labelledby="mymenu">
                                         <li>
@@ -89,7 +89,7 @@
                                             <a href="upload.html" class="nav-link text-success"> <i class="fa fa-upload text-success"></i>Upload</a>
                                         </li>
                                         <li>
-                                            <a href="" id="logout" class="nav-link text-danger"> <i class="fa fa-sign-out text-danger"></i> Log Out</a>
+                                            <a href="" id="logout" class="nav-link text-danger"> <i class="fa fa-sign-out text-danger" onclick="logout();"></i> Log Out</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -231,17 +231,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js "></script>
     <script src="js/firebase.js "></script>
     <script src="js/script.js "></script>
-    <script>
-        //logout method
-        const logout = document.querySelector("#logout")
-        logout.addEventListener('click', (event) => {
-            event.preventDefault();
-            firebase.auth().signOut().then(() => {
-                console.log('Successful log out');
-                window.open('index.html');
-            })
-        });
-    </script>
 </body>
 
 </html>

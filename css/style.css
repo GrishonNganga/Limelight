@@ -86,6 +86,9 @@ main {
     overflow: hidden;
 }
 
+.mtt-1{
+    margin-top: 10px;
+}
 .all-posts .post {
     background-color: #fff;
     border-radius: 5px;
@@ -116,7 +119,7 @@ main {
     padding-left: 3%;
 }
 
-.all-posts .post .post-info a {
+.all-posts .post .post-info a, a {
     text-decoration: none;
     color: inherit;
 }
@@ -185,6 +188,11 @@ ul li {
     color: white;
 }
 
+.results-cancel{
+    font-size: 1.8em;
+    margin-top: 20px;
+    
+}
 .communities {
     display: none;
 }
@@ -281,6 +289,10 @@ footer {
     transition: all 0.3s;
 }
 
+a:hover{
+    text-decoration: none;
+    color: inherit;
+}
 .about .socials a:hover {
     border: none;
     margin-left: 5px;
@@ -414,11 +426,7 @@ form#newcomment input[type="text"] {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 500px) {
-    .fa-search {
-        position: absolute;
-        margin-top: 4%;
-        margin-left: 50%;
-    }
+   
     .logo img {
         width: 60%;
     }

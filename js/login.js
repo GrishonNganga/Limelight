@@ -43,33 +43,24 @@ function signUp() {
 
 function sanitise(operation, data) {
 
-    var email = data.emailAddress;
-    var password = data.password;
-
-    if (email == "") {
-        emailError = "This field cannot be empty!";
-        document.getElementById("errorEmail").innerHTML = emailError;
-        document.getElementById("signin-username").style.backgroundColor = "pink";
-        document.getElementById("signin-passwd").style.backgroundColor = "white";
-        $('#errorEmail').show();
-        $('#errorPass').hide();
-        $('#status').hide();
-        $('.spinner-grow').toggle();
-        return;
-    } else
-    if (password == "") {
-        emailError = "This field cannot be empty!";
-        document.getElementById("errorPass").innerHTML = emailError;
-        document.getElementById("signin-passwd").style.backgroundColor = "pink";
-        document.getElementById("signin-username").style.backgroundColor = "white";
-        $('#errorPass').show();
-        $('#errorEmail').hide();
-        $('#status').hide();
-        $('.spinner-grow').toggle();
-        return;
-    }
-
     if (operation == "login") {
+        var email = data.emailAddress;
+        var password = data.password;
+
+        if (email == "") {
+            emailError = "This field cannot be empty!";
+            document.getElementById("errorEmail").innerHTML = emailError;
+            document.getElementById("signin-username").style.backgroundColor = "pink";
+            $('.spinner-grow').toggle();
+            return;
+        }
+        if (password == "") {
+            emailError = "This field cannot be empty!";
+            document.getElementById("errorPass").innerHTML = emailError;
+            document.getElementById("signin-passwd").style.backgroundColor = "pink";
+            $('.spinner-grow').toggle();
+            return;
+        }
         signInFirebase(data);
     } else if (operation == "signup") {
         var name = data.name;

@@ -15,20 +15,17 @@ body {
     background-color: white;
 }
 
-.live,
-.images {
+.live{
     display: none;
 }
 
 .body-div:hover,
-.live-div:hover,
-.images-div:hover {
+.live-div:hover{
     background-color: rgb(238, 242, 233);
 }
 
 .body-div,
-.live-div,
-.images-div {
+.live-div {
     cursor: pointer;
     text-align: center;
 }
@@ -55,24 +52,6 @@ body {
     background-color: white;
 }
 
-.images-upload,
-.image-preview {
-    display: none;
-}
-
-.addPic {
-    list-style-type: none;
-}
-
-.addPic li {
-    display: inline;
-}
-
-.image-preview img {
-    width: 45%;
-    margin-top: 5%;
-    margin-right: 2%;
-}
 
 .guidelines-head {
     background-image: url("../images/community-art-2.png");
@@ -89,8 +68,7 @@ body {
 }
 
 .body-div p,
-.live-div p,
-.images-div p {
+.live-div p {
     line-height: normal;
     margin-bottom: 0px;
     margin-top: 0px;
