@@ -13,27 +13,36 @@ $(document).ready(()=>{
 
   launchUI();
 
-  $('#search-btn').click((event)=>{
-    event.preventDefault();
-    let search = document.getElementById('search-input').value;
+  const searchEvent = document.getElementById("search-input");
+  searchEvent.addEventListener("keydown", (event)=>{
+    if(event.keyCode === 13){
+      event.preventDefault();
+    }
+  })
+  searchEvent.addEventListener("keyup", (event)=>{
+    if(event.keyCode === 13){
     
-    const searchResults = searchForPost(search);
+      event.preventDefault();
+      console.log("Return pressed");
+      let search = searchEvent.value;
+      
+      const searchResults = searchForPost(search);
 
-    $('.posts').empty();
-    if(searchResults.length > 0){
-     
-      $('.posts').html(
-        $('.posts').html()+ '<div class="remove-filter"><span class="badge badge-pill badge-danger mb-3">'+search+'<span class="results-cancel"> X</span></span></div>');
+      $('.posts').empty();
+      if(searchResults.length > 0){
+      
+        $('.posts').html(
+          $('.posts').html()+ '<div class="remove-filter"><span class="badge badge-pill badge-danger mb-3">'+search+'<span class="results-cancel"> X</span></span></div>');
 
-      displayPosts(searchResults);
-    }else{
-      $('.posts').html(
-        $('.posts').html()+ '<p>Sorry no records match your request.</p>'
-      )
+        displayPosts(searchResults);
+      }else{
+        $('.posts').html(
+          $('.posts').html()+ '<p>Sorry no records match your request.</p>'
+        )
+      }
     }
     
-
-  });
+  })
 
   $('.remove-filter').click(()=>{
     console.log("This has been run!")
