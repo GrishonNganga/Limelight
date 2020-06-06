@@ -146,8 +146,8 @@ function sanitise(operation, data) {
 
 function signUpFirebase(data) {
     var name = data.name;
-    var email = data.emailAddress;
-    var password = data.password;
+    var email = data.mail;
+    var password = data.passwd;
     const database = firebase.database();
     firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed) => {
         console.log(data);
