@@ -50,6 +50,7 @@ main {
 .fa-comment-alt,
 .fa-flag {
     color: grey;
+    background-color: white;
 }
 
 .fa-caret-up:hover {
@@ -89,6 +90,18 @@ main {
 .mtt-1{
     margin-top: 10px;
 }
+
+.up-voted{
+    color: limegreen;
+    
+}
+.vote-default{
+    color: gray;
+}
+.down-voted{
+    color: red;
+}
+
 .all-posts .post {
     background-color: #fff;
     border-radius: 5px;
