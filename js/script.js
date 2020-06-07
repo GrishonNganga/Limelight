@@ -241,44 +241,50 @@ function displayPosts(posts){
        " report</i></div></div></a></div></div></div>"
    );
 
-    if(post.upvotes !== undefined && post.upvotes[userGlobal.uid] !== undefined){
-      console.log(userGlobal.uid);
-      console.log(post.upvotes[userGlobal.uid])
-      $('#upvote'+postId).addClass('up-voted');
-    }else{
-      console.log("I am null bruv!")
-      $('#upvote'+postId).removeClass('up-voted');
+   if(userGlobal){
+      if(post.upvotes !== undefined && post.upvotes[userGlobal.uid] !== undefined){
+        console.log(userGlobal.uid);
+        console.log(post.upvotes[userGlobal.uid])
+        $('#upvote'+postId).addClass('up-voted');
+      }else{
+        console.log("I am null bruv!")
+        $('#upvote'+postId).removeClass('up-voted');
+      }
+
+      if(post.downvotes !== undefined && post.downvotes[userGlobal.uid] !== undefined){
+        console.log(userGlobal.uid);
+        console.log(post.downvotes[userGlobal.uid])
+        $('#downvote'+postId).addClass('down-voted');
+      }else{
+        console.log("I am null bruv!")
+        $('#downvote'+postId).removeClass('down-voted');
+      }
     }
-
-    if(post.downvotes !== undefined && post.downvotes[userGlobal.uid] !== undefined){
-      console.log(userGlobal.uid);
-      console.log(post.downvotes[userGlobal.uid])
-      $('#downvote'+postId).addClass('down-voted');
-    }else{
-      console.log("I am null bruv!")
-      $('#downvote'+postId).removeClass('down-voted');
-    }
-    
- });
-document.querySelectorAll('.upVote').forEach((post)=>{
-  post.addEventListener("click", (event)=>{
-    let postId = event.target.id;
-
-    upvoteOnPost(postId.substring(6));
-
-  });
 });
 
-document.querySelectorAll('.downVote').forEach((post)=>{
-  post.addEventListener("click", (event)=>{
-   let postId = event.target.id;
-
-   
-   downvoteOnPost(postId.substring(8));
- 
+ if(userGlobal){
+  document.querySelectorAll('.upVote').forEach((post)=>{
+    post.addEventListener("click", (event)=>{
+      let postId = event.target.id;
+  
+      upvoteOnPost(postId.substring(6));
+  
+    });
   });
-
-})
+  
+  document.querySelectorAll('.downVote').forEach((post)=>{
+    post.addEventListener("click", (event)=>{
+     let postId = event.target.id;
+  
+     
+     downvoteOnPost(postId.substring(8));
+   
+    });
+  
+  })
+ }else{
+   console.log("Not loggged in. Please do so quickly!")
+ }
 }
 
 async function launchUI(){
