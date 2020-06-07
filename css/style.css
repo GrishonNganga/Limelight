@@ -89,6 +89,18 @@ main {
     margin-top: 10px;
 }
 
+.up-voted {
+    color: limegreen;
+}
+
+.vote-default {
+    color: gray;
+}
+
+.down-voted {
+    color: red;
+}
+
 .all-posts .post {
     background-color: #fff;
     border-radius: 5px;

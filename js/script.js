@@ -1,4 +1,4 @@
-var user;
+var userGlobal;
 var postsForFilter;
 var postsToUse;
 
@@ -105,6 +105,7 @@ function checkStatus() {
     firebase.auth().onAuthStateChanged(async(user) => {
         if (user) {
             // User is signed in.
+            userGlobal = user;
             await firebase.database().ref("users/" + user.uid).once("value", (userObject) => {
                 username = userObject.val().name;
                 caretUserDiv.innerHTML = username;
@@ -116,7 +117,7 @@ function checkStatus() {
 
         } else {
             // User is signed out.
-            caretUserDiv.innerHTML = "";
+            caretUserDiv.innerHTML = "Anonymous";
             //User is not logged in.
 
             user = false;
@@ -141,15 +142,19 @@ function searchForPost(search) {
 }
 
 function displayPosts(posts) {
+    let counter = 0;
     posts.forEach((post) => {
 
-
+        counter++;
         var postId = post.key;
         var post = post.valueOf("body").val();
         console.log(post);
         var message = post.body;
         var link = post.live;
         var user = post.username;
+        var upVotes = post.upVote === undefined ? 0 : post.upVote;
+        var downVotes = post.downVote === undefined ? 0 : post.downVote;
+        var avgVotes = Math.round(upVotes / downVotes);
         var timestamp = new Date(post.timestamp);
         var when;
         var postedAgoText;
@@ -215,7 +220,7 @@ function displayPosts(posts) {
 
         $(".posts").html(
             $(".posts").html() +
-            '<div class="container card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" ></i></div><div class="votesNumber">200</div><div class="downVote"><i class="fa fa-caret-down fa-2x" ></i></div></div><div class="col"><a href=' + link + ' target ="_blank" rel="noopener noreferrer"><div class="row"><div class="col"><p class="owner">Posted by ' +
+            '<div class="container card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" id="upvote' + postId + '"></i></div><div class="votesNumber offset-2"></div><div class="downVote"><i class="fa fa-caret-down fa-2x" id="downvote' + postId + '"></i></div></div><div class="col"><a href=' + link + ' target ="_blank" rel="noopener noreferrer"><div class="row"><div class="col"><p class="owner">Posted by ' +
             user + ' ' +
             when + " " + postedAgoText + '</p></div></div><div class="row"><div class="col">' +
             message +
@@ -224,13 +229,59 @@ function displayPosts(posts) {
             ' comments</i></div></a><div class="col"><i class="fa fa-flag offset-5">' +
             " report</i></div></div></a></div></div></div>"
         );
+
+        if (userGlobal) {
+            if (post.upvotes !== undefined && post.upvotes[userGlobal.uid] !== undefined) {
+                console.log(userGlobal.uid);
+                console.log(post.upvotes[userGlobal.uid])
+                $('#upvote' + postId).addClass('up-voted');
+            } else {
+                console.log("I am null bruv!")
+                $('#upvote' + postId).removeClass('up-voted');
+            }
+
+            if (post.downvotes !== undefined && post.downvotes[userGlobal.uid] !== undefined) {
+                console.log(userGlobal.uid);
+                console.log(post.downvotes[userGlobal.uid])
+                $('#downvote' + postId).addClass('down-voted');
+            } else {
+                console.log("I am null bruv!")
+                $('#downvote' + postId).removeClass('down-voted');
+            }
+        }
     });
+
+    if (userGlobal) {
+        document.querySelectorAll('.upVote').forEach((post) => {
+            post.addEventListener("click", (event) => {
+                let postId = event.target.id;
+
+                upvoteOnPost(postId.substring(6));
+
+            });
+        });
+
+        document.querySelectorAll('.downVote').forEach((post) => {
+            post.addEventListener("click", (event) => {
+                let postId = event.target.id;
+
+
+                downvoteOnPost(postId.substring(8));
+
+            });
+
+        })
+    } else {
+        console.log("Not loggged in. Please do so quickly!")
+    }
 }
 
 async function launchUI() {
     //Get data from database.
     $('.spinner-grow').toggle();
     const posts = await getPostsFromDB();
+    console.log(posts);
+    console.log(posts.toJSON());
     postsToUse = posts;
 
 
@@ -243,4 +294,60 @@ async function launchUI() {
 function getPostsFromDB() {
     var database = firebase.database();
     return database.ref("posts").once('value');
+}
+
+function upvoteOnPost(postId) {
+    firebase.database().ref("posts/" + postId + "/upvotes").once("value", (upVotes) => {
+        let upVotesFromDb = upVotes.child(userGlobal.uid).val();
+
+        if (upVotesFromDb == null) {
+            firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({
+                    [userGlobal.uid]: userGlobal.uid }).then(() => {
+                    $('#' + postId).addClass('up-voted');
+                })
+                .then(() => {
+                    firebase.database().ref("posts/" + postId).child("downvotes").child(userGlobal.uid).set({
+                        [userGlobal.uid]: null }).then(() => {
+                        $('#downvote' + postId).removeClass('down-voted');
+                        $('#downvote' + postId).addClass('vote-default');
+
+                    })
+                })
+        } else {
+            firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({
+                [userGlobal.uid]: null }).then(() => {
+                console.log("Deleted!!")
+                $('#upvote' + postId).removeClass('up-voted');
+                $('#upvote' + postId).addClass('vote-default');
+            })
+        }
+    });
+}
+
+function downvoteOnPost(postId) {
+    firebase.database().ref("posts/" + postId + "/downvotes").once("value", (downVotes) => {
+        let downVotesFromDb = downVotes.child(userGlobal.uid).val();
+
+        if (downVotesFromDb == null) {
+            firebase.database().ref("posts/" + postId).child("downvotes").child(userGlobal.uid).set({
+                    [userGlobal.uid]: userGlobal.uid }).then(() => {
+                    $('#downvote' + postId).addClass('down-voted');
+                })
+                .then(() => {
+                    firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({
+                        [userGlobal.uid]: null }).then(() => {
+                        $('#upvote' + postId).removeClass('up-voted');
+                        $('#upvote' + postId).addClass('vote-default');
+
+                    })
+                });
+        } else {
+            firebase.database().ref("posts/" + postId).child("downvotes").child(userGlobal.uid).set({
+                [userGlobal.uid]: null }).then(() => {
+                console.log("Deleted!!")
+                $('#downvote' + postId).removeClass('down-voted');
+                $('#downvote' + postId).addClass('vote-default');
+            })
+        }
+    });
 }
