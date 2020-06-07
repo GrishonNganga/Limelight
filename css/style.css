@@ -145,6 +145,7 @@ a {
     text-align: center;
     margin: 30px auto;
     color: #2b2d2f;
+    padding-top: 3%;
 }
 
 .slider .next {
@@ -165,6 +166,9 @@ a {
     cursor: pointer;
 }
 
+.topnav {
+    background-color: rgba(255, 255, 255, .3);
+}
 
 /* MAIN */
 
