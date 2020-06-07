@@ -15,189 +15,53 @@
     <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/post.css">
-    <style>
-        /* NAVBAR */
-        
-        .logo {
-            width: 15%;
-        }
-        
-        .topnav {
-            /* background-color: rgba(255, 255, 255, 0.5); */
-        }
-        
-        .search-input {
-            background: transparent;
-            border: none;
-            border-radius: 0;
-            border-bottom: 2px solid #999;
-            transition: all .4s;
-        }
-        
-        .search-input:focus {
-            background: transparent;
-            box-shadow: none;
-            border-bottom: 2px solid limegreen;
-        }
-        
-        @media ( max-width: 768px) {
-            .topnav {
-                position: static;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-md navbar-dark">
-        <!-- hamburger menu -->
-        <img src="images/limelight-logo-black.png" alt="logo" class="logo">
-        <button class="navbar-toggler bg-success ml-auto mb-2" type="button" data-toggle="collapse" data-target="#myNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col ml-auto fixed-top py-2 topnav">
-                        <div class="row align-items-center">
-                            <div class="offset-4 col-md-4">
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control search-input" placeholder="Search...">
-                                    </div>
-                                </form>
+    <div class="container post-page">
+        <div class=" navbar row">
+            <div class="col-5 col-sm-2 m-0 p-0">
+                <img src="images/limelight-logo-black.png" alt="Limelight logo">
+            </div>
+            <div class="">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class=" container row original mt-2 mt-sm-5">
+                    <div class="col-2 col-sm-1">
+                        <div class="row">
+                            <div class="col">
+                                <i class="fa fa-caret-up post-upvote fa-2x"></i>
                             </div>
-                            <div class="col-xs-2 offset-2">
-                                <div class="dropdown">
-                                    <div class="dropdown-toggle" id="mymenu" data-toggle="dropdown">
-                                        <i class="fa fa-user text-dark fa-lg"><span class="caret" id="caret-username"></span></i>
-                                    </div>
-                                    <ul class="dropdown-menu" aria-labelledby="mymenu">
-                                        <li>
-                                            <a href="index.html" class="nav-link text-dark"> <i class="fa fa-home text-dark"></i>Home</a>
-                                        </li>
-                                        <li>
-                                            <a href="upload.html" class="nav-link text-dark"> <i class="fa fa-upload text-dark"></i>Upload</a>
-                                        </li>
-                                        <li>
-                                            <a href="login.html" id="login" class="nav-link text-success"> <i class="fa fa-sign-in text-success"></i> Log In</a>
-                                        </li>
-                                        <li>
-                                            <a href=" " class="nav-link text-danger" id="logout"> <i class="fa fa-sign-out text-danger"></i> Log Out</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col votes-number">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <i class="fa fa-caret-down post-downvote fa-2x"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <!-- end of Header -->
+        </nav>
+        <!-- end of Header -->
 
-    <main>
-        <div class="container post-page">
-            <div class="row">
-                <div class="col-8">
-                    <div class=" container row original mt-5">
-                        <div class="col-2 col-sm-1">
-                            <div class="row">
-                                <div class="col">
-                                    <i class="fa fa-caret-up fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col votes-number">
-                                    200
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <i class="fa fa-caret-down fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col posted-info" id="post-username">
-                                    <!-- Posted by Grishon 2 hours ago. -->
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col" id="body">
-                                    <!-- This is the post! -->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col images" id="images">
-
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col-5">
-                                    <p><i class="fa fa-comment-alt"></i> 0 messages.</p>
-                                </div>
-                                <div class="col">
-                                    <p><i class="fa fa-flag"></i> Report</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col other">
-                    This is the other!
-                </div>
-            </div>
-            <div class="row un-authed offset-1">
-                <div class="col-6 card">
-                    <div class="row ">
-                        <div class="col-8">
-                            Login in or sign up to make a comment.
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-primary">Login</button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-danger">Signup</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row offset-1 offset-0 authed">
-                <div class="col">
-                    <div class="row">
-                        <div class="col posted-info">
-                            Comment as Grishon Nganga.
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-7">
-                            <textarea class="form-control" name="comment" id="comment-box" rows="5"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-success mt-2 offset-3 post-comment">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row offset-0 mb-3 mt-4">
-                <div class="col-7 sort posted-info">
-                    Sort by Latest
-                </div>
-            </div>
-            <div class="row mt-3 comments-div">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-7 comments-section">
-                            <!-- <div class=" container row original comment">
+        <main>
+            <div class="container post-page">
+                <div class="row">
+                    <div class="col-8">
+                        <div class=" container row original mt-5">
                             <div class="col-2 col-sm-1">
                                 <div class="row">
                                     <div class="col">
-                                        <i class="fa fa-caret-up fa-2x" ></i>
+                                        <i class="fa fa-caret-up fa-2x"></i>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -207,39 +71,98 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <i class="fa fa-caret-down fa-2x" ></i>
+                                        <i class="fa fa-caret-down fa-2x"></i>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col col-sm-5">
+                                    <p><i class="fa fa-comment-alt post-comment"></i> 0 messages.</p>
+                                </div>
+                                <div class="col">
+                                    <p><i class="fa fa-flag post-flag"></i> Report</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col other">
+                        This is the other!
+                    </div>
+                </div>
+                <div class="row un-authed offset-1">
+                    <div class="col-6 card">
+                        <div class="row ">
+                            <div class="col-8">
+                                Login in or sign up to make a comment.
                             </div>
                             <div class="col">
-                                <div class="row">
-                                    <div class="col posted-info">
-                                        Posted by Grishon 2 hours ago.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        This is the post!
-                                    </div>
-                                </div>
+                                <button class="btn btn-primary">Login</button>
                             </div>
-                        </div> -->
+                            <div class="col">
+                                <button class="btn btn-danger">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row offset-1 offset-0 authed">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col posted-info">
+                                Comment as Grishon Nganga.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <textarea class="form-control" name="comment" id="comment-box" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-success mt-2 offset-3 post-comment">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+            <div class="row offset-0 mb-3 mt-4">
+                <div class="col-sm-7 sort posted-info offset-r-0">
+                    Sort by Latest
+                </div>
+            </div>
+            <div class="present-comments-toggle">
+                <div class="row">
+                    <div class="col no-comment-text">
+                        No conversation here. Be the first.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col no-posts-div">
+                        <i class="far no-comment-img fa-comment-alt fa-8x"></i>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row  comments-div">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-sm-7 comments-section">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
 
 
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-storage.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js "></script>
-    <script src="js/firebase.js "></script>
-    <script src="js/post.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-storage.js "></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js "></script>
+        <script src="js/firebase.js "></script>
+        <script src="js/post.js"></script>
 </body>
 
 </html>

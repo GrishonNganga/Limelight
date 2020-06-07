@@ -28,9 +28,11 @@ main {
 /* .original{
     background-color: red;
 }
-.other{
-    background-color: blue;
-} */
+*/
+
+.other {
+    display: none;
+}
 
 .sort {
     border-spacing: 20px;
@@ -49,7 +51,49 @@ main {
     margin-left: 5%;
 }
 
+.offset-r-0 {
+    margin-right: 5%;
+}
+
 .posted-info {
     font-size: 13px;
     color: gray;
+}
+
+.upvote,
+.downvote,
+.post-upvote,
+.post-downvote,
+.post-comment,
+.post-flag {
+    color: gray;
+}
+
+.navbar img {
+    width: 100%;
+}
+
+.no-comment-img {
+    color: limegreen;
+    margin-left: 25%;
+    margin-bottom: 10%;
+}
+
+.no-comment-text {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.no-comment-text {
+    font-size: 2em;
+    color: gray;
+}
+
+@media only screen and (min-width: 600px) {
+    .images img {
+        width: 100%;
+    }
+    .other {
+        display: inline;
+    }
 }

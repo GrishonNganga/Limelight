@@ -14,21 +14,7 @@ $(document).ready(()=>{
 
         var username = incomingPost.username;
         var body = incomingPost.body;
-        var live = incomingPost.live;
-        var images = incomingPost.images;
-        var showImages = [];
-        images.forEach((image)=>{
-            image = image.substring(6);
-            console.log(image);
-            imageRef = storage.child(image);
-            imageRef.getDownloadURL().then((imageURL)=>{
-                console.log(imageURL);
-                showImages.push(imageURL);
-            }).catch((err)=>console.log(err.message))
-        })
-        console.log(images);
-
-        
+            
         var timestamp = new Date(incomingPost.timestamp);
         console.log(timestamp);
 
@@ -102,10 +88,11 @@ $(document).ready(()=>{
     });
 
     $('.post-comment').click(()=>{
+        console.log("Starting to upload!");
         var commentToBePosted = document.getElementById('comment-box').value;
         console.log(commentToBePosted);
         console.log("We are in here.");
-        database.ref("users/"+uid).once("value", (usernameToGet)=>{
+        database.ref("users/"+uid).on("value", (usernameToGet)=>{
             var usernameToDisplay = usernameToGet.val().name;
             var newComment = database.ref("comments/" +postID);
             newComment.push({
@@ -114,7 +101,7 @@ $(document).ready(()=>{
                 username: usernameToDisplay,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
             }).then(()=>{
-                window.location.reload();
+                console.log("Done uploading!");
             })
         });
         
@@ -141,16 +128,16 @@ function checkState(){
     });
 }
 function pullComments(){
-    database.ref("comments/"+postID).once("value", (comments)=>{
-        var allComments = comments;
+    database.ref("comments/"+postID).on("child_added", (comments)=>{
 
-        console.log(allComments);
-        allComments.forEach((comment)=>{
-            var comment = comment.val();
-            console.log(comment);
-            var commentUsername = comment.username;
-            var commentText = comment.comment;
-            var timestamp = new Date(comment.timestamp);
+         console.log(comments.val());
+         
+        if(comments.val()){
+            $('.present-comments-toggle').hide();
+
+            var commentUsername = comments.val().username;
+            var commentText = comments.val().comment;
+            var timestamp = new Date(comments.val().timestamp);
 
             var when;
             var postedAgoText;
@@ -215,23 +202,24 @@ function pullComments(){
                 postedAgoText = "years ago";
             }
 
+            $('.no-posts').hide();
             $(".comments-section").html(
                 $('.comments-section').html()+
                 '<div class=" container row original comment">'+
                 '<div class="col-2 col-sm-1">'+
                     '<div class="row">'+
                         '<div class="col">'+
-                            '<i class="fa fa-caret-up fa-2x" ></i>'+
+                            '<i class="fa fa-caret-up upvote fa-2x" ></i>'+
                         '</div>'+
                     '</div>'+
                     '<div class="row">'+
                         '<div class="col votes-number">'+
-                            '200'+
+                            
                         '</div>'+
                     '</div>'+
                     '<div class="row">'+
                         '<div class="col">'+
-                            '<i class="fa fa-caret-down fa-2x" ></i>'+
+                            '<i class="fa fa-caret-down downvote fa-2x" ></i>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -249,6 +237,8 @@ function pullComments(){
                 '</div>'+
             '</div>'
             );
-        });
+        }else{
+
+        }
     });
 }
