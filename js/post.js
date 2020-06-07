@@ -12,8 +12,10 @@ $(document).ready(()=>{
     database.ref("posts/"+postID).once("value", (postToView)=>{
         var incomingPost = postToView.val();
 
+        console.log(incomingPost);
         var username = incomingPost.username;
         var body = incomingPost.body;
+        var commentsCount = incomingPost.commentsCount;
             
         var timestamp = new Date(incomingPost.timestamp);
         console.log(timestamp);
@@ -81,6 +83,8 @@ $(document).ready(()=>{
             postedAgoText = "years ago";
         }
 
+        const commentsSection = commentsCount === undefined ? 0 :commentsCount;
+        document.getElementById('post-comments-count').innerHTML = " "+commentsSection+" comments"
         document.getElementById('post-username').innerHTML = "Posted by "+ username+" "+when +" "+ postedAgoText;
         document.getElementById('body').innerHTML = body;
 
@@ -101,7 +105,18 @@ $(document).ready(()=>{
                 username: usernameToDisplay,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
             }).then(()=>{
-                console.log("Done uploading!");
+               
+                 let commentNode = newComment.child("commentsCount");
+                 let postNode = database.ref("posts/"+postID).child("commentsCount");
+
+                 postNode.transaction((currentCommentsCount)=>{
+                     return currentCommentsCount + 1;
+                 });
+
+                 commentNode.transaction((currentCommentsCount)=>{
+                    return currentCommentsCount + 1;
+                 });
+
             })
         });
         
@@ -132,7 +147,8 @@ function pullComments(){
 
          console.log(comments.val());
          
-        if(comments.val()){
+         console.log(typeof comments.val());
+        if(comments.val() && typeof comments.val() !== "number"){
             $('.present-comments-toggle').hide();
 
             var commentUsername = comments.val().username;

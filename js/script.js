@@ -161,8 +161,10 @@ function displayPosts(posts){
    var message = post.body;
    var link = post.live;
    var user = post.username;
-   var upVotes = post.upVote === undefined ? 0 : post.upVote; 
-   var downVotes = post.downVote === undefined ? 0 : post.downVote; 
+
+   var upVotes = post.upvotes === undefined ? 0 : post.upvotes.upvotesCounter === undefined ? 0 : post.upvotes.upvotesCounter; 
+   var downVotes = post.downvoteCounter === undefined ? 0 : post.downvoteCounter; 
+   var commentsCount = post.commentsCount === undefined ? 0 : post.commentsCount;
    var avgVotes = Math.round(upVotes / downVotes);
    var timestamp = new Date(post.timestamp);
    var when;
@@ -231,12 +233,12 @@ function displayPosts(posts){
 
    $(".posts").html(
      $(".posts").html() +
-       '<div class="container card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" id="upvote'+postId+'"></i></div><div class="votesNumber offset-2"></div><div class="downVote"><i class="fa fa-caret-down fa-2x" id="downvote'+postId+'"></i></div></div><div class="col"><a href='+link+' target ="_blank" rel="noopener noreferrer"><div class="row"><div class="col"><p class="owner">Posted by ' +
+       '<div class="container card card-post"><div class="row"><div class=" col-2 col-sm-1"><div class="upVote"><i class="fa fa-caret-up fa-2x" id="upvote'+postId+'"></i></div><div class="votesNumber offset-2" id="votes'+postId+'">'+upVotes+'</div><div class="downVote"><i class="fa fa-caret-down fa-2x" id="downvote'+postId+'"></i></div></div><div class="col"><a href='+link+' target ="_blank" rel="noopener noreferrer"><div class="row"><div class="col"><p class="owner">Posted by ' +
        user + ' ' +
        when +" "+postedAgoText+'</p></div></div><div class="row"><div class="col">' + 
        message +
        '</div></div><div class="row feedback-section"><a href="post.html?post='+postId+'"><div class="col"><i class="fas fa-comment-alt"> ' +
-       commentsCounter +
+       commentsCount +
        ' comments</i></div></a><div class="col"><i class="fa fa-flag offset-5">' +
        " report</i></div></div></a></div></div></div>"
    );
@@ -310,23 +312,47 @@ function getPostsFromDB(){
 function upvoteOnPost(postId){
   firebase.database().ref("posts/" +postId+ "/upvotes" ).once("value", (upVotes)=>{
     let upVotesFromDb = upVotes.child(userGlobal.uid).val();
+    console.log("This checks if it is null!!");
+    console.log(upVotes.child(userGlobal.uid).val())
     
-    if(upVotesFromDb == null){
+    if(upVotesFromDb === null){
       firebase.database().ref("posts/" +postId).child("upvotes").child(userGlobal.uid).set({[userGlobal.uid]: userGlobal.uid}).then(()=>{
-        $('#'+postId).addClass('up-voted');
+        let upvotesCount = firebase.database().ref("posts/" +postId).child("upvotes").child("upvotesCounter");
+        $('#upvote'+postId).removeClass('vote-default');
+        $('#upvote'+postId).addClass('up-voted');
+        upvotesCount.transaction((currentUpvotesCount)=>{
+          document.getElementById('votes'+postId).innerHTML = "";
+          document.getElementById('votes'+postId).innerHTML = currentUpvotesCount + 1;
+          return currentUpvotesCount + 1;
+          
+        });
+        
       })
       .then(()=>{
-        firebase.database().ref("posts/" +postId).child("downvotes").child(userGlobal.uid).set({[userGlobal.uid]: null}).then(()=>{
-          $('#downvote'+postId).removeClass('down-voted');
-          $('#downvote'+postId).addClass('vote-default');
-
-        })
+        firebase.database().ref("posts/" +postId+ "/downvotes" ).once("value", (downVotes)=>{
+          if(downVotes.child(userGlobal.uid).val() !== null){
+            firebase.database().ref("posts/" +postId).child("downvotes").child(userGlobal.uid).set({[userGlobal.uid]: null}).then(()=>{
+              let downvotesCount = firebase.database().ref("posts/" +postId).child("downvotes").child("downvotesCounter");
+              $('#downvote'+postId).removeClass('down-voted');
+              $('#downvote'+postId).addClass('vote-default');
+              downvotesCount.transaction((currentUpvotesCount)=>{
+                return currentUpvotesCount -1;
+              });
+            })
+          }
+        
+        });
       })
     }else{
       firebase.database().ref("posts/" +postId).child("upvotes").child(userGlobal.uid).set({[userGlobal.uid]: null}).then(()=>{
-        console.log("Deleted!!")
+        let upvotesCount = firebase.database().ref("posts/" +postId).child("upvotes").child("upvotesCounter");
         $('#upvote'+postId).removeClass('up-voted');
         $('#upvote'+postId).addClass('vote-default');
+        upvotesCount.transaction((currentUpvotesCount)=>{
+          document.getElementById('votes'+postId).innerHTML = "";
+          document.getElementById('votes'+postId).innerHTML = currentUpvotesCount - 1;
+          return currentUpvotesCount - 1;
+        });
       })
     }
   });
@@ -336,22 +362,40 @@ function downvoteOnPost(postId){
   firebase.database().ref("posts/" +postId+ "/downvotes" ).once("value", (downVotes)=>{
     let downVotesFromDb = downVotes.child(userGlobal.uid).val();
     
-    if(downVotesFromDb == null){
+    if(downVotesFromDb === null){
       firebase.database().ref("posts/" +postId).child("downvotes").child(userGlobal.uid).set({[userGlobal.uid]: userGlobal.uid}).then(()=>{
-        $('#downvote'+postId).addClass('down-voted');
+        let downvotesCount = firebase.database().ref("posts/" +postId).child("downvotes").child("downvotesCounter");
+        downvotesCount.transaction((currentDownvotesCount)=>{
+          $('#downvote'+postId).removeClass('vote-default');
+          $('#downvote'+postId).addClass('down-voted');
+          return currentDownvotesCount + 1;
+        });
       })
       .then(()=>{
-        firebase.database().ref("posts/" +postId).child("upvotes").child(userGlobal.uid).set({[userGlobal.uid]: null}).then(()=>{
-          $('#upvote'+postId).removeClass('up-voted');
-          $('#upvote'+postId).addClass('vote-default');
+        firebase.database().ref("posts/" +postId+ "/upvotes" ).once("value", (upVotes)=>{
+          if(upVotes.child(userGlobal.uid).val() !== null){
+            firebase.database().ref("posts/" +postId).child("upvotes").child(userGlobal.uid).set({[userGlobal.uid]: null}).then(()=>{
+              let upvotesCount = firebase.database().ref("posts/" +postId).child("upvotes").child("upvotesCounter");
+              $('#upvote'+postId).removeClass('up-voted');
+              $('#upvote'+postId).addClass('vote-default');
+              upvotesCount.transaction((currentUpvotesCount)=>{
+                document.getElementById('votes'+postId).innerHTML = "";
+                document.getElementById('votes'+postId).innerHTML = currentUpvotesCount - 1;
+                return currentUpvotesCount - 1;
+              });
 
+            })
+          }
         })
       });
     }else{
       firebase.database().ref("posts/" +postId).child("downvotes").child(userGlobal.uid).set({[userGlobal.uid]: null}).then(()=>{
-        console.log("Deleted!!")
+        let downvotesCount = firebase.database().ref("posts/" +postId).child("downvotes").child("downvotesCounter");
         $('#downvote'+postId).removeClass('down-voted');
         $('#downvote'+postId).addClass('vote-default');
+        downvotesCount.transaction((currentDownvotesCount)=>{
+          return currentDownvotesCount - 1;
+        });
       })
     }
   });
