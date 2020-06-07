@@ -23,11 +23,11 @@
         /* NAVBAR */
         
         .logo {
-            width: 40%;
+            width: 15%;
         }
         
         .topnav {
-            background-color: rgba(255, 255, 255, 0.5);
+            /* background-color: rgba(255, 255, 255, 0.5); */
         }
         
         .search-input {
@@ -60,6 +60,7 @@
     <!-- Header -->
     <nav class="navbar navbar-expand-md navbar-dark">
         <!-- hamburger menu -->
+        <img src="images/limelight-logo-black.png" alt="logo" class="logo">
         <button class="navbar-toggler bg-success ml-auto mb-2" type="button" data-toggle="collapse" data-target="#myNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -68,10 +69,7 @@
                 <div class="row">
                     <div class="col ml-auto fixed-top py-2 topnav">
                         <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <img src="images/limelight-logo-black.png" alt="logo" class="logo">
-                            </div>
-                            <div class="col-md-4">
+                            <div class="offset-4 col-md-4">
                                 <form action="">
                                     <div class="input-group">
                                         <input type="text" class="form-control search-input" placeholder="Search...">
@@ -85,10 +83,13 @@
                                     </div>
                                     <ul class="dropdown-menu" aria-labelledby="mymenu">
                                         <li>
-                                            <a href="#" class="nav-link text-dark"> <i class="fa fa-home text-dark"></i>Profile</a>
+                                            <a href="index.html" class="nav-link text-dark"> <i class="fa fa-home text-dark"></i>Home</a>
                                         </li>
                                         <li>
-                                            <a href="upload.html" class="nav-link text-success"> <i class="fa fa-upload text-success"></i>Upload</a>
+                                            <a href="upload.html" class="nav-link text-dark"> <i class="fa fa-upload text-dark"></i>Upload</a>
+                                        </li>
+                                        <li>
+                                            <a href="login.html" id="login" class="nav-link text-success"> <i class="fa fa-sign-in text-success"></i> Log In</a>
                                         </li>
                                         <li>
                                             <a href=" " class="nav-link text-danger" id="logout"> <i class="fa fa-sign-out text-danger"></i> Log Out</a>

@@ -19,11 +19,7 @@
         /* NAVBAR */
         
         .logo {
-            width: 40%;
-        }
-        
-        .topnav {
-            background-color: rgba(255, 255, 255, 0.5);
+            width: 15%;
         }
         
         .search-input {
@@ -58,7 +54,8 @@
     <!-- Header -->
     <nav class="navbar navbar-expand-md navbar-dark">
         <!-- hamburger menu -->
-        <button class="navbar-toggler bg-success ml-auto mb-2" type="button" data-toggle="collapse" data-target="#myNavbar">
+        <img src="images/limelight-logo-black.png" alt="logo" class="logo">
+        <button id="burger" class="navbar-toggler bg-success ml-auto mb-2" type="button" data-toggle="collapse" data-target="#myNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="myNavbar">
@@ -66,10 +63,7 @@
                 <div class="row">
                     <div class="col ml-auto fixed-top py-2 topnav">
                         <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <img src="images/limelight-logo-black.png" alt="logo" class="logo">
-                            </div>
-                            <div class="col-md-4">
+                            <div class="offset-4 col-md-4">
                                 <form action="">
                                     <div class="input-group">
                                         <input type="text" class="form-control search-input" placeholder="Search..." id="search-input">
@@ -83,10 +77,13 @@
                                     </div>
                                     <ul class="dropdown-menu" aria-labelledby="mymenu">
                                         <li>
-                                            <a href="#" class="nav-link text-dark"> <i class="fa fa-home text-dark"></i>Profile</a>
+                                            <a href="#" class="nav-link text-dark"> <i class="fa fa-user-circle text-dark" aria-hidden="true"></i>Profile</a>
                                         </li>
                                         <li>
-                                            <a href="upload.html" class="nav-link text-success"> <i class="fa fa-upload text-success"></i>Upload</a>
+                                            <a href="upload.html" class="nav-link text-dark"> <i class="fa fa-upload text-dark"></i>Upload</a>
+                                        </li>
+                                        <li>
+                                            <a href="login.html" id="login" class="nav-link text-success"> <i class="fa fa-sign-in text-success"></i> Log In</a>
                                         </li>
                                         <li>
                                             <a href="" id="logout" class="nav-link text-danger"> <i class="fa fa-sign-out text-danger" onclick="logout();"></i> Log Out</a>
@@ -200,8 +197,7 @@
                 <img src="images/limelight-logo.png " alt="logo " width="200 ">
                 <p>A community driven platform that seeks to recognize the works of other designers and web artisans.</p>
                 <div class="contact-info ">
-                    <span><i class="fa fa-phone "></i>&nbsp; +2547 12 345 678</span>
-                    <span><i class="fa fa-envelope "></i>&nbsp; info@kishy.com</span>
+                    <span><i class="fa fa-envelope "></i>&nbsp; the.limelight.inc@gmail.com</span>
                 </div>
                 <div class="socials ">
                     <a href="https://web.facebook.com/grishaun.gikish " target="_blank "><i class="fa fa-facebook "></i></a>
@@ -209,18 +205,17 @@
                     <a href="https://twitter.com/GrishonNganga " target="_blank "><i class="fa fa-twitter "></i></a>
                     <a href="https://www.youtube.com/channel/UCPgc93UNGGDD9O3fPzpEH-g " target="_blank "><i class="fa fa-youtube "></i></a>
                 </div>
-                <a href=" " class="terms "><sub>Terms and conditions</sub></a>
             </div>
             <div class="footer-section contact ">
-                <h2>Contact Us</h2>
-                <br>
                 <form action=" ">
-                    <input type="text " name="email " class="text-input " placeholder="Your email... ">
-                    <textarea name="message " class="text-input " placeholder="Your message... "></textarea>
+                    <h3 class="text-danger"><i class="fa fa-bug"></i>Found a Bug?</h3>
+                    <p>If you have a bug or an idea, read the<span> contributing guidelines</span> before opening an issue.</p>
                     <button type="submit " class="btn ">
-                        <i class="fa fa-envelope "></i>
-                        SEND
+                        <a href="https://github.com/GrishonNganga/Limelight/issues"><i class="fa fa-github "></i>
+                        OPEN ISSUE</a>
                     </button>
+                    <br>
+                    <a href="https://github.com/GrishonNganga/Limelight/blob/master/README.md" class="terms "><sub>Terms and conditions</sub></a>
                 </form>
             </div>
         </div>
