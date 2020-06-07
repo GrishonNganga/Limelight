@@ -15,12 +15,12 @@ body {
     background-color: white;
 }
 
-.live{
+.live {
     display: none;
 }
 
 .body-div:hover,
-.live-div:hover{
+.live-div:hover {
     background-color: rgb(238, 242, 233);
 }
 
@@ -31,7 +31,6 @@ body {
 }
 
 .create-title {
-    padding-top: 5%;
     margin: 30px auto;
     color: #2b2d2f;
 }
@@ -51,7 +50,6 @@ body {
 .unselected {
     background-color: white;
 }
-
 
 .guidelines-head {
     background-image: url("../images/community-art-2.png");

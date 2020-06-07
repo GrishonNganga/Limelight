@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +10,34 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/post.css">
 </head>
+
 <body>
     <div class="container post-page">
+        <div class=" navbar row">
+            <div class="col-5 col-sm-2 m-0 p-0">
+                <img src="images/limelight-logo-black.png" alt="Limelight logo">
+            </div>
+            <div class="">
+
+            </div>
+        </div>
         <div class="row">
-            <div class="col-8">
-                <div class=" container row original mt-5">
+            <div class="col-sm-8">
+                <div class=" container row original mt-2 mt-sm-5">
                     <div class="col-2 col-sm-1">
                         <div class="row">
                             <div class="col">
-                                <i class="fa fa-caret-up fa-2x" ></i>
+                                <i class="fa fa-caret-up post-upvote fa-2x"></i>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col votes-number">
-                                200
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <i class="fa fa-caret-down fa-2x" ></i>
+                                <i class="fa fa-caret-down post-downvote fa-2x"></i>
                             </div>
                         </div>
                     </div>
@@ -44,15 +54,15 @@
                         </div>
                         <div class="row">
                             <div class="col images" id="images">
-                                
+
                             </div>
                         </div>
                         <div class="row mt-1">
-                            <div class="col-5">
-                               <p><i class="fa fa-comment-alt" ></i> 0 messages.</p> 
+                            <div class="col col-sm-5">
+                                <p><i class="fa fa-comment-alt post-comment" id="post-comments-count"></i> </p>
                             </div>
                             <div class="col">
-                                <p><i class="fa fa-flag" ></i> Report</p>
+                                <p><i class="fa fa-flag post-flag"></i> Report</p>
                             </div>
                         </div>
                     </div>
@@ -74,7 +84,7 @@
                     <div class="col">
                         <button class="btn btn-danger">Signup</button>
                     </div>
-                </div>           
+                </div>
             </div>
         </div>
         <div class="row offset-1 offset-0 authed">
@@ -84,9 +94,9 @@
                         Comment as Grishon Nganga.
                     </div>
                 </div>
-                <div class="row">   
-                    <div class="col-7">
-                        <textarea class="form-control" name="comment" id="comment-box" rows="5"></textarea>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <textarea class="form-control" name="comment" id="comment-box" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -97,53 +107,37 @@
             </div>
         </div>
         <div class="row offset-0 mb-3 mt-4">
-            <div class="col-7 sort posted-info">
+            <div class="col-sm-7 sort posted-info offset-r-0">
                 Sort by Latest
             </div>
         </div>
-        <div class="row mt-3 comments-div">
+        <div class="present-comments-toggle">
+            <div class="row">
+                <div class="col no-comment-text">
+                    No conversation here. Be the first.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col no-posts-div">
+                    <i class="far no-comment-img fa-comment-alt fa-8x"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row  comments-div">
             <div class="col">
                 <div class="row">
-                    <div class="col-7 comments-section">
-                        <!-- <div class=" container row original comment">
-                            <div class="col-2 col-sm-1">
-                                <div class="row">
-                                    <div class="col">
-                                        <i class="fa fa-caret-up fa-2x" ></i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col votes-number">
-                                        200
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <i class="fa fa-caret-down fa-2x" ></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col posted-info">
-                                        Posted by Grishon 2 hours ago.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        This is the post!
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                    <div class="col-sm-7 comments-section">
+
                     </div>
                 </div>
             </div>
-            
+
         </div>
-       
-        
-        
+
+
+
     </div>
 
 
@@ -153,7 +147,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js "></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-storage.js "></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js "></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-performance.js"></script>
     <script src="js/firebase.js "></script>
     <script src="js/post.js"></script>
 </body>
+
 </html>

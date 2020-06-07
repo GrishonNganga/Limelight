@@ -49,22 +49,21 @@ main {
 .fa-comment,
 .fa-comment-alt,
 .fa-flag {
-    color: grey;
+    color: gray;
 }
 
 .fa-caret-up:hover {
     color: limegreen;
 }
 
-.fa-caret-down:hover {
+.fa-caret-down:hover,
+.fa-flag:hover {
     color: red;
 }
 
 .fa-comment:hover,
-.fa-flag:hover,
 .fa-comment-alt:hover {
-    color: white;
-    background-color: grey;
+    color: limegreen;
 }
 
 .feedback-section {
@@ -86,9 +85,22 @@ main {
     overflow: hidden;
 }
 
-.mtt-1{
+.mtt-1 {
     margin-top: 10px;
 }
+
+.up-voted {
+    color: limegreen;
+}
+
+.vote-default {
+    color: gray;
+}
+
+.down-voted {
+    color: red;
+}
+
 .all-posts .post {
     background-color: #fff;
     border-radius: 5px;
@@ -119,7 +131,8 @@ main {
     padding-left: 3%;
 }
 
-.all-posts .post .post-info a, a {
+.all-posts .post .post-info a,
+a {
     text-decoration: none;
     color: inherit;
 }
@@ -128,10 +141,8 @@ main {
     color: limegreen;
 }
 
-.slider-title,
-.create-title {
+.slider-title {
     text-align: center;
-    padding-top: 5%;
     margin: 30px auto;
     color: #2b2d2f;
 }
@@ -188,11 +199,11 @@ ul li {
     color: white;
 }
 
-.results-cancel{
+.results-cancel {
     font-size: 1.8em;
     margin-top: 20px;
-    
 }
+
 .communities {
     display: none;
 }
@@ -235,7 +246,7 @@ footer {
 footer {
     background-color: limegreen;
     color: #fff;
-    height: 62vh;
+    height: auto;
 }
 
 .foot-content {
@@ -277,7 +288,6 @@ footer {
 }
 
 .about .socials a {
-    border: 1px solid limegreen;
     width: 45px;
     height: 41px;
     padding-top: 5px;
@@ -285,17 +295,17 @@ footer {
     text-align: center;
     display: inline-block;
     font-size: 1.3em;
-    border-radius: 5px;
     transition: all 0.3s;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
     color: inherit;
 }
+
 .about .socials a:hover {
     border: none;
-    margin-left: 5px;
+    margin-left: 1px;
     transition: all 0.3s;
 }
 
@@ -310,50 +320,28 @@ a:hover{
 }
 
 .foot-content .footer-section {
-    padding-left: 3%;
-    padding-right: 20%;
-    padding-bottom: 2%;
+    padding-left: 2%;
 }
 
 .foot-content .footer-section img {
-    padding-top: 5%;
+    padding-top: 2%;
     padding-bottom: 2%;
-}
-
-.foot-content .contact h2 {
-    color: #fff;
-    text-align: center;
-    padding-top: 7%;
 }
 
 .foot-content .contact form {
     border-radius: 10px;
     padding: 20px;
     padding-left: 20%;
+    margin-left: 0;
     width: 100%;
-}
-
-.foot-content .contact .text-input {
-    align-self: center;
-    width: 100%;
-    line-height: 1.5rem;
-    padding: 0.9rem 1.2rem;
-    margin: 5px 0;
-    display: inline-block;
-    border: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.foot-content .contact .text-input:hover {
-    border: 1px solid #2b2d2f;
 }
 
 .btn {
     background-color: #2b2d2f;
     color: white;
-    padding: 10px 15px;
+    padding-left: 10px 15px;
     margin: 8px 0;
+    width: 40%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -426,7 +414,6 @@ form#newcomment input[type="text"] {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 500px) {
-   
     .logo img {
         width: 60%;
     }
