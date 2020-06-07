@@ -8,10 +8,14 @@ window.onload = ()=>{
   checkStatus();
 
 }
-
 $(document).ready(()=>{
 
   launchUI();
+
+  confetti({
+    particleCount: 1000,
+    spread: 500
+  });
 
   const searchEvent = document.getElementById("search-input");
   searchEvent.addEventListener("keydown", (event)=>{
