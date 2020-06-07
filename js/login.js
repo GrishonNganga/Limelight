@@ -35,10 +35,7 @@ function signUp() {
         mail: email,
         passwd: passwd
     }
-
     sanitise("signup", data);
-
-
 }
 
 function sanitise(operation, data) {
@@ -141,6 +138,7 @@ function signUpFirebase(data) {
     var password = data.passwd;
     const database = firebase.database();
     firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed) => {
+        verification();
         console.log(data);
         console.log(dataPassed.user.uid);
         var createdUser = dataPassed.user.uid;
@@ -182,16 +180,36 @@ function checkStatus() {
             // User is signed in.
             logStatus = "Successful login!";
             document.getElementById("status").innerHTML = logStatus;
+            logStatus2 = "We have sent you a verification email";
+            document.getElementById("status2").innerHTML = logStatus2;
             // console.log(user);
-            $('.spinner-grow').toggle();
-            window.location.href = "index.html";
-            // ...
 
+            var user = firebase.auth().currentUser;
+
+            if (user != null) {
+                var emailVerified = user.emailVerified;
+                $('.spinner-grow').toggle();
+                window.location.href = "index.html";
+            }
         } else {
             // User is signed out.
             logStatus = "You are not logged in!";
             document.getElementById("status").innerHTML = logStatus;
         }
+    });
+}
+
+function verification() {
+    var user = firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(function() {
+        // Email sent.
+    }).catch(function(error) {
+        // An error happened.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
     });
 }
 

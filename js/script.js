@@ -302,12 +302,14 @@ function upvoteOnPost(postId) {
 
         if (upVotesFromDb == null) {
             firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({
-                    [userGlobal.uid]: userGlobal.uid }).then(() => {
-                    $('#' + postId).addClass('up-voted');
+                    [userGlobal.uid]: userGlobal.uid
+                }).then(() => {
+                    $('#upvote' + postId).addClass('up-voted');
                 })
                 .then(() => {
                     firebase.database().ref("posts/" + postId).child("downvotes").child(userGlobal.uid).set({
-                        [userGlobal.uid]: null }).then(() => {
+                        [userGlobal.uid]: null
+                    }).then(() => {
                         $('#downvote' + postId).removeClass('down-voted');
                         $('#downvote' + postId).addClass('vote-default');
 
@@ -315,7 +317,8 @@ function upvoteOnPost(postId) {
                 })
         } else {
             firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({
-                [userGlobal.uid]: null }).then(() => {
+                [userGlobal.uid]: null
+            }).then(() => {
                 console.log("Deleted!!")
                 $('#upvote' + postId).removeClass('up-voted');
                 $('#upvote' + postId).addClass('vote-default');
@@ -330,12 +333,14 @@ function downvoteOnPost(postId) {
 
         if (downVotesFromDb == null) {
             firebase.database().ref("posts/" + postId).child("downvotes").child(userGlobal.uid).set({
-                    [userGlobal.uid]: userGlobal.uid }).then(() => {
+                    [userGlobal.uid]: userGlobal.uid
+                }).then(() => {
                     $('#downvote' + postId).addClass('down-voted');
                 })
                 .then(() => {
                     firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({
-                        [userGlobal.uid]: null }).then(() => {
+                        [userGlobal.uid]: null
+                    }).then(() => {
                         $('#upvote' + postId).removeClass('up-voted');
                         $('#upvote' + postId).addClass('vote-default');
 
@@ -343,7 +348,8 @@ function downvoteOnPost(postId) {
                 });
         } else {
             firebase.database().ref("posts/" + postId).child("downvotes").child(userGlobal.uid).set({
-                [userGlobal.uid]: null }).then(() => {
+                [userGlobal.uid]: null
+            }).then(() => {
                 console.log("Deleted!!")
                 $('#downvote' + postId).removeClass('down-voted');
                 $('#downvote' + postId).addClass('vote-default');

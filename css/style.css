@@ -332,6 +332,7 @@ a:hover {
     border-radius: 10px;
     padding: 20px;
     padding-left: 20%;
+    margin-left: 0;
     width: 100%;
 }
 
