@@ -14,8 +14,8 @@
 <body>
     <div class="container post-page">
         <div class=" navbar row">
-            <div class="col-5 col-sm-2 m-0 p-0">
-                <img src="images/limelight-logo-black.png" alt="Limelight logo">
+            <div class="col-5 col-sm-2 m-0 p-0 mb-3 m-sm-0">
+                <a href="index.html"><img src="images/limelight-logo-black.png" alt="Limelight logo"></a>
             </div>
             <div class="">
 
@@ -24,10 +24,10 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class=" container row original mt-2 mt-sm-5">
-                    <div class="col-2 col-sm-1">
+                    <div class="col-0 col-sm-1">
                         <div class="row">
                             <div class="col">
-                                <i class="fa fa-caret-up post-upvote fa-2x"></i>
+                                <!-- <i class="fa fa-caret-up post-upvote fa-2x"></i> -->
                             </div>
                         </div>
                         <div class="row">
@@ -37,13 +37,13 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <i class="fa fa-caret-down post-downvote fa-2x"></i>
+                                <!-- <i class="fa fa-caret-down post-downvote fa-2x"></i> -->
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col posted-info" id="post-username">
+                            <div class="col posted-info mb-1 post-comment-g" id="post-username">
                                 <!-- Posted by Grishon 2 hours ago. -->
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="row mt-1">
                             <div class="col col-sm-5">
-                                <p><i class="fa fa-comment-alt post-comment" id="post-comments-count"></i> </p>
+                                <p><i class="fa fa-comment-alt" id="post-comments-count"></i> </p>
                             </div>
                             <div class="col">
                                 <p><i class="fa fa-flag post-flag"></i> Report</p>
@@ -68,8 +68,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col other">
-                This is the other!
+            <div class="communities col">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <h5 class="card-header p-4 font-weight-bold guidelines-head">Offering your two cents</h5>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    1. Offer valuable feedback..
+                                </p>
+                                <p class="card-text">
+                                    2. Be respectful.
+                                </p>
+                                <p class="card-text">
+                                    3. Do not spam.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+
             </div>
         </div>
         <div class="row un-authed offset-1">
@@ -87,15 +108,20 @@
                 </div>
             </div>
         </div>
-        <div class="row offset-1 offset-0 authed">
+        <div class="row offset-0 authed">
             <div class="col">
+                <div class="alert alert-danger col-5 comment-error" role="alert">
+                    Please provide a comment.
+                </div>
                 <div class="row">
-                    <div class="col posted-info">
-                        Comment as Grishon Nganga.
+                    
+                    <div class="col posted-info col-sm-7" id="posted-info">
+                        
+                       
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col col-sm-7">
                         <textarea class="form-control" name="comment" id="comment-box" rows="3"></textarea>
                     </div>
                 </div>

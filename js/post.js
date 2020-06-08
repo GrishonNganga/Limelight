@@ -87,6 +87,7 @@ $(document).ready(()=>{
         document.getElementById('post-comments-count').innerHTML = " "+commentsSection+" comments"
         document.getElementById('post-username').innerHTML = "Posted by "+ username+" "+when +" "+ postedAgoText;
         document.getElementById('body').innerHTML = body;
+        document.getElementById('posted-info').innerHTML = "Comment as "+ username; 
 
 
     });
@@ -94,33 +95,41 @@ $(document).ready(()=>{
     $('.post-comment').click(()=>{
         console.log("Starting to upload!");
         var commentToBePosted = document.getElementById('comment-box').value;
-        console.log(commentToBePosted);
-        console.log("We are in here.");
-        database.ref("users/"+uid).on("value", (usernameToGet)=>{
-            var usernameToDisplay = usernameToGet.val().name;
-            var newComment = database.ref("comments/" +postID);
-            newComment.push({
-                user: uid,
-                comment: commentToBePosted,
-                username: usernameToDisplay,
-                timestamp: firebase.database.ServerValue.TIMESTAMP
-            }).then(()=>{
-               
-                 let commentNode = newComment.child("commentsCount");
-                 let postNode = database.ref("posts/"+postID).child("commentsCount");
+        if(commentToBePosted !== ""){
+            $('.comment-error').hide();
+            document.getElementById("comment-box").value = "";
+            console.log(commentToBePosted);
+            console.log("We are in here.");
+            database.ref("users/"+uid).on("value", (usernameToGet)=>{
+                var usernameToDisplay = usernameToGet.val().name;
+                var newComment = database.ref("comments/" +postID);
+                newComment.push({
+                    user: uid,
+                    comment: commentToBePosted,
+                    username: usernameToDisplay,
+                    timestamp: firebase.database.ServerValue.TIMESTAMP
+                })
+                .then(()=>{
+                
+                    let commentNode = newComment.child("commentsCount");
+                    let postNode = database.ref("posts/"+postID).child("commentsCount");
 
-                 postNode.transaction((currentCommentsCount)=>{
-                     return currentCommentsCount + 1;
-                 });
+                    postNode.transaction((currentCommentsCount)=>{
+                        return currentCommentsCount + 1;
+                    });
 
-                 commentNode.transaction((currentCommentsCount)=>{
-                    return currentCommentsCount + 1;
-                 });
+                    commentNode.transaction((currentCommentsCount)=>{
+                        return currentCommentsCount + 1;
+                    });
+                    document.getElementById('comment-box').innerHTML = "";
 
-            })
-        });
+                })
+            });
+        }else{
+            $('.comment-error').show();
+            console.log("In here!");
         
-         
+        }         
     });
 
     pullComments();
@@ -222,10 +231,10 @@ function pullComments(){
             $(".comments-section").html(
                 $('.comments-section').html()+
                 '<div class=" container row original comment">'+
-                '<div class="col-2 col-sm-1">'+
+                '<div class=" col-sm-1">'+
                     '<div class="row">'+
                         '<div class="col">'+
-                            '<i class="fa fa-caret-up upvote fa-2x" ></i>'+
+                            // '<i class="fa fa-caret-up upvote fa-2x" ></i>'+
                         '</div>'+
                     '</div>'+
                     '<div class="row">'+
@@ -235,18 +244,18 @@ function pullComments(){
                     '</div>'+
                     '<div class="row">'+
                         '<div class="col">'+
-                            '<i class="fa fa-caret-down downvote fa-2x" ></i>'+
+                            // '<i class="fa fa-caret-down downvote fa-2x" ></i>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
                 '<div class="col">'+
                     '<div class="row">'+
-                        '<div class="col posted-info">'+
+                        '<div class="col posted-info mb-1">'+
                             'Posted by '+ commentUsername + " "+ when+" "+ postedAgoText+
                         '</div>'+
                     '</div>'+
                     '<div class="row">'+
-                        '<div class="col">'+
+                        '<div class="col mb-4">'+
                             commentText+
                         '</div>'+
                     '</div>'+

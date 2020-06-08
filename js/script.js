@@ -241,8 +241,7 @@ function displayPosts(posts) {
             message +
             '</div></div><div class="row feedback-section"><a href="post.html?post=' + postId + '"><div class="col"><i class="fas fa-comment-alt"> ' +
             commentsCount +
-            ' comments</i></div></a><div class="col"><i class="fa fa-flag offset-5">' +
-            " report</i></div></div></a></div></div></div>"
+            ' comments</i></div></a><div class="col"></div></div></a></div></div></div>'
         );
 
         if (userGlobal) {

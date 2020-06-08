@@ -47,10 +47,6 @@ main {
     display: none;
 }
 
-.offset-0 {
-    margin-left: 5%;
-}
-
 .offset-r-0 {
     margin-right: 5%;
 }
@@ -64,21 +60,30 @@ main {
 .downvote,
 .post-upvote,
 .post-downvote,
-.post-comment,
+#post-comments-count,
 .post-flag {
     color: gray;
+}
+.post-comment{
+    background-color: limegreen;
 }
 
 .navbar img {
     width: 100%;
 }
 
+.guidelines-head {
+    background-image: url("../images/betterworld.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
 .no-comment-img {
     color: limegreen;
     margin-left: 25%;
     margin-bottom: 10%;
 }
-
 .no-comment-text {
     margin-top: 10%;
     margin-left: 10%;
@@ -89,11 +94,22 @@ main {
     color: gray;
 }
 
+.communities, .comment-error{
+    display: none;
+}
+
+
 @media only screen and (min-width: 600px) {
     .images img {
         width: 100%;
     }
     .other {
+        display: inline;
+    }
+    .offset-0 {
+        margin-left: 5%;
+    }
+    .communities{
         display: inline;
     }
 }
