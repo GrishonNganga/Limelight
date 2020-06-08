@@ -119,11 +119,8 @@ function checkStatus() {
             await firebase.database().ref("users/" + user.uid).once("value", (userObject) => {
                 username = userObject.val().name;
                 caretUserDiv.innerHTML = username;
-                console.log(username);
+               
             });
-
-            console.log(user.uid);
-            // ...
 
         } else {
             // User is signed out.
@@ -158,7 +155,6 @@ function displayPosts(posts) {
         counter++;
         var postId = post.key;
         var post = post.valueOf("body").val();
-        console.log(post);
         var message = post.body;
         var link = post.live;
         var user = post.username;
@@ -243,8 +239,6 @@ function displayPosts(posts) {
 
         if (userGlobal) {
             if (post.upvotes !== undefined && post.upvotes[userGlobal.uid] !== undefined) {
-                console.log(userGlobal.uid);
-                console.log(post.upvotes[userGlobal.uid])
                 $('#upvote' + postId).addClass('up-voted');
             } else {
                 console.log("I am null bruv!")
@@ -252,8 +246,6 @@ function displayPosts(posts) {
             }
 
             if (post.downvotes !== undefined && post.downvotes[userGlobal.uid] !== undefined) {
-                console.log(userGlobal.uid);
-                console.log(post.downvotes[userGlobal.uid])
                 $('#downvote' + postId).addClass('down-voted');
             } else {
                 console.log("I am null bruv!")
@@ -294,8 +286,6 @@ async function launchUI() {
     //Get data from database.
     $('.spinner-grow').toggle();
     const posts = await getPostsFromDB();
-    console.log(posts);
-    console.log(posts.toJSON());
     postsToUse = posts;
 
 
@@ -313,8 +303,7 @@ function getPostsFromDB() {
 function upvoteOnPost(postId) {
     firebase.database().ref("posts/" + postId + "/upvotes").once("value", (upVotes) => {
         let upVotesFromDb = upVotes.child(userGlobal.uid).val();
-        console.log("This checks if it is null!!");
-        console.log(upVotes.child(userGlobal.uid).val())
+       
 
         if (upVotesFromDb === null) {
             firebase.database().ref("posts/" + postId).child("upvotes").child(userGlobal.uid).set({

@@ -183,17 +183,17 @@ window.onload = () => {
 function checkStatus() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            // User is signed in.
+           
             logStatus = "Successful login!";
             document.getElementById("status").innerHTML = logStatus;
             $('#status2').show();
-            // console.log(user);
+           
 
             $('.spinner-grow').toggle();
             window.location.href = "index.html";
 
         } else {
-            // User is signed out.
+          
             logStatus = "You are not logged in!";
             document.getElementById("status").innerHTML = logStatus;
         }

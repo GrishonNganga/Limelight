@@ -12,13 +12,11 @@ $(document).ready(()=>{
     database.ref("posts/"+postID).once("value", (postToView)=>{
         var incomingPost = postToView.val();
 
-        console.log(incomingPost);
         var username = incomingPost.username;
         var body = incomingPost.body;
         var commentsCount = incomingPost.commentsCount;
             
         var timestamp = new Date(incomingPost.timestamp);
-        console.log(timestamp);
 
         var when;
         var postedAgoText;
@@ -87,7 +85,7 @@ $(document).ready(()=>{
         document.getElementById('post-comments-count').innerHTML = " "+commentsSection+" comments"
         document.getElementById('post-username').innerHTML = "Posted by "+ username+" "+when +" "+ postedAgoText;
         document.getElementById('body').innerHTML = body;
-        document.getElementById('posted-info').innerHTML = "Comment as "+ username; 
+        // document.getElementById('posted-info').innerHTML = "Comment as "+ usernameGlobal; 
 
 
     });
@@ -98,9 +96,9 @@ $(document).ready(()=>{
         if(commentToBePosted !== ""){
             $('.comment-error').hide();
             document.getElementById("comment-box").value = "";
-            console.log(commentToBePosted);
-            console.log("We are in here.");
+          
             database.ref("users/"+uid).on("value", (usernameToGet)=>{
+                usernameGlobal = usernameToGet.val().name;
                 var usernameToDisplay = usernameToGet.val().name;
                 var newComment = database.ref("comments/" +postID);
                 newComment.push({
@@ -127,7 +125,6 @@ $(document).ready(()=>{
             });
         }else{
             $('.comment-error').show();
-            console.log("In here!");
         
         }         
     });
@@ -140,7 +137,6 @@ function checkState(){
         if(user){
             console.log("Logged in!");
             uid = user.uid;
-            console.log(uid);
 
             $('.un-authed').hide();
             $('.authed').show();
@@ -154,9 +150,7 @@ function checkState(){
 function pullComments(){
     database.ref("comments/"+postID).on("child_added", (comments)=>{
 
-         console.log(comments.val());
-         
-         console.log(typeof comments.val());
+        
         if(comments.val() && typeof comments.val() !== "number"){
             $('.present-comments-toggle').hide();
 
