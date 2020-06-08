@@ -284,7 +284,7 @@ function displayPosts(posts) {
         })
     } else {
         console.log("Not logged in. Please do so quickly!")
-        logStatus = "Please login to upvote/downvote a post";
+        logStatus = "Please login to vote on a post";
         document.getElementById("logged-out").innerHTML = logStatus;
         document.getElementById("logged-out").style.color = "orangered";
     }
