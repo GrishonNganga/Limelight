@@ -190,9 +190,13 @@ function checkStatus() {
             document.getElementById("status2").innerHTML = logStatus2;
             // console.log(user);
 
-            $('.spinner-grow').toggle();
-            window.location.href = "index.html";
+            var user = firebase.auth().currentUser;
 
+            if (user != null) {
+                var emailVerified = user.emailVerified;
+                $('.spinner-grow').toggle();
+                window.location.href = "index.html";
+            }
         } else {
             // User is signed out.
             logStatus = "You are not logged in!";

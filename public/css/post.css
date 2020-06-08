@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(221, 221, 221);
+}
+
+main {
+    padding-top: 10vh;
+    min-height: 100%;
+}
+
+.post-page {
+    background-color: white;
+}
+
+.votes-number {
+    font-size: 13px;
+}
+
+
+/* .original{
+    background-color: red;
+}
+*/
+
+.other {
+    display: none;
+}
+
+.sort {
+    border-spacing: 20px;
+    border-bottom: 2px solid black;
+}
+
+.images img {
+    width: 100%;
+}
+
+.un-authed {
+    display: none;
+}
+
+.offset-r-0 {
+    margin-right: 5%;
+}
+
+.posted-info {
+    font-size: 13px;
+    color: gray;
+}
+
+.upvote,
+.downvote,
+.post-upvote,
+.post-downvote,
+#post-comments-count,
+.post-flag {
+    color: gray;
+}
+.post-comment{
+    background-color: limegreen;
+}
+
+.navbar img {
+    width: 100%;
+}
+
+.guidelines-head {
+    background-image: url("../images/betterworld.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.no-comment-img {
+    color: limegreen;
+    margin-left: 25%;
+    margin-bottom: 10%;
+}
+.no-comment-text {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.no-comment-text {
+    font-size: 2em;
+    color: gray;
+}
+
+.communities, .comment-error{
+    display: none;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .images img {
+        width: 100%;
+    }
+    .other {
+        display: inline;
+    }
+    .offset-0 {
+        margin-left: 5%;
+    }
+    .communities{
+        display: inline;
+    }
+}
