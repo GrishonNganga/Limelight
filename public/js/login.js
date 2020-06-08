@@ -137,16 +137,22 @@ function signUpFirebase(data) {
     var email = data.mail;
     var password = data.passwd;
     const database = firebase.database();
-    firebase.auth().createUserWithEmailAndPassword(email, password).then((dataPassed) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .catch((err)=>{
+        document.getElementById("status2").innerHTML = err.message;
+        $('.spinner-grow').toggle();
+        $('#status2').toggle();
+
+    })
+    .then((dataPassed) => {
         verification();
-        console.log(data);
-        console.log(dataPassed.user.uid);
+        document.getElementById("status2").innerHTML = "Sign up success";
         var createdUser = dataPassed.user.uid;
         database.ref("users/" + createdUser).set({
             name: data.name
         });
 
-    });
+    })
 
 }
 

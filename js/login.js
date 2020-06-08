@@ -146,8 +146,7 @@ function signUpFirebase(data) {
     })
     .then((dataPassed) => {
         verification();
-        console.log(data);
-        console.log(dataPassed.user.uid);
+        document.getElementById("status2").innerHTML = "Sign up success";
         var createdUser = dataPassed.user.uid;
         database.ref("users/" + createdUser).set({
             name: data.name
