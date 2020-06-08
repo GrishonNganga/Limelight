@@ -1,6 +1,6 @@
 # Limelight
 
-#### This platform is a community driven platform that seeks to recognize the works of other designers and web artisans.
+#### This platform is a community driven platform that seeks to recognize the works of one another.
 
 #### Contributors
 
@@ -34,6 +34,7 @@ There are no known bugs. Please reach out if you find any.
 - Bootstrap
 - JQuery
 - Javascript
+- Firebase
 
 ## Support and contact details
 
