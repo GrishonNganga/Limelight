@@ -46,9 +46,6 @@ $(document).ready(() => {
 
                     $('remove-filter').empty();
                     $('.posts').empty();
-                    $('.posts').html(
-                        $('.posts').html() + '<p>Latest posts.</p>'
-                    )
                     $('.spinner-grow').toggle();
                     displayPosts(postsToUse);
                     $('.spinner-grow').toggle();
