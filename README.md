@@ -1,47 +1,27 @@
-# Limelight
+# ![logo](images/limelight-logo-black.png)
 
+>Version 1 
 #### This platform is a community driven platform that seeks to recognize the works of other designers and web artisans.
 
-#### Contributors
 
-- **Karen Ngala**
-- **Josphat Mwangi**
-- **Sospetre Kung'u**
-- **Maryann Makena**
-- **Grishon Ng'ang'a**
-- **Arnold Liferezev**
-- **Bruno Kiprono**
 
-## Description
+# Description
 
 Platform works more like Reddit + Awwwards. Community users who wish to showcase their awesome work post their work (currently provides github pages live link). Other users can view the site, upvote the post if they like what they see. Conversations can also happen over at the comments section. Posts and other comments are ranked by their popularity. Just like Reddit. Why are we doing this? Bred in Moringa school, this idea came about to try and make it easier for students to find other students work while alo maintaining a record of all the projects previous students did. (Although now it transcends Moringa School context).
 
-## Setup/Installation Requirements
+# Code of Conduct
 
-To contribute to thi project.\
-`Fork project`\
-`Add your awesome work`\
-`Submit a PR on **develop**.`
+Follow our community 
 
-## Known Bugs
+# Contributing
+Read through or [contributing guidelines](contributing.md).
 
-There are no known bugs. Please reach out if you find any.
-
-## Technologies Used
-
-- HTML
-- CSS
-- Bootstrap
-- JQuery
-- Javascript
-
-## Support and contact details
+# Support and contact details
 
 Grab a cup of coffee? Email 'grishon.nganga01@gmail.com'
 
-### MIT License
-
-Copyright (c) [2020]Limelight Group - Grishon Ng'ang'a, Maryann Makena, Karen Ngala, Sospeter Kung'u, Josphat Mwangi.
+# License
+Limelight is free, open source, and GPL friendly.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -60,9 +40,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-Copyright (c) {2020}
-**Karen Ngala**
-**Josphat Mwangi**
-**Sospetre Kung'u**
-**Maryann Makena**
-**Grishon Ng'ang'a**
+
+Copyright (c) [2020]Limelight Group
+
+### Team
+- [**Grishon Ng'ang'a**](https://github.com/GrishonNganga)
+- [**Karen Ngala**](https://github.com/KarenNgala)
+- [**Josphat Mwangi**](https://github.com/josphat-mwangi)
+- [**Sospetre Kung'u**](https://github.com/SospeterKungu)
+- [**Maryann Makena**](https://github.com/Makena-Maryann)
+- [**Arnold Liferezev**]()
+- [**Bruno Kiprono**](https://github.com/BTG001)
