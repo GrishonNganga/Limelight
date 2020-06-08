@@ -204,6 +204,7 @@ function verification() {
 
     user.sendEmailVerification().then(function() {
         // Email sent.
+        console.log("Email sent")
     }).catch(function(error) {
         // An error happened.
         var errorCode = error.code;
