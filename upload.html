@@ -23,7 +23,7 @@
         /* NAVBAR */
         
         .logo {
-            width: 15%;
+            width: 30%;
         }
              
         .search-input {
@@ -43,6 +43,9 @@
         @media ( max-width: 768px) {
             .topnav {
                 position: static;
+            }
+            .logo {
+                width: 30%;
             }
         }
     </style>
@@ -106,8 +109,8 @@
             <h3>Create Post</h3>
         </div>
         <span id="errors"></span>
-        <div class="row mt-5">
-            <div class="col-7">
+        <div class=" container row mt-5">
+            <div class="col-sm-7">
                 <div class="row mb-4 posts-options">
                     <div class="col body-div active selected">
                         <p class="body-txt"><i class="fas fa-plus-square post-img active-img"></i> Post</p>
@@ -117,13 +120,7 @@
                         <p class="live-txt"><i class="fas fa-map link-img inactive-img"></i> Link</p>
                     </div>
                 </div>
-                <div class="row image-preview">
-                    <div class="col card image-preview-card" id="image-preview-card">
-                        <ul class="addPic" id="addPic">
-
-                        </ul>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="form-group col body p-0">
                         <textarea class="form-control" id="body" name="editor1" rows="5" placeholder="Description"></textarea>
@@ -155,10 +152,10 @@
                                     1. Add a description of the project.
                                 </p>
                                 <p class="card-text">
-                                    2. Upload screenshots of the project for others to see.
+                                    2. Provide a live link to the project.
                                 </p>
                                 <p class="card-text">
-                                    3. Provide a live link to the project.
+                                    2. Share with the rest of the community.
                                 </p>
                             </div>
                         </div>
