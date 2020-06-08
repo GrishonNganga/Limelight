@@ -138,21 +138,21 @@ function signUpFirebase(data) {
     var password = data.passwd;
     const database = firebase.database();
     firebase.auth().createUserWithEmailAndPassword(email, password)
-    .catch((err)=>{
-        document.getElementById("status2").innerHTML = err.message;
-        $('.spinner-grow').toggle();
-        $('#status2').toggle();
+        .catch((err) => {
+            document.getElementById("status2").innerHTML = err.message;
+            $('.spinner-grow').toggle();
+            $('#status2').toggle();
 
-    })
-    .then((dataPassed) => {
-        verification();
-        document.getElementById("status2").innerHTML = "Sign up success";
-        var createdUser = dataPassed.user.uid;
-        database.ref("users/" + createdUser).set({
-            name: data.name
-        });
+        })
+        .then((dataPassed) => {
+            verification();
+            document.getElementById("status2").innerHTML = "Sign up success";
+            var createdUser = dataPassed.user.uid;
+            database.ref("users/" + createdUser).set({
+                name: data.name
+            });
 
-    })
+        })
 
 }
 
@@ -186,17 +186,12 @@ function checkStatus() {
             // User is signed in.
             logStatus = "Successful login!";
             document.getElementById("status").innerHTML = logStatus;
-            logStatus2 = "We have sent you a verification email";
-            document.getElementById("status2").innerHTML = logStatus2;
+            $('#status2').show();
             // console.log(user);
 
-            var user = firebase.auth().currentUser;
+            $('.spinner-grow').toggle();
+            window.location.href = "index.html";
 
-            if (user != null) {
-                var emailVerified = user.emailVerified;
-                $('.spinner-grow').toggle();
-                window.location.href = "index.html";
-            }
         } else {
             // User is signed out.
             logStatus = "You are not logged in!";
@@ -210,7 +205,9 @@ function verification() {
 
     user.sendEmailVerification().then(function() {
         // Email sent.
-        console.log("Email sent")
+        console.log("Email sent");
+        logStatus2 = "We have sent you a verification email";
+        document.getElementById("status2").innerHTML = logStatus2;
     }).catch(function(error) {
         // An error happened.
         var errorCode = error.code;
