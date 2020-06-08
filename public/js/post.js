@@ -85,7 +85,7 @@ $(document).ready(()=>{
         document.getElementById('post-comments-count').innerHTML = " "+commentsSection+" comments"
         document.getElementById('post-username').innerHTML = "Posted by "+ username+" "+when +" "+ postedAgoText;
         document.getElementById('body').innerHTML = body;
-        document.getElementById('posted-info').innerHTML = "Comment as "+ username; 
+        // document.getElementById('posted-info').innerHTML = "Comment as "+ usernameGlobal; 
 
 
     });
@@ -98,6 +98,7 @@ $(document).ready(()=>{
             document.getElementById("comment-box").value = "";
           
             database.ref("users/"+uid).on("value", (usernameToGet)=>{
+                usernameGlobal = usernameToGet.val().name;
                 var usernameToDisplay = usernameToGet.val().name;
                 var newComment = database.ref("comments/" +postID);
                 newComment.push({
